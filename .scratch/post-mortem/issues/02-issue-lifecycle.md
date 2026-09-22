@@ -1,7 +1,7 @@
 # What the 106 issues were actually about, and what generated them
 
 Type: research
-Status: open
+Status: resolved
 
 ## Question
 
@@ -18,3 +18,9 @@ is destroyed** and characterise it.
 - The `wayfinder:*` labelled issues: how many maps ran, how many tickets each charted, how many
   resolved.
 - What fraction of total issues existed only because the process could observe itself?
+
+## Answer
+
+Full findings: [research\/02-issue-lifecycle.md](../research/02-issue-lifecycle.md)
+
+Raw harvest of all 106 issues and 171 comments at [research/02-issues-raw.json](../research/02-issues-raw.json), taken before the remote was destroyed. The 106 issues were opened in **48h38m**, not eight days. Subject split 45 product / 61 process, inverting monotonically from 30% process in #1–#27 to 81% in #82–#107. The repo's own `process` label undercounted its dominant category ~15× and #66 reasoned from that bad measurement. Nothing was ever stale — median time-to-close 4.1h, none over 48h. Declining was never a practice: zero of the first 50 closes were NOT_PLANNED, then all 17 declines fired in a single 61-second sweep 64 minutes after ADR 0073 landed. 54% of the tracker exists only because the process could observe itself. All four wayfinder maps are still open.

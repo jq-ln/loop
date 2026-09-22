@@ -1,7 +1,7 @@
 # What the evidence actually says about document length and adherence
 
 Type: research
-Status: open
+Status: resolved
 
 ## Question
 
@@ -22,3 +22,9 @@ actually support, and where the claims outrun the evidence.
 
 Use high-trust primary sources. The output decides whether ticket 11's budget is a principled
 number or a superstition, so a well-cited "the evidence is thinner than the claim" is a good result.
+
+## Answer
+
+Full findings: [research\/07-doc-length-and-adherence.md](../research/07-doc-length-and-adherence.md)
+
+The 200-line figure is **real published Anthropic guidance**, verbatim at https://code.claude.com/docs/en/memory — but it arrives with no measurement: no evaluation, no curve, no threshold. "Length hurts accuracy" is well evidenced (Lost in the Middle, Same Task More Tokens, Context Rot) but every one of those measures **retrieval and reasoning accuracy, not instruction adherence**. The only study measuring adherence directly (IFScale, arXiv 2507.11538) scales instruction *count*, not document length, and shows near-ceiling compliance at the scale a real CLAUDE.md occupies. So the exact proposition ticket 11 was chartered to enforce has no published measurement behind it. Better evidenced: **dilution and conflict** — contradictory rules are picked between arbitrarily, and emphasising many lines means none stands out. Length is a proxy for the real defect. The sources do distinguish always-loaded (~200) from on-demand (~500); an aggregate corpus ceiling counting both alike has no source. Trap: 200 lines is a hard cutoff only for auto-memory `MEMORY.md`; `CLAUDE.md` loads in full up to 4 MiB.

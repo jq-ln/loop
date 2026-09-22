@@ -1,7 +1,7 @@
 # Which documented rules the history actually violated, and how soon
 
 Type: research
-Status: open
+Status: resolved
 
 ## Question
 
@@ -23,3 +23,9 @@ check what you find:
 
 The output that matters is the **latency**: rule written → rule broken. A rule broken within a day
 of being written is evidence about the rule, not about discipline.
+
+## Answer
+
+Full findings: [research\/03-rules-written-then-broken.md](../research/03-rules-written-then-broken.md)
+
+**The central finding of the post-mortem.** Rules written retrospectively from a live failure, attached to an artifact the commit must touch anyway, held — version bumping: zero violations across 60 bumping commits; ADR numbering: zero violations. Rules written prospectively from principle did not: "no work happens on main" broke in **15m33s**, one commit later, and was later defeated by citing its own violations (`c00993f`: "main has precedent"). ktlint shipped in the initial commit and went unchecked for 236 commits, while being ambiguous enough that its two readings differ by 4,623 of 5,493 violations. ADR-in-same-commit broke after 1d7h and two unrecorded decisions were still unrecorded at death. The `.kotlin/errors` rule has negative latency — written 5d19h after the violation, in the commit that deleted it. Two rules collided six hours apart and were adjudicated ad hoc by an agent mid-review.

@@ -49,18 +49,31 @@ deliberately separated here.
 
 <!-- one line per resolved ticket: gist, then the link to the detail -->
 
-- Nothing resolved yet.
+- [The documentation growth curve, and why the correction did not hold](issues/01-documentation-growth-curve.md): every addition was locally justified and the failure is purely aggregate; the correction that worked predates the map chartered to make it, and the tracker holds more prose than the repo.
+- [What the 106 issues were actually about, and what generated them](issues/02-issue-lifecycle.md): 106 issues in 48h38m, process share rising 30% to 81%, nothing ever stale, declining never a practice but a single 61-second sweep.
+- [Which documented rules the history actually violated, and how soon](issues/03-rules-written-then-broken.md): rules attached to an artifact the commit must touch anyway held perfectly; rules written from principle broke, the fastest in 15 minutes 33 seconds.
+- [Which architectural decisions the code honours, and which were aspirational](issues/04-product-salvage-inventory.md): the four pillars and the plugin seam are drops; definitions-vs-occurrences, the cascade, the schedule engine and core-audio are keeps.
+- [Where 242 commits of effort actually went](issues/05-where-the-time-went.md): process work tripled after the code stopped growing, so it is a second disease rather than a symptom; the driver is file count and reference density, not length.
+- [Collisions, version confusion, and extra review rounds](issues/06-merge-and-review-forensics.md): collisions are global registries a worktree cannot isolate; versioning's cost is adjudication not error; review rounds are mostly not caused by `main` moving.
+- [What the evidence actually says about document length and adherence](issues/07-doc-length-and-adherence.md): the 200-line figure is published guidance but unmeasured, and the papers usually cited measure retrieval accuracy rather than adherence; dilution and conflict are the better-evidenced defect.
 
 ## Not yet specified
 
 - **The kit's structure**: which files day one gets, what each owns, and how ownership is
-  expressed. The old repo's ownership table was a genuine invention that outgrew itself; whether
-  the mechanism or only the volume was at fault is not yet answerable.
-- **Whether this repo keeps an ADR practice at all**, and if so what earns one. Blocked on 07 and
-  11 — the answer depends on whether length discipline is achievable or whether the form itself
-  drives the growth.
-- **Review-loop termination**: the old repo's human review gate had no agent-side exit condition
-  and no stall signal. Adjacent to ticket 10 but probably its own question once 10 lands.
+  expressed. Ticket 04 found the ownership table asserting three things the code contradicts, so
+  the mechanism is now suspect as well as the volume.
+- **Whether this repo keeps an ADR practice at all**, and if so what earns one. Sharpened by 04:
+  the old repo's 75 ADRs were bulk-extracted from one file in two days, so the practice the rule
+  described never actually ran and has not in fact been tried.
+- **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
+  precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
+  a general principle for every rule in the kit, but not yet sharp enough to ticket.
+- **What the review actually reads.** Ticket 06 found the reviewed artifact drifting to prose
+  *about* the change — commit messages — outside any declared file list. Adjacent to ticket 10 and
+  probably its own question once 10 lands.
+- **Global registries** — a changelog, a version, an index — that no worktree can isolate and no
+  ticket can declare off-limits. Ticket 10 must answer it for this repo; whether the answer
+  generalises into a rule about derived-versus-stored state is fog.
 - **What replaces the salvaged conclusions' provenance** once `../old_loop` is a local-only
   archive with no reachable issue URLs.
 - **The app's own architecture** — only to the extent the kit must say something about testing

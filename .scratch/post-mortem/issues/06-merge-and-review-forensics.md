@@ -1,7 +1,7 @@
 # Collisions, version confusion, and extra review rounds under the worktree model
 
 Type: research
-Status: open
+Status: resolved
 
 ## Question
 
@@ -22,3 +22,9 @@ mechanism.
   something real, or did it exist because the branch had rebased underneath the reviewer?
 
 For each symptom, name the mechanism rather than the incident.
+
+## Answer
+
+Full findings: [research\/06-merge-and-review-forensics.md](../research/06-merge-and-review-forensics.md)
+
+**Caveat that reframes the ticket**: the whole protocol was written in the repo's last ~36 hours and governed only 41 commits. It was never observed steady-state. **Collisions**: 14 concurrent-branch pairs shared a file, concentrated in `CHANGELOG.md`, `app/build.gradle.kts` and `CLAUDE.md` — global *registries* a worktree cannot isolate and no ticket can declare off-limits. Declared file lists worked where they existed (zero file-level violations) but only 10 of 41 tickets had one. **Versioning**: eight live counters under three incompatible regimes; the dominant cost is adjudication, not error — 18 issues spend a paragraph arguing no bump is owed, via a precedent chain seven deep. A rule with no null artifact grows case law. **Review rounds — the stated hypothesis is mostly wrong**: exactly one round across nine multi-round tickets existed because `main` moved, and it was substantive. The real generators are that a fix mandatorily reopens a round, that fixes regress against undocumented standards (#101 rounds 3–6 enforcing a 634-column rule no file states), and that the reviewed artifact is prose *about* the change — commit messages, outside the covered test entirely.

@@ -378,9 +378,10 @@ Ranked by re-derivation cost, not by line count.
 - **Do not install a top-level ontology.** The pillar model produced two rejection ADRs, a
   build-and-revert, a six-ADR contiguous run and a documented falsehood in three files, for eight
   lines of enum. Name screens; do not classify them.
-- **Do not build a plugin platform before there is a plugin author.** An in-repo module boundary was
-  already doing the work; the cross-APK seam cost ~11% of the codebase and ended with the host
-  shipping zero plugins and store copy advertising two.
+- **Do not build a platform after removing its last consumer.** The wire's ten commits landed after
+  Dual N-Back left the build; 18% of the test suite and 10.6% of production code now serve a seam
+  that discovers nothing, while the store copy still advertises it. If a seam cannot name a caller
+  it does not also ship, it is not a seam yet.
 - **Decide the ADR question on this evidence**: the corpus was written in one retrospective day, the
   "same commit as the code" rule never got to run, and nearly half of all prose written was later
   deleted. About twenty of the seventy-five encode a fact about the world; the rest encode a house
