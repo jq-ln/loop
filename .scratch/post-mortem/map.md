@@ -65,6 +65,7 @@ deliberately separated here.
 - [What the evidence actually says about document length and adherence](issues/07-doc-length-and-adherence.md): the 200-line figure is published guidance but unmeasured, and the papers usually cited measure retrieval accuracy rather than adherence; dilution and conflict are the better-evidenced defect.
 - [Why it became unsalvageable](issues/08-the-terminal-account.md): unwieldiness the author could no longer account for, then two blows — a personal-information scrub for a publication that never happened, and F-Droid recognised as arbitrary after it had propagated four ADRs into the architecture; the process explosion was triage started too late, not a second disease; the structural cause is that no goals document existed and the ownership table had no row for one. All seven findings survive the counterfactual filter; forced to three, the kit carries 03, 05 and 02.
 - [Was it the process, or was it the scope?](issues/09-process-or-scope.md): neither — three layers, not a weighting. Root: no destination existed to check anything against. Proximate: breadth outran comprehension. Third-order: the process volume, a real triage that became its own load. Outputs the comprehension criterion, ordered before 03's latency test; re-charters 12, 17 and 18, and makes 15 block every ticket that writes a rule (10, 11, 12, 13, 17).
+- [The goals document, and the citation rule that gives it teeth](issues/15-the-goals-document.md): two goals governing two objects — the app (G1, used every day) and the repository (G2, legible to people who might hire or build with me) — with the tie-break that would have killed F-Droid on day one; a goal is citable only if it can rule a decision out, and every ADR names the goal *and what it ruled out*; goal ids never reused, deletion carries a `grep` re-check list; `GOALS.md` ≤ 40 lines, written verbatim, edited only by the human in a commit touching nothing else.
 
 ## Not yet specified
 
@@ -74,14 +75,10 @@ deliberately separated here.
   omission — no row for the project's goals — is the omission that killed the repo, and the goals
   file now outranks the table (ticket 15). The kit also has a **human-facing half** (ticket 17)
   that none of the research findings touch.
-- **Whether this repo keeps an ADR practice at all**, and if so what earns one. Sharpened by 04:
-  the old repo's 75 ADRs were bulk-extracted from one file in two days, so the practice the rule
-  described never actually ran and has not in fact been tried. Narrowed by 08, which decided that
-  *if* ADRs exist each must cite the goal it serves — so the live question is what earns one, and
-  whether "cites a goal" is itself the bar.
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
   precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
-  a general principle for every rule in the kit, but not yet sharp enough to ticket.
+  a general principle for every rule in the kit, but not yet sharp enough to ticket. Its sharpest
+  instance is now a bullet inside ticket 19: does a rejected ADR leave a trace?
 - **What the review actually reads.** Ticket 06 found the reviewed artifact drifting to prose
   *about* the change — commit messages — outside any declared file list. Adjacent to ticket 10 and
   probably its own question once 10 lands.

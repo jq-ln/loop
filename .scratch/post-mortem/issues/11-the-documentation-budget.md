@@ -63,3 +63,20 @@ The re-charter above stands unchanged; 09 adds one test and one blocker.
 - **Rank.** 09 placed a bounded corpus third of the kit's three means, behind a stated goal and
   protected comprehension. This ticket constrains 17 but does not outrank it, and the two are
   deliberately left unordered against each other.
+
+## Amendment after ticket 15
+
+Two fixed inputs, neither of them re-openable here.
+
+- **`GOALS.md` is ≤ 40 lines**, decided in 15 and confirmed against the written file. This ticket
+  inherits the number rather than re-deriving it; the budget must accommodate it, not adjudicate it.
+- **A worked example of the hardest half.** 15's *"`GOALS.md` is edited alone — a commit touching it
+  touches nothing else"* is a constraint with a real artifact to attach to and a mechanical check
+  (a diff including that path and any other fails). It is the shape this ticket has been looking
+  for: not a standalone check of a quantity, but a rule riding on a commit the work must make
+  anyway. Whether the corpus budget admits the same shape is this ticket's question; that it is
+  possible at all is no longer speculative.
+
+Note also that **ticket 19 is deliberately unordered against this one**, for the reason 09 gave for
+11 and 17: a budget set without knowing whether an ADR directory exists will be wrong, and an ADR
+practice designed without a budget will be too generous. Whichever resolves second adjusts.

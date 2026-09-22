@@ -57,3 +57,27 @@ attach to? Resolve that rather than deferring it; an unattached procedure of pri
 class that broke in 15 minutes 33 seconds.
 
 Blocked by 15 as well as 09.
+
+## Amendment after ticket 15
+
+15 decided that **only the repository's owner edits `GOALS.md`**, and the user's own response to
+that decision is this ticket's sharpest input: *"the goals are only good if I keep myself to a
+standard."*
+
+15 states the **attachment** and leaves the **discipline** here. Already decided, and not this
+ticket's to revisit: the file is edited alone in a commit touching nothing else (mechanically
+checkable); a deletion carries the `grep` re-check list in its commit message; the trigger for
+revisiting the goals is an ADR that cannot name one, not a calendar.
+
+What lands here:
+
+- **The cadence of re-reading `GOALS.md`**, given 08 rejected re-reading as the *mechanism* but the
+  file still needs to be a live object rather than a founding document.
+- **The honesty problem**, which is the real difficulty and is this ticket's own question in
+  concentrated form. The three rules above are all checkable. *"Did you re-examine the goal, or
+  reword it to fit what you had already built?"* is not checkable by anything, and the goals file
+  is worth nothing if the answer is the second. A procedure for yourself has no reviewer; here is
+  the exact place that bites.
+- **A candidate reading-time check**: if every ADR cites the same goal, the citation rule has
+  degraded into a stamp. 15 explicitly declined to make this a mechanism — it is a thing a human
+  notices while reading — so it belongs in this document or nowhere.

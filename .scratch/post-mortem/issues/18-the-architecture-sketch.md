@@ -43,3 +43,15 @@ product scope and is out of scope for this map — the same shape this ticket al
 sketch itself. It belongs here because the sketch is the one artifact the rebuild must produce before
 writing code, and therefore the only place a breadth constraint can attach early enough to matter.
 The old repo never sketched at all, and two of its four pillars were never built.
+
+## Amendment after ticket 15
+
+15 settled that the kit writes exactly **one** day-one non-goal (N1, shipping through any particular
+store or channel) and that everything else is seeded by the rebuild, because "no plugin subsystem"
+and its kin are *product scope*, which this map rules out.
+
+This ticket is where they enter. 09 already required the sketch to name the rebuild's smallest
+shippable slice **and what is deliberately excluded from it**; 15 adds that those exclusions are
+non-goal candidates by construction, and that promoting one into `GOALS.md` follows 15's entry rule
+— written when something is actually rejected, and only when a reader of the goals might plausibly
+have built it.
