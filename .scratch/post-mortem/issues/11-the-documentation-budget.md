@@ -412,3 +412,32 @@ Prior art: <what `just adr <term>` returned, and why it does not decide this>   
 - **17 is unaffected.** `PROCEDURE.md` at 60 and the justfile exemption were inherited, not
   re-adjudicated. The aggregate-coherence check this ticket declined to invent is noted as belonging
   with 17's three clauses that rest on nothing.
+
+### Correction, same session: what `/setup-matt-pocock-skills` adds
+
+Recorded here rather than on the map because this ticket owns the count. Checked against the
+installed plugin (`mattpocock-skills` 1.2.3), not inferred.
+
+Setup writes three files and edits one. `docs/agents/triage-labels.md` is written **because the
+`triage` skill is installed** — it is, so setup resolves the dead reference found above, and the file
+is already one of the nine. `docs/agents/issue-tracker.md` already exists and is byte-identical to
+the skill's local-tracker template. `CLAUDE.md` gains an `## Agent skills` block, which is a section
+of a counted file and costs nothing.
+
+**`docs/agents/domain.md` is a tenth file, not in the nine.** The day-one count is **10**, headroom
+**2**, and 20's final pass checks against 10.
+
+It also arrives violating two of this ticket's rules, which is worth more than the correction:
+
+- It asserts a **file layout** — two directory trees, `src/`, per-context `docs/adr/` — which is
+  exactly the class the doc-code entry rule forbids, and this repo has neither directory.
+- Its backticked `CONTEXT-MAP.md` and `src/<context>/docs/adr/` do not resolve, so the path check
+  **refuses the commit** that lands it unedited. (Fenced code blocks are not scanned; only backticked
+  tokens are.)
+
+**These files are governed, not vendored.** An agent reads them as standing claims, which is the
+definition of the perimeter, so they are edited on landing rather than exempted — a tool's output
+gets read before it is adopted. Trimming `domain.md` of layout it invented for a repo it has never
+seen is the rule working on day one rather than an obstacle to it. If a later effort finds itself
+re-editing these files after every plugin upgrade, that is the evidence for moving `docs/agents/` out
+of the perimeter, and the evidence should be collected before the exemption is granted.

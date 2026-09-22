@@ -2,7 +2,7 @@
 
 Type: task
 Status: open
-Blocked by: 10, 11, 12, 13, 16, 17, 18, 19
+Blocked by: 10, 11, 12, 13, 16, 17, 18, 19, 21
 
 ## Question
 
@@ -97,3 +97,18 @@ of it: copy, do not compose.
 `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, the salvage list (13) and the sketch
 (18) — and the count is reported in the final commit message. A kit that lands at 12 has spent its
 headroom before the rebuild starts and that fact should be visible, not discovered later.
+
+## Note after ticket 11's correction
+
+`/setup-matt-pocock-skills` writes `docs/agents/domain.md`, `docs/agents/triage-labels.md` and
+`docs/agents/issue-tracker.md` (the last already present and byte-identical to its template), and
+adds an `## Agent skills` block to `CLAUDE.md`.
+
+- The **expected day-one count is 10, not 9** — `domain.md` is the tenth. Headroom 2.
+- The `triage-labels.md` repair is done **by running setup**, not by hand.
+- `domain.md` must be **edited before it lands**: as generated it asserts a file layout for
+  directories this repo does not have, and its backticked `CONTEXT-MAP.md` and
+  `src/<context>/docs/adr/` do not resolve, so 11's path check refuses the commit. Edit it to match
+  this repo; do not exempt it.
+- Order matters: run setup **before** installing 11's checks, or the checks refuse setup's own
+  output and the first thing the kit does is block its own scaffolding.

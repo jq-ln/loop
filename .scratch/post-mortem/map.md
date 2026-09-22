@@ -71,16 +71,6 @@ deliberately separated here.
 
 ## Not yet specified
 
-- **The kit's structure**: which files day one gets, what each owns, and how ownership is
-  expressed. Ticket 04 found the ownership table asserting three things the code contradicts, so
-  the mechanism is now suspect as well as the volume. Sharpened by 08: the table's one structural
-  omission — no row for the project's goals — is the omission that killed the repo, and the goals
-  file now outranks the table (ticket 15). The human-facing half is no longer fog — ticket 17
-  settled it as `PROCEDURE.md` plus a justfile, a harness denial and two `pre-commit` checks, and
-  ticket 11 fixed *how many* files there may be (12) and which ones count — but how ownership is
-  *expressed* across the whole kit is still open, and 11's eviction rule now depends on it: "fold the
-  claim into the file that already owns that kind of claim" presumes an agent can tell which file
-  that is.
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
   precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
   a general principle for every rule in the kit, but not yet sharp enough to ticket. Ticket 17
