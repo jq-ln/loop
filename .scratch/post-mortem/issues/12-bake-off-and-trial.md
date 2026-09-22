@@ -2,7 +2,7 @@
 
 Type: grilling
 Status: open
-Blocked by: 09
+Blocked by: 09, 15
 
 ## Question
 
@@ -25,3 +25,19 @@ decision is written down and whether it earns an ADR. And which questions deserv
 cost of a bake-off is real and most decisions should just be made.
 
 Adopt the two terms into the repo's glossary as part of resolving this.
+
+## Amendment after ticket 09
+
+The mechanism survives the verdict; its default inverts.
+
+Prototypes are among the few artifacts that *reduce* comprehension load: they answer a question and
+are then deleted, rather than staying to be cross-referenced. So bake-off is kept — but **as the
+justified exception, not the default**. This ticket's own line, "most decisions should just be made",
+is promoted from caveat to rule.
+
+Under 15's citation rule a bake-off must name the goal the choice serves, which disqualifies most
+candidates by itself. Settle what clears that bar. The old repo's plugin subsystem — built day 3,
+deleted day 7 — is the worked example of a decision a two-hour bake-off would have pre-empted, and
+is the standard to calibrate the trigger against.
+
+Blocked by 15 as well as 09: the citation rule is the trigger's main filter.

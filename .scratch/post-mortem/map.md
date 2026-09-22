@@ -4,11 +4,16 @@ Type: wayfinder:map
 
 ## Destination
 
-A **seed kit** committed to this repo — the process documents, protocols and constraints Loop v2
-starts its first day of real work with — produced by a post-mortem of the first Loop repo
-(`../old_loop`, 242 commits over eight days, killed 2026-09-22). The findings are the route; the
-committed files are the destination. The map is done when someone can begin building the app with
-nothing left to decide about *how* the work runs.
+A **seed kit** committed to this repo — the documents, protocols and constraints Loop v2 starts its
+first day of real work with — produced by a post-mortem of the first Loop repo (`../old_loop`, 242
+commits over eight days, killed 2026-09-22). The findings are the route; the committed files are the
+destination. The map is done when someone can begin building the app with nothing left to decide
+about *how* the work runs.
+
+Ticket 09 settled what the kit is protecting against, and it is not primarily process. The kit's
+purpose is a repo whose author can account for it, aimed at a goal it can be checked against.
+Process leanness is one of three means, and the third in rank: **a stated goal** (15), **protected
+comprehension** (17), **a bounded corpus** (11).
 
 ## Notes
 
@@ -34,8 +39,10 @@ insight — 76 ADRs in eight days, each true when written — so insight and aut
 deliberately separated here.
 
 **Standing preferences**
-- Documents are lean. Length correlates negatively with adherence; ticket 07 establishes how
-  strongly and against what sources, and ticket 11 turns that into an enforced budget.
+- Documents are lean — but **not because length correlates negatively with adherence**, which
+  ticket 07 falsified. The constrained quantity is count, reference density and detectable
+  conflict (05, 07), and ticket 11 turns that into an enforced budget. Ticket 09 adds the test that
+  precedes it: a rule adding an artifact to read is net-negative unless it pays for itself.
 - No distribution channel is assumed. F-Droid was the first repo's target and may not be this
   one's; nothing in the kit may depend on it.
 - Terminology is challenged before it is adopted. "A/B testing" was rejected this session for
@@ -53,10 +60,11 @@ deliberately separated here.
 - [What the 106 issues were actually about, and what generated them](issues/02-issue-lifecycle.md): 106 issues in 48h38m, process share rising 30% to 81%, nothing ever stale, declining never a practice but a single 61-second sweep.
 - [Which documented rules the history actually violated, and how soon](issues/03-rules-written-then-broken.md): rules attached to an artifact the commit must touch anyway held perfectly; rules written from principle broke, the fastest in 15 minutes 33 seconds.
 - [Which architectural decisions the code honours, and which were aspirational](issues/04-product-salvage-inventory.md): the four pillars and the plugin seam are drops; definitions-vs-occurrences, the cascade, the schedule engine and core-audio are keeps.
-- [Where 242 commits of effort actually went](issues/05-where-the-time-went.md): process work tripled after the code stopped growing, so it is a second disease rather than a symptom; the driver is file count and reference density, not length.
+- [Where 242 commits of effort actually went](issues/05-where-the-time-went.md): process work tripled after the code stopped growing; the driver is file count and reference density, not length. **Causal reading superseded** — its "second disease rather than a symptom" was overturned by [Why it became unsalvageable](issues/08-the-terminal-account.md) and settled by [Was it the process, or was it the scope?](issues/09-process-or-scope.md): the numbers stand, but the process volume is third-order. Body left as written.
 - [Collisions, version confusion, and extra review rounds](issues/06-merge-and-review-forensics.md): collisions are global registries a worktree cannot isolate; versioning's cost is adjudication not error; review rounds are mostly not caused by `main` moving.
 - [What the evidence actually says about document length and adherence](issues/07-doc-length-and-adherence.md): the 200-line figure is published guidance but unmeasured, and the papers usually cited measure retrieval accuracy rather than adherence; dilution and conflict are the better-evidenced defect.
 - [Why it became unsalvageable](issues/08-the-terminal-account.md): unwieldiness the author could no longer account for, then two blows — a personal-information scrub for a publication that never happened, and F-Droid recognised as arbitrary after it had propagated four ADRs into the architecture; the process explosion was triage started too late, not a second disease; the structural cause is that no goals document existed and the ownership table had no row for one. All seven findings survive the counterfactual filter; forced to three, the kit carries 03, 05 and 02.
+- [Was it the process, or was it the scope?](issues/09-process-or-scope.md): neither — three layers, not a weighting. Root: no destination existed to check anything against. Proximate: breadth outran comprehension. Third-order: the process volume, a real triage that became its own load. Outputs the comprehension criterion, ordered before 03's latency test; re-charters 12, 17 and 18, and makes 15 block every ticket that writes a rule.
 
 ## Not yet specified
 
@@ -82,10 +90,6 @@ deliberately separated here.
   generalises into a rule about derived-versus-stored state is fog.
 - **What replaces the salvaged conclusions' provenance** once `../old_loop` is a local-only
   archive with no reachable issue URLs.
-- **How agent output outpaces human reading.** Ticket 08 found an author who could not account for
-  their own system — three documents asserting a `:core-api` type that was an 8-line enum. Ticket 17
-  asks what the human commits to; whether the general rule is a rate limit, a comprehension gate or
-  a scheduled debt is not yet sharp.
 
 ## Out of scope
 

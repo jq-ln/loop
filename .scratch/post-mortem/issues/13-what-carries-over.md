@@ -2,7 +2,7 @@
 
 Type: grilling
 Status: open
-Blocked by: 04, 09
+Blocked by: 04, 09, 15
 
 ## Question
 
@@ -24,3 +24,14 @@ Settle:
   number resolves against a directory on one machine. Is that enough, and if not what replaces it?
 - **What must NOT carry.** More valuable than the keep list. Name the decisions, forms and habits
   that are prohibited here, and say what each would look like if it crept back.
+
+## Amendment after ticket 09
+
+Blocked by 15 as well: "a real ADR is written here only when the decision is actually re-made" is a
+rule about what earns an ADR, and 08 already decided each ADR must cite the goal it serves. The
+salvage list's entries are therefore checkable against the goals file, which gives the 60-entry
+sceptical test a sharper form — an entry that cannot name a goal it serves is not a conclusion worth
+carrying.
+
+Note also that 04 enters the kit as a **binding input to the rebuild**, not as a rule (08's
+counterfactual filter), so the salvage list is not itself subject to the rule-gating tests.

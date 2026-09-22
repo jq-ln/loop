@@ -31,3 +31,15 @@ were never built, and by day six the author could not say what was under the hoo
   finding that an author who did not write the architecture could not account for it.
 
 Blocked by 13 because the salvage list is this sketch's principal input.
+
+## Amendment after ticket 09
+
+The sketch must require the rebuild to name its **first shippable slice**: the smallest thing that
+can be in a user's hands, and what is deliberately excluded from it.
+
+*Build less before shipping* follows from 09's proximate cause, and this is where it attaches. The
+kit mandates that the rebuild state its slice; it does not state what the slice is, which would be
+product scope and is out of scope for this map — the same shape this ticket already has for the
+sketch itself. It belongs here because the sketch is the one artifact the rebuild must produce before
+writing code, and therefore the only place a breadth constraint can attach early enough to matter.
+The old repo never sketched at all, and two of its four pillars were never built.

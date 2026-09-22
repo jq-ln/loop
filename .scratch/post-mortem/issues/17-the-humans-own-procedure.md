@@ -2,7 +2,7 @@
 
 Type: grilling
 Status: open
-Blocked by: 09
+Blocked by: 09, 15
 
 ## Question
 
@@ -34,3 +34,26 @@ type, and this was not discovered until a post-mortem inventory.
 Blocked by 09 because a process-caused death and a scope-caused death imply different documents
 here: under the first this is the load-bearing file, under the second it is a short checklist and
 the real answer is smaller ambitions.
+
+## Amendment after ticket 09
+
+**This is the kit's load-bearing document.** 17 anticipated that a process-caused death made it
+load-bearing and a scope-caused death made it a short checklist whose real answer is smaller
+ambitions. 09 found neither: the root cause is that no destination existed, and the *proximate* cause
+is breadth outrunning comprehension. The document governing what the human reads is therefore the
+kit's main defence, and "smaller ambitions" is a line inside it rather than a replacement for it.
+
+**It owns the pace question whole.** The map's fog patch on agent output outpacing human reading is
+cleared into this ticket rather than becoming its own. The gap is one question; splitting the human's
+commitment from the agent-side limit that enforces it guarantees two half-answers needing
+reconciliation later, which is exactly the day-8 repair work ticket 05 measured. Specify the human's
+choice here — rate limit, comprehension gate, or scheduled debt — and let ticket 10 wire whatever
+enforces it.
+
+**Being load-bearing buys no exemption.** 11's constraint applies, and so does the ordered pair of
+tests: the comprehension criterion first, then 03's latency test. The second is the real difficulty
+and this ticket already names it — a procedure for yourself has no reviewer, so what artifact does it
+attach to? Resolve that rather than deferring it; an unattached procedure of principle is the rule
+class that broke in 15 minutes 33 seconds.
+
+Blocked by 15 as well as 09.

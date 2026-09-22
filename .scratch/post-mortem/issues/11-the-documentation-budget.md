@@ -2,7 +2,7 @@
 
 Type: grilling
 Status: open
-Blocked by: 07, 09
+Blocked by: 07, 09, 15
 
 ## Question
 
@@ -48,3 +48,18 @@ rule of principle. The 200-line figure survives for the always-loaded file alone
 rather than as measurement.
 
 The eviction rule requirement is unchanged and is now the more important half.
+
+## Amendment after ticket 09
+
+The re-charter above stands unchanged; 09 adds one test and one blocker.
+
+- **The comprehension criterion, applied to this ticket's own mechanism**: a rule that adds an
+  artifact to read is net-negative unless it pays for itself. The two tests are **ordered** —
+  comprehension first (should this rule exist?), then 03's latency test (can it be made to hold?).
+  A budget enforced by a standalone check has no artifact to attach to and fails the second test;
+  finding one is this ticket's hardest half, alongside eviction.
+- **Blocked by 15.** A budget is a rule, and no ticket that writes a rule resolves before the goals
+  file it must be checkable against exists.
+- **Rank.** 09 placed a bounded corpus third of the kit's three means, behind a stated goal and
+  protected comprehension. This ticket constrains 17 but does not outrank it, and the two are
+  deliberately left unordered against each other.
