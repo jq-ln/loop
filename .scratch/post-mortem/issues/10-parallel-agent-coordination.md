@@ -2,7 +2,7 @@
 
 Type: grilling
 Status: open
-Blocked by: 06, 09
+Blocked by: 06, 09, 15
 
 ## Question
 
@@ -26,3 +26,15 @@ a blocking edge to park maps (ADR 0077) — decide whether that mechanism carrie
 
 Consider prototyping the protocol against a replay of ticket 06's worst collision before adopting
 it.
+
+## Amendment after ticket 09
+
+Blocked by 15 as well. 09's principle is that no ticket which writes a rule resolves before the goals
+file those rules get checked against exists, and a coordination protocol is a rule — three of them,
+on the ticket's own reading. It was not in the list 09 settled and is added here deliberately rather
+than by inference.
+
+The ordered tests apply. The comprehension criterion bites hardest on the **scope failure**: an
+accurate owned-files list is an artifact someone has to read and maintain, so a coarser claim unit or
+fewer concurrent sessions may beat a better list on this test alone. 03's latency test bites hardest
+on the **versioning** rule, which in the old repo stood over the work rather than attaching to it.
