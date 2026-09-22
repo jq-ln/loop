@@ -1,0 +1,76 @@
+# Post-mortem: what the first Loop repo taught, and what this one starts from
+
+Type: wayfinder:map
+
+## Destination
+
+A **seed kit** committed to this repo — the process documents, protocols and constraints Loop v2
+starts its first day of real work with — produced by a post-mortem of the first Loop repo
+(`../old_loop`, 242 commits over eight days, killed 2026-09-22). The findings are the route; the
+committed files are the destination. The map is done when someone can begin building the app with
+nothing left to decide about *how* the work runs.
+
+## Notes
+
+**Domain**: solo developer, AI-assisted engineering workflow. The subject is how a human and
+several agent sessions build software together sustainably — not the app. The app is Loop, an
+offline Android routine tracker; it will be rebuilt from scratch and that rebuild is out of scope.
+
+**Evidence lives in `../old_loop`**, read-only. Its git history, 106 issues, 76 ADRs, 8,191 lines
+of Markdown and 43,488 lines of Kotlin are the primary sources. Its GitHub remote is destroyed
+after 2026-09-22; harvest anything needed from the tracker via the research tickets, which run
+first, and do not plan on it being reachable later.
+
+**Skills every session consults**: `grilling` and `domain-modeling` by default. Research tickets
+call `research`. Any ticket proposing a protocol that involves building something to react to
+calls `prototype`.
+
+**This map carries execution.** Wayfinder plans by default; here the final task tickets write the
+kit into this repo, because a post-mortem whose output is agreement has already failed once.
+
+**Decide first, write once.** Conclusions accumulate in ticket answers; they are written into real
+files in a single late pass. The old repo's dominant failure was writing the rule at the moment of
+insight — 76 ADRs in eight days, each true when written — so insight and authorship are
+deliberately separated here.
+
+**Standing preferences**
+- Documents are lean. Length correlates negatively with adherence; ticket 07 establishes how
+  strongly and against what sources, and ticket 11 turns that into an enforced budget.
+- No distribution channel is assumed. F-Droid was the first repo's target and may not be this
+  one's; nothing in the kit may depend on it.
+- Terminology is challenged before it is adopted. "A/B testing" was rejected this session for
+  importing statistical promises a single-user offline app cannot keep; **bake-off** (two rough
+  variants, judged side by side, immediately) and **trial** (one variant lived with, then the
+  other) are the terms ticket 12 works from.
+- A finding that contradicts the framing this effort began with wins. The user has consented to
+  this explicitly; ticket 09 exists to make it possible.
+
+## Decisions so far
+
+<!-- one line per resolved ticket: gist, then the link to the detail -->
+
+- Nothing resolved yet.
+
+## Not yet specified
+
+- **The kit's structure**: which files day one gets, what each owns, and how ownership is
+  expressed. The old repo's ownership table was a genuine invention that outgrew itself; whether
+  the mechanism or only the volume was at fault is not yet answerable.
+- **Whether this repo keeps an ADR practice at all**, and if so what earns one. Blocked on 07 and
+  11 — the answer depends on whether length discipline is achievable or whether the form itself
+  drives the growth.
+- **Review-loop termination**: the old repo's human review gate had no agent-side exit condition
+  and no stall signal. Adjacent to ticket 10 but probably its own question once 10 lands.
+- **What replaces the salvaged conclusions' provenance** once `../old_loop` is a local-only
+  archive with no reachable issue URLs.
+- **The app's own architecture** — only to the extent the kit must say something about testing
+  seams or module boundaries on day one. Mostly deferred to the rebuild.
+
+## Out of scope
+
+- **Rebuilding the app.** The next effort; this map produces what it starts from.
+- **Loop v2's product scope** — what the app does, as distinct from how it gets built.
+- **F-Droid submission and store metadata.** Not assumed to be the target at all.
+- **Destroying the old remote**, and any data recovery from the test device.
+- **The old repo's 24 open issues.** Findings about a codebase that will not exist. The salvage
+  ticket may harvest a fact from one; none of them migrates and none earns a ticket here.
