@@ -80,3 +80,38 @@ Two fixed inputs, neither of them re-openable here.
 Note also that **ticket 19 is deliberately unordered against this one**, for the reason 09 gave for
 11 and 17: a budget set without knowing whether an ADR directory exists will be wrong, and an ADR
 practice designed without a budget will be too generous. Whichever resolves second adjusts.
+
+## Amendment after ticket 17
+
+Three inputs. The first two are fixed and inherited; the third is a rule 17 derived and handed to
+this ticket to own outright.
+
+- **`PROCEDURE.md` is ≤ 60 lines**, alongside `GOALS.md`'s 40. 57 lines as written and confirmed
+  verbatim in 17. The budget accommodates it rather than adjudicating it. 09 called it the kit's
+  load-bearing document and ruled that being load-bearing buys no exemption; the extra 20 lines over
+  `GOALS.md` exist because it indexes more distinct objects, and it holds its size only because of
+  the structural rule that it **never restates a mechanism living elsewhere, it points at it**.
+  That rule is worth this ticket's attention generally: it is 15's one-claim-one-owner principle
+  applied to a document whose subject matter is scattered across a hook, a harness setting and a
+  justfile.
+- **The justfile is exempt from a prose budget.** It counts as a file, but it is not prose, and it
+  exists to *subtract* prose: 17's rule is that a command worth documenting is a recipe rather than
+  a line of text, and that a recipe which deletes no prose when it lands has not earned its place.
+  This is a budget-adjacent mechanism that clears the comprehension criterion by subtraction, and a
+  stale recipe fails loudly where stale prose merely misleads. `../old_loop` spent review rounds 3–6
+  of #101 enforcing a 634-column rule **no file stated**; the justfile is where that rule would have
+  lived.
+- **The doc-code entry rule, routed here to own**: *a document may not assert a structural fact the
+  source already asserts about itself.* No document names a module type, a layer boundary, a file
+  layout, or a count of anything; a document that wants to point at structure points at a path.
+  Ticket 04's `:core-api` defect — three documents asserting a module type against an 8-line enum,
+  undiscovered until a post-mortem inventory — requires a document to be *allowed* to make that
+  claim. This kills the class rather than checking for it, passes the comprehension criterion by
+  subtraction, and needs no attachment because it is an entry rule rather than an ongoing
+  obligation. It belongs here because this ticket owns what may be written, and it is squarely the
+  **conflict** half of this ticket's re-charter. 17 keeps only the paired reading-time noticing.
+
+One hazard 17 recorded that bears on this ticket's framing: `code-review`'s Standards axis asks
+whether the *code* violates a documented standard. Where the document is the thing that is wrong, it
+reports a code violation and sends the human to change working code to match a false claim. A
+corpus rule is the only available defence; review is not one.

@@ -38,3 +38,27 @@ The ordered tests apply. The comprehension criterion bites hardest on the **scop
 accurate owned-files list is an artifact someone has to read and maintain, so a coarser claim unit or
 fewer concurrent sessions may beat a better list on this test alone. 03's latency test bites hardest
 on the **versioning** rule, which in the old repo stood over the work rather than attaching to it.
+
+## Amendment after ticket 17
+
+Two fixed inputs. Both are consequences of 17's attachment decision — **the merge is the human's
+gesture, and no agent performs one** — and neither is re-openable here; the mechanisms remain this
+ticket's to design.
+
+- **The declared file list must be machine-readable.** 17's comprehension gate diffs a branch's
+  touched paths against the list at `just land` and stops on an undeclared path, so the list is no
+  longer only a collision-avoidance device between concurrent sessions — it is a consumed artifact
+  with a second reader. Ticket 06 measured its value already: zero file-level violations wherever a
+  declared list existed, and it existed in only 10 of 41 tickets. Whatever shape this ticket gives
+  it, `just land` must be able to parse it without a human in the loop.
+- **The version decision is taken last, at merge time, inside `just land`.** Raised by the user
+  while resolving 17 and routed here. A worktree cannot collide over a number it never touches, so
+  the branch never sets a version; the human sets it at the moment of landing, which also makes the
+  *order* in which tickets land the human's gate. 06 found eight live counters under three
+  incompatible regimes, with the dominant cost adjudication rather than error — 18 issues spending
+  a paragraph arguing no bump was owed, via a precedent chain seven deep. This ticket owns which
+  counters exist and what `just land` actually does to them.
+
+Note also that 17 closed this map's fog patch on **what the review actually reads**: the reviewed
+artifact is the diff of declared files, and commit prose is not reviewed. That was filed as adjacent
+to this ticket and is now decided.

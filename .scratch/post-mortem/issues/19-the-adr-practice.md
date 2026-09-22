@@ -48,3 +48,14 @@ Deliberately **not** ordered against ticket 11. A budget set without knowing whe
 directory exists will be wrong, and an ADR practice designed without a budget will be too generous;
 forcing an order only decides arbitrarily which one gets to be wrong. Whichever resolves second
 adjusts. This is the same treatment 09 gave 11 and 17.
+
+## Note after ticket 17
+
+Not a re-charter, but this ticket now has a dependant. 17's answer to the honesty problem — the
+timing fingerprint, *a goal edited after the work it justifies is visible in `git log`, and an ADR
+citing it must say so* — presumes ADRs exist, as does the `just goals` instrument that prints
+`GOALS.md` beside the distribution of goal citations. 15's citation rule already needed a carrier;
+17 has now put weight on the same carrier for a second purpose.
+
+If this ticket decides against an ADR practice, the timing fingerprint needs a new carrier and 17's
+honesty answer weakens to the un-checked residue alone. Worth stating in the answer either way.

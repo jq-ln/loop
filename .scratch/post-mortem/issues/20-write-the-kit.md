@@ -28,3 +28,42 @@ inputs and should be raised rather than papered over by drafting here.
   owner.
 - **Check the result against the budget** ticket 11 sets, as a whole corpus, before the final
   commit. A kit that violates its own budget on the day it lands has already lost.
+
+## Amendment after ticket 17
+
+17 supplies finished text and four mechanisms. Its answer carries `PROCEDURE.md` verbatim (57
+lines), so the transcription rule applies to it exactly as to `GOALS.md`: copy it, do not compose
+from the gist.
+
+**The artifacts to install:**
+
+- **`PROCEDURE.md`** at the repo root, transcribed verbatim from 17's answer.
+- **Two additions to `.githooks/pre-commit`**, joining the identity guard: a **worktree cap** (more
+  than three worktrees other than the main one fails the commit, wherever it is made) and a
+  **commit-size cap** (over 300 changed lines fails unless the message carries an
+  `Oversized: <reason>` trailer). The size count excludes a short literal generated-paths list kept
+  **in the hook itself** — 17 is explicit that a rule firing on the Gradle scaffolding commit trains
+  the human to type the trailer reflexively and destroys the signal. `pre-push` is the existing
+  `--no-verify` backstop and should be extended in kind.
+- **A `PreToolUse` deny rule in `.claude/settings.json`** on agent-performed merges. This is 17's
+  attachment — *the merge is the human's gesture* — and it is the only mechanism in the kit enforced
+  harness-side rather than by git. No `.claude/` directory exists in this repo yet.
+- **The day-one `justfile`**: `just start <ticket>`, `just check`, `just land`, `just goals`.
+  `just check` ships **empty** by decision: its contents mean deciding the toolchain, which is the
+  rebuild's business. `just land` is the composite gesture — show the diff and diffstat, run the
+  review once, compare touched paths against the declared file list (shape owned by ticket 10), take
+  the version decision (also 10), then merge. It also displays the break-a-test reminder, which takes
+  **no input** — a field accepting any string is the failure class 17 spent a section rejecting.
+
+**The edited-alone hook covers two files, not one.** 17 extends 15's mechanism to `PROCEDURE.md`, so
+the check is that a commit whose diff includes either governed path and any other path fails.
+
+**Two placement consequences.** The ownership table gains a row for `PROCEDURE.md` owned by the
+human, alongside `GOALS.md`'s. And `CLAUDE.md` should lose whatever *how to run things* prose it
+would otherwise have carried, because 17's rule is that a command worth documenting is a recipe —
+a recipe that deletes no prose when it lands has not earned its place, and this ticket is where that
+deletion actually happens.
+
+One inherited check for the final pass: `PROCEDURE.md` earns its 60-line ceiling only by pointing at
+mechanisms rather than restating them. If transcription leaves it describing what the hook does, the
+hook and the file now both own that claim, and the kit has shipped the `:core-api` defect on day one.
