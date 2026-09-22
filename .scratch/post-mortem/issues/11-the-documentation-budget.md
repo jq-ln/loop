@@ -413,31 +413,45 @@ Prior art: <what `just adr <term>` returned, and why it does not decide this>   
   re-adjudicated. The aggregate-coherence check this ticket declined to invent is noted as belonging
   with 17's three clauses that rest on nothing.
 
-### Correction, same session: what `/setup-matt-pocock-skills` adds
+### Correction, same session: setup is not run, and the count is 8
 
 Recorded here rather than on the map because this ticket owns the count. Checked against the
-installed plugin (`mattpocock-skills` 1.2.3), not inferred.
+installed plugin (`mattpocock-skills` 1.2.3), not inferred, after the user asked whether
+`/setup-matt-pocock-skills` should be run at all.
 
-Setup writes three files and edits one. `docs/agents/triage-labels.md` is written **because the
-`triage` skill is installed** — it is, so setup resolves the dead reference found above, and the file
-is already one of the nine. `docs/agents/issue-tracker.md` already exists and is byte-identical to
-the skill's local-tracker template. `CLAUDE.md` gains an `## Agent skills` block, which is a section
-of a counted file and costs nothing.
+**It is not run.** The decision is this ticket's own eviction rule, applied to the question of
+whether three files should exist, and arriving before the budget that would have forced it.
 
-**`docs/agents/domain.md` is a tenth file, not in the nine.** The day-one count is **10**, headroom
-**2**, and 20's final pass checks against 10.
+Setup would write three files and edit one. What that is worth here:
 
-It also arrives violating two of this ticket's rules, which is worth more than the correction:
+- **`docs/agents/issue-tracker.md` already exists and is byte-identical to the skill's local-tracker
+  template.** It is the one load-bearing output — wayfinder and the other skills read it — and
+  running setup would rewrite it with itself.
+- **`docs/agents/triage-labels.md`** is a five-row table mapping label strings to themselves, for
+  `/triage`, which is **not among this session's available skills** (the plugin ships the folder,
+  which is what makes setup write the file). On a local-markdown tracker those labels are the
+  `Status:` strings, which `issue-tracker.md` already documents. A whole file to hold five words
+  belonging to a file that already owns the claim is the case the eviction rule exists for.
+- **`docs/agents/domain.md`** ships decisions this map has not finished making: it instructs agents
+  to read `docs/adr/` and to cite an ADR when contradicting it, and this ticket has just ruled that
+  **ADRs are leaves**, with 19 holding the final say on whether the practice exists. Landing it means
+  the kit contradicts itself on day one, in precisely the dilution-and-conflict failure 07 named as
+  the better-evidenced defect.
 
-- It asserts a **file layout** — two directory trees, `src/`, per-context `docs/adr/` — which is
-  exactly the class the doc-code entry rule forbids, and this repo has neither directory.
-- Its backticked `CONTEXT-MAP.md` and `src/<context>/docs/adr/` do not resolve, so the path check
-  **refuses the commit** that lands it unedited. (Fenced code blocks are not scanned; only backticked
-  tokens are.)
+**The day-one count is 8, headroom 4**: `GOALS.md`, `PROCEDURE.md`, `CLAUDE.md`, `README.md`,
+`CONTEXT.md`, `docs/agents/issue-tracker.md`, the salvage list (13) and the sketch (18).
+`triage-labels.md` leaves the nine; its five role strings fold into `issue-tracker.md`, which removes
+the dead reference at `docs/agents/issue-tracker.md:10` without spending a slot. 20's final pass
+checks against 8.
 
-**These files are governed, not vendored.** An agent reads them as standing claims, which is the
-definition of the perimeter, so they are edited on landing rather than exempted — a tool's output
-gets read before it is adopted. Trimming `domain.md` of layout it invented for a repo it has never
-seen is the rule working on day one rather than an obstacle to it. If a later effort finds itself
-re-editing these files after every plugin upgrade, that is the evidence for moving `docs/agents/` out
-of the perimeter, and the evidence should be collected before the exemption is granted.
+**The generated files were evidence before they were a decision**, and this is the part worth
+keeping. Both would have been refused by this ticket's own path check: `domain.md` asserts a file
+layout for `src/` and per-context `docs/adr/`, neither of which exists here, and its backticked
+`CONTEXT-MAP.md` and `src/<context>/docs/adr/` do not resolve. The rule caught a real false claim in
+a document that would otherwise have been pasted in unread, from a tool that has never seen this
+repo — which is the `:core-api` defect's exact shape, arriving by a route nobody had considered.
+Tool output is a draft, not a fact.
+
+**Reversible, and cheaply.** If `/triage` or `/to-tickets` is enabled later they will look for
+`docs/agents/triage-labels.md`, not find it, and ask for setup to be run — at which point it is run
+and its output edited, with nothing lost.

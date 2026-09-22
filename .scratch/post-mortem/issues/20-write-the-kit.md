@@ -98,17 +98,25 @@ of it: copy, do not compose.
 (18) — and the count is reported in the final commit message. A kit that lands at 12 has spent its
 headroom before the rebuild starts and that fact should be visible, not discovered later.
 
-## Note after ticket 11's correction
+## Note after ticket 11's correction: setup is not run
 
-`/setup-matt-pocock-skills` writes `docs/agents/domain.md`, `docs/agents/triage-labels.md` and
-`docs/agents/issue-tracker.md` (the last already present and byte-identical to its template), and
-adds an `## Agent skills` block to `CLAUDE.md`.
+`/setup-matt-pocock-skills` is **not** run for this repo; 11's correction records why. The work it
+would have done is this ticket's, and it is three steps:
 
-- The **expected day-one count is 10, not 9** — `domain.md` is the tenth. Headroom 2.
-- The `triage-labels.md` repair is done **by running setup**, not by hand.
-- `domain.md` must be **edited before it lands**: as generated it asserts a file layout for
-  directories this repo does not have, and its backticked `CONTEXT-MAP.md` and
-  `src/<context>/docs/adr/` do not resolve, so 11's path check refuses the commit. Edit it to match
-  this repo; do not exempt it.
-- Order matters: run setup **before** installing 11's checks, or the checks refuse setup's own
-  output and the first thing the kit does is block its own scaffolding.
+1. **Leave `docs/agents/issue-tracker.md` as it stands.** It is already byte-identical to the skill's
+   local-tracker template, and it is the file the skills actually read.
+2. **Fold the five triage role strings into its `Status:` bullet and delete the `triage-labels.md`
+   citation** (`docs/agents/issue-tracker.md:10`). That is the dead-reference repair: one line, one
+   owner, no new file, and the path check passes.
+3. **Write no `docs/agents/domain.md`.** Keep setup's `## Agent skills` block shape in `CLAUDE.md` —
+   it is the discovery surface the skills expect — but point it at `CONTEXT.md` and `docs/adr/`
+   directly rather than at a middleman document. Whatever domain.md would have said about consuming
+   ADRs is owned by 11 (ADRs are leaves) and 19 (whether they exist at all), and a generated file
+   saying otherwise would put the kit in conflict with itself on day one.
+
+**The expected day-one count is 8, headroom 4** — `GOALS.md`, `PROCEDURE.md`, `CLAUDE.md`,
+`README.md`, `CONTEXT.md`, `docs/agents/issue-tracker.md`, the salvage list (13), the sketch (18) —
+and the count is reported in the final commit message.
+
+If a later effort enables `/triage` or `/to-tickets`, running setup then is the fix, and its output
+is edited on landing like any other draft.
