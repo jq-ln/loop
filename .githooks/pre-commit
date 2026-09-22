@@ -1,0 +1,53 @@
+#!/bin/sh
+# Identity guard. Minimal, deliberately: it checks who the commit is stamped as,
+# and nothing else. Content checks (usernames in paths, device details, tool
+# output) are ticket 16's business and are NOT covered here.
+#
+# It reads `git var`, not `git config`, because config is what failed: this
+# repo's first three commits carried a personal address from
+# `git -c user.email=... commit`, a day after the global config was correct.
+# `git var` reports the identity the commit will actually receive, including
+# -c and environment overrides.
+#
+# Enabled per clone with:  git config core.hooksPath .githooks
+
+set -e
+
+ALLOWED='77815101+jq-ln@users.noreply.github.com'
+
+extract_email() {
+    printf '%s' "$1" | sed -n 's/.*<\(.*\)>.*/\1/p'
+}
+
+author=$(extract_email "$(git var GIT_AUTHOR_IDENT)")
+committer=$(extract_email "$(git var GIT_COMMITTER_IDENT)")
+
+fail=0
+for role_pair in "author:$author" "committer:$committer"; do
+    role=${role_pair%%:*}
+    email=${role_pair#*:}
+    if [ "$email" != "$ALLOWED" ]; then
+        printf '\n  Blocked: %s email is %s\n' "$role" "${email:-<empty>}"
+        fail=1
+    fi
+done
+
+if [ "$fail" -eq 1 ]; then
+    cat <<MSG
+
+  This repo is public from the first commit, so an address in a commit object
+  cannot be edited out later — only excised by rewriting history, which is a
+  one-time instrument.
+
+  Expected: $ALLOWED
+
+  If you are an agent: do not pass -c user.email / -c user.name, and do not
+  export GIT_AUTHOR_EMAIL / GIT_COMMITTER_EMAIL. Commit with a bare
+  \`git commit\`. The global config is already correct. Do not copy an identity
+  out of ../old_loop — that archive is where this mistake comes from.
+
+  If this address is genuinely wrong, fix ~/.gitconfig, not the command.
+
+MSG
+    exit 1
+fi
