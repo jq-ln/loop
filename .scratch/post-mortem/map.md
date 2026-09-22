@@ -56,15 +56,21 @@ deliberately separated here.
 - [Where 242 commits of effort actually went](issues/05-where-the-time-went.md): process work tripled after the code stopped growing, so it is a second disease rather than a symptom; the driver is file count and reference density, not length.
 - [Collisions, version confusion, and extra review rounds](issues/06-merge-and-review-forensics.md): collisions are global registries a worktree cannot isolate; versioning's cost is adjudication not error; review rounds are mostly not caused by `main` moving.
 - [What the evidence actually says about document length and adherence](issues/07-doc-length-and-adherence.md): the 200-line figure is published guidance but unmeasured, and the papers usually cited measure retrieval accuracy rather than adherence; dilution and conflict are the better-evidenced defect.
+- [Why it became unsalvageable](issues/08-the-terminal-account.md): unwieldiness the author could no longer account for, then two blows — a personal-information scrub for a publication that never happened, and F-Droid recognised as arbitrary after it had propagated four ADRs into the architecture; the process explosion was triage started too late, not a second disease; the structural cause is that no goals document existed and the ownership table had no row for one. All seven findings survive the counterfactual filter; forced to three, the kit carries 03, 05 and 02.
 
 ## Not yet specified
 
 - **The kit's structure**: which files day one gets, what each owns, and how ownership is
   expressed. Ticket 04 found the ownership table asserting three things the code contradicts, so
-  the mechanism is now suspect as well as the volume.
+  the mechanism is now suspect as well as the volume. Sharpened by 08: the table's one structural
+  omission — no row for the project's goals — is the omission that killed the repo, and the goals
+  file now outranks the table (ticket 15). The kit also has a **human-facing half** (ticket 17)
+  that none of the research findings touch.
 - **Whether this repo keeps an ADR practice at all**, and if so what earns one. Sharpened by 04:
   the old repo's 75 ADRs were bulk-extracted from one file in two days, so the practice the rule
-  described never actually ran and has not in fact been tried.
+  described never actually ran and has not in fact been tried. Narrowed by 08, which decided that
+  *if* ADRs exist each must cite the goal it serves — so the live question is what earns one, and
+  whether "cites a goal" is itself the bar.
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
   precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
   a general principle for every rule in the kit, but not yet sharp enough to ticket.
@@ -76,8 +82,10 @@ deliberately separated here.
   generalises into a rule about derived-versus-stored state is fog.
 - **What replaces the salvaged conclusions' provenance** once `../old_loop` is a local-only
   archive with no reachable issue URLs.
-- **The app's own architecture** — only to the extent the kit must say something about testing
-  seams or module boundaries on day one. Mostly deferred to the rebuild.
+- **How agent output outpaces human reading.** Ticket 08 found an author who could not account for
+  their own system — three documents asserting a `:core-api` type that was an 8-line enum. Ticket 17
+  asks what the human commits to; whether the general rule is a rate limit, a comprehension gate or
+  a scheduled debt is not yet sharp.
 
 ## Out of scope
 
