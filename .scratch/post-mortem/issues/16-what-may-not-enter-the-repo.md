@@ -47,5 +47,12 @@ This ticket settles the list, the mechanism, and the ordering against the first 
 
   These three commits were corrected in the 2026-09-22 rewrite; the hazard was not.
 
+**A minimal guard is already installed** (2026-09-22, `.githooks/pre-commit` + `.githooks/pre-push`,
+enabled with `core.hooksPath`). It checks the commit identity and nothing else, reading `git var`
+rather than `git config`. It exists so the repo is not unprotected while this ticket is open; it
+does not pre-empt any decision here. Still undecided and still this ticket's: the content list,
+whether the tracker half needs its own check, the false-positive budget, how a fresh clone gets the
+hooks without a manual `git config`, and whether `--no-verify` should be answerable at all.
+
 - **The escape hatch.** #107 accepted the owner's own data in seven bodies by name. Is there a
   declared exception, or does an exception mean the rule was wrong?
