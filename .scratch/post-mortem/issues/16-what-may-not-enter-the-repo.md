@@ -30,5 +30,22 @@ This ticket settles the list, the mechanism, and the ordering against the first 
   the hook gets disabled in frustration?
 - **The tracker half.** This repo's issues live in `.scratch/` and go public with it. The old repo's
   tracker leaked in six places and its issue bodies were never mechanically checked.
+- **Config is not authoritative, and this is measured, not hypothetical.** All three of this
+  repo's first commits carry the owner's personal address as author *and* committer, stamped
+  2026-09-22 08:19-08:28 — a full day after `~/.gitconfig` was corrected to the noreply address on
+  2026-09-21 09:55. The cause, recovered from the session transcript: an agent session working in
+  `../old_loop` ran `git -c user.name="..." -c user.email="<the personal address>" commit` for each
+  one, overriding a correct config per invocation. It had been reading a repo whose history and 106
+  issue bodies are saturated with that address, and matched what it saw.
+
+  Two consequences for this ticket. First, **no check that reads configuration can work** — the
+  check must run against the resulting commit object, which means a hook, and a hook is the only
+  artifact the commit must pass through anyway (ticket 03's test). Second, **the archive is a
+  contamination source**: every session that reads `../old_loop` to resolve a salvage citation is
+  reading the exact strings this rule exists to keep out, and will pattern-match them as correct.
+  That is a standing hazard for the length of this map, not a one-off.
+
+  These three commits were corrected in the 2026-09-22 rewrite; the hazard was not.
+
 - **The escape hatch.** #107 accepted the owner's own data in seven bodies by name. Is there a
   declared exception, or does an exception mean the rule was wrong?
