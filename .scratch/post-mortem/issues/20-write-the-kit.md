@@ -67,3 +67,33 @@ deletion actually happens.
 One inherited check for the final pass: `PROCEDURE.md` earns its 60-line ceiling only by pointing at
 mechanisms rather than restating them. If transcription leaves it describing what the hook does, the
 hook and the file now both own that claim, and the kit has shipped the `:core-api` defect on day one.
+
+## Amendment after ticket 11
+
+11 supplies finished text for four artifacts and one repair. The transcription rule applies to all
+of it: copy, do not compose.
+
+- **A `## What may be written` section for `CLAUDE.md`**, transcribed verbatim. It points at the
+  hook rather than restating it, and that is the only reason it passes its own comprehension test —
+  if transcription leaves it describing what the check does, the hook and the file both own that
+  claim and the kit has shipped the `:core-api` defect on day one, exactly as 17 warned for
+  `PROCEDURE.md`.
+- **Two additions to `.githooks/pre-commit`**, verbatim, joining the identity guard and 17's worktree
+  and commit-size caps: a **corpus budget** firing only on commits that add a standing-claim file
+  (cap 12, perimeter root `*.md` / `docs/**.md` / `.claude/**.md`, excluding `.scratch/`,
+  `docs/adr/`, the justfile and generated files), and a **path-resolution check** on every governed
+  file the commit touches. `pre-push` is extended in kind, as with 17's caps.
+- **A `just adr <term>` recipe** in the day-one justfile, alongside `start`, `check`, `land` and
+  `goals`.
+- **A `Prior art:` field on the ADR template**, beside 15's goal citation — subject to 19, which owns
+  whether the template exists at all.
+- **The repair, which blocks the path check**: `docs/agents/issue-tracker.md:10` cites
+  `triage-labels.md`, which does not exist in this repo. Create it — it is one of the expected nine —
+  or delete the citation. Found by 11 while fixing the perimeter, and left for this ticket
+  deliberately: it is the first thing the new check would refuse.
+
+**The final pass now has a number.** The landed kit must be **≤ 12 standing-claim files, expected 9**
+— `GOALS.md`, `PROCEDURE.md`, `CLAUDE.md`, `README.md`, `CONTEXT.md`,
+`docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, the salvage list (13) and the sketch
+(18) — and the count is reported in the final commit message. A kit that lands at 12 has spent its
+headroom before the rebuild starts and that fact should be visible, not discovered later.

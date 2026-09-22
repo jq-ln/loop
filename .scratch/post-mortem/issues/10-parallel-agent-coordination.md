@@ -62,3 +62,10 @@ ticket's to design.
 Note also that 17 closed this map's fog patch on **what the review actually reads**: the reviewed
 artifact is the diff of declared files, and commit prose is not reviewed. That was filed as adjacent
 to this ticket and is now decided.
+
+## Note after ticket 11
+
+One small input. Adding a standing-claim file is a file-list event like any other: a new governed
+document appears in the branch's declared file list or trips 17's conformance check at `just land`.
+11's own enforcement is earlier and independent — `pre-commit`, on the commit that creates the file —
+so nothing here needs to carry the budget; this is only to say the two do not collide.

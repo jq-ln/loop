@@ -56,3 +56,11 @@ hooks without a manual `git config`, and whether `--no-verify` should be answera
 
 - **The escape hatch.** #107 accepted the owner's own data in seven bodies by name. Is there a
   declared exception, or does an exception mean the rule was wrong?
+
+## Note after ticket 11
+
+Orthogonal in charter, shared in enforcement point. 16 owns what may not **enter** the repo; 11 owns
+what may be **claimed** in a document. Both land as checks in `.githooks/pre-commit` alongside the
+identity guard and 17's two caps, and ticket 20 installs them together — worth knowing when this
+ticket designs its mechanism, so the two are shaped to sit side by side rather than one wrapping the
+other.

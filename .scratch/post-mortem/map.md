@@ -67,6 +67,7 @@ deliberately separated here.
 - [Was it the process, or was it the scope?](issues/09-process-or-scope.md): neither — three layers, not a weighting. Root: no destination existed to check anything against. Proximate: breadth outran comprehension. Third-order: the process volume, a real triage that became its own load. Outputs the comprehension criterion, ordered before 03's latency test; re-charters 12, 17 and 18, and makes 15 block every ticket that writes a rule (10, 11, 12, 13, 17).
 - [The goals document, and the citation rule that gives it teeth](issues/15-the-goals-document.md): two goals governing two objects — the app (G1, used every day) and the repository (G2, legible to people who might hire or build with me) — with the tie-break that would have killed F-Droid on day one; a goal is citable only if it can rule a decision out, and every ADR names the goal *and what it ruled out*; goal ids never reused, deletion carries a `grep` re-check list; `GOALS.md` ≤ 40 lines, written verbatim, edited only by the human in a commit touching nothing else.
 - [The human's own procedure](issues/17-the-humans-own-procedure.md): where a commitment can become a step in a command already run, it stops being a commitment — a comprehension gate at the merge (nothing lands unread), with the merge as the act no agent may perform; the pace gap made visible as unmerged worktrees, capped at three in `pre-commit`; a 300-line commit cap with an `Oversized:` trailer and a branch conformance check against its declared file list; review once per branch inside `just land`, an input to the human's reading and never a pass/fail; and `PROCEDURE.md` ≤ 60 lines that indexes mechanisms rather than restating them, with three clauses labelled as resting on nothing.
+- [The budget, and what enforces it](issues/11-the-documentation-budget.md): the budgeted quantity is **file count**, not length — 12 standing-claim files (root `*.md`, `docs/**.md`, `.claude/**.md`), the kit landing with 9, `.scratch/` and the justfile outside the perimeter and no standing rule allowed to hide there; enforced in `pre-commit` on the commit that adds the file, and when the cap is reached **the document is not written** — its claim folds into the file that already owns it, with the cap a knob only the human turns; no document asserts a structural fact the source asserts about itself, and backticked paths must resolve; ADRs are exempt **conditional on being leaves** — nothing cites an ADR, found by `just adr <term>`, superseded ones deleted — with ticket 19 holding the final say.
 
 ## Not yet specified
 
@@ -75,8 +76,11 @@ deliberately separated here.
   the mechanism is now suspect as well as the volume. Sharpened by 08: the table's one structural
   omission — no row for the project's goals — is the omission that killed the repo, and the goals
   file now outranks the table (ticket 15). The human-facing half is no longer fog — ticket 17
-  settled it as `PROCEDURE.md` plus a justfile, a harness denial and two `pre-commit` checks — but
-  how ownership is *expressed* across the whole kit is still open.
+  settled it as `PROCEDURE.md` plus a justfile, a harness denial and two `pre-commit` checks, and
+  ticket 11 fixed *how many* files there may be (12) and which ones count — but how ownership is
+  *expressed* across the whole kit is still open, and 11's eviction rule now depends on it: "fold the
+  claim into the file that already owns that kind of claim" presumes an agent can tell which file
+  that is.
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
   precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
   a general principle for every rule in the kit, but not yet sharp enough to ticket. Ticket 17

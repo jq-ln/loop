@@ -35,3 +35,17 @@ carrying.
 
 Note also that 04 enters the kit as a **binding input to the rebuild**, not as a rule (08's
 counterfactual filter), so the salvage list is not itself subject to the rule-gating tests.
+
+## Note after ticket 11
+
+The salvage list is **one** of the nine standing-claim files 11's budget expects on day one, inside
+a hard cap of 12. If this ticket concludes it wants two files, that is a decision against the cap and
+belongs in its answer rather than in a quiet second file. 11's eviction rule points the other way by
+default: when the cap is reached the document is not written and its claim folds into the file that
+already owns that kind of claim.
+
+Two entry rules also bind the list's contents. **No document asserts a structural fact the source
+asserts about itself** — a salvage entry about the schedule engine points at a path, it does not name
+a module type or a count. And **nothing cites an ADR**, which includes the old repo's ADR numbers: an
+entry citing `../old_loop`'s ADR 0031 is citing a local archive rather than a live ADR in this repo,
+so it is admissible, but a *this*-repo ADR number in the list is not.

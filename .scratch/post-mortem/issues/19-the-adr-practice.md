@@ -59,3 +59,32 @@ citing it must say so* — presumes ADRs exist, as does the `just goals` instrum
 
 If this ticket decides against an ADR practice, the timing fingerprint needs a new carrier and 17's
 honesty answer weakens to the un-checked residue alone. Worth stating in the answer either way.
+
+## Amendment after ticket 11
+
+11 resolved without 19, as the map allowed, and placed four constraints on whatever practice this
+ticket designs. **19 has the final say on all four** and may overturn any of them; they are written
+down so this ticket adjusts against something stated rather than rediscovering it.
+
+The premise underneath them: what made the old repo's 106 files unreadable was not that they existed
+but that they were **cited** — 640 cross-references, a precedent chain seven deep (06). So 11's
+budget exempts `docs/adr/` from its file cap **conditional on ADRs being leaves of the reference
+graph**: an ADR cites `GOALS.md` and cites paths, and nothing cites an ADR back — no standing
+document, no other ADR, no code comment. A standing document needing an ADR's conclusion owns that
+claim itself. Reading the kit then never requires reading an ADR, which is how the directory grows
+without growing comprehension load.
+
+- **The exemption and the condition are one clause.** An ADR practice that is cited is a practice
+  inside the cap of 12, which kills it; that is the trade this ticket is choosing between.
+- **Discovery is `just adr <term>`**, a grep over `docs/adr/` plus the filename slugs. An index file
+  is forbidden by 11's entry rule — a standing document whose whole content is a count of and a
+  structure over other files — and it is the artifact that goes stale silently.
+- **Supersession is deletion**, the number never reused, the deleting commit saying what replaced it.
+  "Superseded by 0043" is a citation, so a tombstone needs a carve-out from the leaf rule. 11 flagged
+  this as the clause most likely to need adjusting, and if this ticket wants tombstones it writes the
+  carve-out.
+- **The template carries `Prior art:`** — what the search returned and why it does not decide this —
+  beside 15's goal citation. 11 states the limit plainly: it catches deciding in ignorance of an old
+  ADR, and does not catch silently contradicting one without writing anything.
+
+If this ticket decides against an ADR practice, all four die with it and nothing else in 11 changes.

@@ -55,3 +55,17 @@ shippable slice **and what is deliberately excluded from it**; 15 adds that thos
 non-goal candidates by construction, and that promoting one into `GOALS.md` follows 15's entry rule
 — written when something is actually rejected, and only when a reader of the goals might plausibly
 have built it.
+
+## Note after ticket 11
+
+The sketch is **one** of the nine standing-claim files 11's budget expects on day one, inside a hard
+cap of 12; wanting two is a decision against the cap and belongs in this ticket's answer.
+
+11's doc-code entry rule bears directly on a sketch, which is the document type most tempted to
+assert structure: **no document asserts a structural fact the source asserts about itself** — no
+module type, no layer boundary, no file layout, no count of anything — and a document that points at
+structure points at a path, which `pre-commit` checks resolves. 04's `:core-api` defect was three
+documents asserting a module type against an 8-line enum, and a sketch written before the code exists
+has nothing to point at yet. That tension is this ticket's to resolve: a sketch of code that does not
+exist can describe intent, but the moment it names a structure it is a claim the source will
+contradict.
