@@ -64,3 +64,12 @@ what may be **claimed** in a document. Both land as checks in `.githooks/pre-com
 identity guard and 17's two caps, and ticket 20 installs them together — worth knowing when this
 ticket designs its mechanism, so the two are shaped to sit side by side rather than one wrapping the
 other.
+
+## Note after ticket 13
+
+A small mitigation of the standing contamination hazard, not a solution. 13 decided that salvage
+provenance resolves to `.scratch/post-mortem/` in this repo rather than to the archive, so a session
+following a salvage citation now reads this repo's research files instead of opening `../old_loop`.
+That narrows how often a session has the saturated strings in front of it; it does not close the
+hazard, since the research files quote the archive and the rebuild's port pointers send sessions into
+it deliberately.

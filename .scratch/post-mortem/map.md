@@ -79,6 +79,16 @@ deliberately separated here.
   never detected by a threshold, with `just drop` the cheap exit that keeps the cap from being
   bypassed; ADR 0077's parking does not carry over, and `PROCEDURE.md` goes to 59 lines.
 
+- [What carries over from the old repo](issues/13-what-carries-over.md): carry only what is **novel
+  after the post-mortem** — an entry earns a line only if no ported code, no other document and no
+  mechanism already holds the claim, which disposes of the 60-entry worry by a bar rather than a
+  ceiling; `SALVAGE.md` at the root, ≤ 60 lines inherited from `PROCEDURE.md`, lands at ten entries —
+  five port pointers, one conclusion, three prohibitions — with the architecture conclusions handed to
+  18 rather than held twice; **provenance resolves to `.scratch/post-mortem/` in this repo, not to the
+  archive**, because a path that resolves on one machine fails the budget's own check; the keep half
+  is consumable, deleted by the commit that ports the code or writes the ADR, making it the one
+  document in the kit with a shrink rule, and addition is the human's while deletion is an agent's.
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
@@ -95,8 +105,6 @@ deliberately separated here.
   cadence of landings earns a bump, and what a bump is *for*, waits on a distribution decision that
   is the rebuild's; fixing it against an unchosen channel is the F-Droid failure one layer down. It
   blocks nothing, because the kit ships no counter.
-- **What replaces the salvaged conclusions' provenance** once `../old_loop` is a local-only
-  archive with no reachable issue URLs.
 
 ## Out of scope
 

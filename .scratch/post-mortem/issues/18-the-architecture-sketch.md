@@ -69,3 +69,32 @@ documents asserting a module type against an 8-line enum, and a sketch written b
 has nothing to point at yet. That tension is this ticket's to resolve: a sketch of code that does not
 exist can describe intent, but the moment it names a structure it is a claim the source will
 contradict.
+
+## Note after ticket 13
+
+13 resolved and handed this ticket the architecture half of the salvage inventory outright, so the
+conclusions live here and are deliberately absent from `SALVAGE.md` — putting them in both would give
+one claim two owners. Three binding inputs:
+
+- **One rules module plus one Android side, not eight modules.** The compiler-enforced direction is
+  real and worth keeping; the over-split parts are not — one module was 363 lines of which a third
+  was constants and a duration formatter, and another was 501 lines with zero tests that existed only
+  to make a header visible across a boundary the split itself had created.
+- **Adopt the JVM test runner on day one, and say that is what buys the device-free suite.** The old
+  repo credited the module split; 610 of its 945 tests lived in the Android modules and still needed
+  no device. This is also an instance of `SALVAGE.md`'s third prohibition, so the sketch must not
+  repeat the error while recording it.
+- **Exported schemas in version control as the input to every migration test.** The pattern, not the
+  twelve migrations.
+
+**A term to disambiguate, and it is this ticket's word.** The user read "two modules, not eight" as
+being about plugins, because module was the early name for them. The eight are Gradle build units in
+one repo; a plugin is a separately installed app. The collision is real — both first-party plugins
+were written as in-repo build units and then extracted to become plugins — so the sketch states the
+distinction rather than relying on context. 13 routed it to `CONTEXT.md` via ticket 20.
+
+**A scope input received from the user, dated 2026-09-24**: plugin plumbing is in scope for the v1.0
+product. 13 recorded it without acquiring product scope, and the only consequence it took was
+restoring the declaration validator as a port pointer. This ticket is where it actually bears, and
+`SALVAGE.md`'s first prohibition is the test it must pass: a seam whose caller does not ship
+alongside it is not a seam yet.

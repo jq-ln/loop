@@ -88,3 +88,23 @@ without growing comprehension load.
   ADR, and does not catch silently contradicting one without writing anything.
 
 If this ticket decides against an ADR practice, all four die with it and nothing else in 11 changes.
+
+## Note after ticket 13
+
+13 resolved; this ticket is unblocked, and 13's partial answer — *a real ADR is written here only
+when the decision is actually re-made* — now has a mechanism hanging off it that 19 can break.
+
+`SALVAGE.md`'s keep half is **consumable**: an entry is deleted by the commit that consumes it, which
+is either the commit that ports the code or the commit that writes the ADR re-making the decision.
+That attachment is the reason the deletion is expected to happen at all, being the rule class with a
+clean compliance record. **If this ticket decides against an ADR practice, half of that attachment
+has no carrier** and the entries whose exit is "the decision gets re-made" need a different one, or
+none — in which case `SALVAGE.md` keeps them indefinitely and its shrink rule weakens to the port
+pointers alone. Worth stating in the answer either way, as 17's timing fingerprint already is.
+
+Two smaller inputs. 13's bar for its own entries — *no ported code, no other document, and no
+mechanism already holds this claim* — is 11's eviction rule applied to a second corpus, and is
+available as a shape if this ticket wants a bar for what earns an ADR. And 13 kept exactly one
+conclusion from the old repo's ~20 world-fact ADRs as a standalone entry, cutting the rest because
+the ported code carries them; that is direct evidence for this ticket's cross-reference question,
+since it means a decisions directory would have been the second copy of most of what it held.

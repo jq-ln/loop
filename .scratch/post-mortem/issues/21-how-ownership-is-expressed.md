@@ -50,3 +50,15 @@ table failed outright, being prose that nothing checked.
 
 Blocks 20, which cannot wire rows into a table whose shape is undecided. Not blocked by anything: 11,
 15 and 17 are resolved and supply its inputs.
+
+## Note after ticket 13
+
+An input to the ownership table, not a decision made on this ticket's behalf. `SALVAGE.md`'s
+ownership is **asymmetric**, which is the first row that cannot be a single name: an agent deletes an
+entry in the commit that consumes it — the port, or the ADR re-making the decision — while **adding**
+an entry is the human's. The asymmetry is the rule rather than an exception to it: addition is the
+direction the file exists to resist, deletion the direction it exists to encourage, and it is the
+only document in the kit expected to shrink.
+
+Worth knowing when the table's form is settled: `GOALS.md` is human-only in a commit touching nothing
+else, and if the table's column is a single owner per file, this row does not fit in it.
