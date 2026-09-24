@@ -73,3 +73,24 @@ following a salvage citation now reads this repo's research files instead of ope
 That narrows how often a session has the saturated strings in front of it; it does not close the
 hazard, since the research files quote the archive and the rebuild's port pointers send sessions into
 it deliberately.
+
+## Note after ticket 19
+
+A third check arrives at the shared enforcement point, and one of 16's own boundaries is now in
+question. 19 bans **citations of an ADR** — nothing outside `docs/adr/` may reference an ADR number,
+and no ADR may reference another — enforced by a `pre-commit` grep for `ADR ?[0-9]{4}`. That is an
+entry rule by any reading: a thing that may not enter the repo, refused at the commit that
+introduces it. It joins 11's budget check and 17's two caps beside the identity guard, and ticket 20
+installs it with them.
+
+Two things worth knowing when this ticket designs its mechanism:
+
+- **The perimeter question is live.** 19's ban reaches **code comments** — the largest single source
+  of ADR citations in the old repo, 142 of 366 — and resolves them by having the comment state the
+  claim rather than point at where it is argued. If 16's perimeter is documents only, this check sits
+  outside it while sharing its enforcement point, which is exactly the "one wrapping the other" shape
+  11's note warned against. If 16's perimeter is the whole tree, 19's rule is a clause of 16's.
+- **The known gap is the same shape as 16's escape hatch.** The grep catches the *form*, not the act:
+  a citation phrased as a bare ADR title passes it. 19 accepted that limit explicitly rather than
+  widening the pattern, on the grounds that a fuzzy check is worse than a stated gap. If 16 reaches a
+  different answer on #107's by-name exception, the two should at least be inconsistent on purpose.

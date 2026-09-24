@@ -67,7 +67,7 @@ deliberately separated here.
 - [Was it the process, or was it the scope?](issues/09-process-or-scope.md): neither — three layers, not a weighting. Root: no destination existed to check anything against. Proximate: breadth outran comprehension. Third-order: the process volume, a real triage that became its own load. Outputs the comprehension criterion, ordered before 03's latency test; re-charters 12, 17 and 18, and makes 15 block every ticket that writes a rule (10, 11, 12, 13, 17).
 - [The goals document, and the citation rule that gives it teeth](issues/15-the-goals-document.md): two goals governing two objects — the app (G1, used every day) and the repository (G2, legible to people who might hire or build with me) — with the tie-break that would have killed F-Droid on day one; a goal is citable only if it can rule a decision out, and every ADR names the goal *and what it ruled out*; goal ids never reused, deletion carries a `grep` re-check list; `GOALS.md` ≤ 40 lines, written verbatim, edited only by the human in a commit touching nothing else.
 - [The human's own procedure](issues/17-the-humans-own-procedure.md): where a commitment can become a step in a command already run, it stops being a commitment — a comprehension gate at the merge (nothing lands unread), with the merge as the act no agent may perform; the pace gap made visible as unmerged worktrees, capped at three in `pre-commit`; a 300-line commit cap with an `Oversized:` trailer and a branch conformance check against its declared file list; review once per branch inside `just land`, an input to the human's reading and never a pass/fail; and `PROCEDURE.md` ≤ 60 lines that indexes mechanisms rather than restating them, with three clauses labelled as resting on nothing.
-- [The budget, and what enforces it](issues/11-the-documentation-budget.md): the budgeted quantity is **file count**, not length — 12 standing-claim files (root `*.md`, `docs/**.md`, `.claude/**.md`), the kit landing with 9, `.scratch/` and the justfile outside the perimeter and no standing rule allowed to hide there; enforced in `pre-commit` on the commit that adds the file, and when the cap is reached **the document is not written** — its claim folds into the file that already owns it, with the cap a knob only the human turns; no document asserts a structural fact the source asserts about itself, and backticked paths must resolve; ADRs are exempt **conditional on being leaves** — nothing cites an ADR, found by `just adr <term>`, superseded ones deleted — with ticket 19 holding the final say.
+- [The budget, and what enforces it](issues/11-the-documentation-budget.md): the budgeted quantity is **file count**, not length — 12 standing-claim files (root `*.md`, `docs/**.md`, `.claude/**.md`), the kit landing with 9, `.scratch/` and the justfile outside the perimeter and no standing rule allowed to hide there; enforced in `pre-commit` on the commit that adds the file, and when the cap is reached **the document is not written** — its claim folds into the file that already owns it, with the cap a knob only the human turns; no document asserts a structural fact the source asserts about itself, and backticked paths must resolve; ADRs are exempt **conditional on being leaves** — nothing cites an ADR, found by `just adr <term>`, superseded ones deleted — with ticket 19 holding the final say. **Four clauses revised** by [Whether this repo keeps an ADR practice at all, and what earns one](issues/19-the-adr-practice.md), which used that say: the leaf rule is restated as a **direction** rule and enforced in `pre-commit`, discovery widens to a generated index, the tombstone carve-out is refused as unnecessary, and `Prior art:` is cut for `Affected paths:`. ADRs are additionally **exempt from the path-resolution and structural-fact checks**, being dated records rather than standing claims. The cap of 12 and the perimeter are untouched.
 - [How parallel agent sessions coordinate](issues/10-parallel-agent-coordination.md): the claim unit
   is the **whole file** — no region claims, since git enforces files and nothing enforces paragraphs
   — declared in a `## Files` block that `just start` refuses to open a worktree without, checked
@@ -89,16 +89,41 @@ deliberately separated here.
   is consumable, deleted by the commit that ports the code or writes the ADR, making it the one
   document in the kit with a shrink rule, and addition is the human's while deletion is an agent's.
 
+- [Whether this repo keeps an ADR practice at all, and what earns one](issues/19-the-adr-practice.md):
+  **the practice exists**, and almost nothing of the old repo's version survives. Citation is about
+  **direction, not volume** — an ADR cites upward (`GOALS.md`) and outward (paths); nothing cites an
+  ADR and no ADR cites another, because what rots is a pointer at a **deletable** thing — enforced by
+  a `pre-commit` grep rather than asserted, with code comments stating the claim instead of pointing
+  at it. Two gates: the **bar** is irrecoverability (13's bar on its third corpus) and the **filter**
+  is 15's goal citation. The null case splits — a decision *not* to do something is an ordinary ADR,
+  a decision that fails the bar leaves **no trace**. Discovery is **recognition**: `just adr` with no
+  argument prints a *generated* index (not a file, so 11's ban stands and cannot rot), `just start`
+  surfaces ADRs citing any claimed path automatically, and **corpus size is the real constraint** —
+  the listing's length is the instrument that says the bar is mis-sized. An ADR is a **dated record,
+  never edited**, exempt from 11's content checks and untouched by terminology sweeps, which makes
+  supersession-by-deletion coherent and the tombstone carve-out unnecessary. Template: goal citation
+  with 17's timing fingerprint folded in, mandatory `Affected paths:`, a descriptive heading naming
+  the **decision**, under a hard line cap. **15's citation rule, 17's fingerprint and 13's consumable
+  `SALVAGE.md` half all have their carrier and stay live.**
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
   precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
-  a general principle for every rule in the kit, but not yet sharp enough to ticket. Tickets 17
-  and 10 applied the shape three times without generalising it — an `Oversized:` commit trailer,
+  a general principle for every rule in the kit, and long held here as not sharp enough to ticket.
+  Tickets 17 and 10 applied the shape three times without generalising it — an `Oversized:` commit trailer,
   stray paths recorded in the merge commit, and `just claim`'s dated widening record — so the
   pattern now has worked instances as well as a failure, and 10 notes that the *frequency* of such
   records is itself the evidence that the rule they except is mis-sized.
-  Its sharpest instance is still a bullet inside ticket 19: does a rejected ADR leave a trace?
+  **Ticket 19 resolved its sharpest instance and supplied the distinguishing test the patch was
+  missing**: *a null record is owed where a rule demands an act and the considered answer is "none";
+  it is not owed where the default is already silence.* A rejected ADR therefore leaves no trace —
+  the bar demands nothing, so there is no rule to be excepted from — while a decision *not* to do
+  something is an ordinary ADR. That is a fourth worked instance rather than a fifth mechanism, and
+  it makes the patch sharp enough to ticket for the first time. **It stays fog by decision, not by
+  fogginess** — the human ruled against ticketing it: no open ticket waits on generalising it, and
+  filing it would grow the board this map exists to shrink. A later rule that needs the test cites
+  it from here; nothing in the kit is blocked on generalising it further.
 - **The version cadence.** Ticket 10 answered the registry question for this repo by subtraction —
   there are none — and fixed the property any future counter inherits: allocated at land by the
   human, never in a worktree, which makes batching fall out rather than needing a scheme. What

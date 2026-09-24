@@ -62,3 +62,27 @@ only document in the kit expected to shrink.
 
 Worth knowing when the table's form is settled: `GOALS.md` is human-only in a commit touching nothing
 else, and if the table's column is a single owner per file, this row does not fit in it.
+
+## Note after ticket 19
+
+A second input to the table, and a **third row shape** — which is now enough of a pattern to be this
+ticket's problem rather than a series of exceptions.
+
+`docs/adr/` is **write-once, delete-only**. An ADR is created by the commit that makes the decision
+(an agent's, ordinarily), is **never edited by anyone** — 19 made immutability the thing that keeps
+an ADR a dated record rather than a standing claim — and is deleted only by the commit that
+supersedes it. Terminology sweeps that touch every other Markdown file in the repo must *skip* it.
+
+So the table now has three shapes that a single-owner column cannot express:
+
+| file | shape |
+|---|---|
+| `GOALS.md` | human-only, in a commit touching nothing else (15) |
+| `SALVAGE.md` | asymmetric — human adds, agent deletes (13) |
+| `docs/adr/**` | write-once; no editor at all; deletion tied to supersession (19) |
+
+The third is the one that breaks an owner column hardest, because its answer to "who may change
+this?" is **nobody** — and a table that cannot say "nobody" will quietly be read as "anyone with a
+reason". 19 also puts a *negative* obligation in play that no row currently carries: a file that must
+be **excluded** from repo-wide edits. Whether that belongs in the ownership table or somewhere else
+is this ticket's call; 19 does not presume it.
