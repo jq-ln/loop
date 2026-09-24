@@ -68,18 +68,33 @@ deliberately separated here.
 - [The goals document, and the citation rule that gives it teeth](issues/15-the-goals-document.md): two goals governing two objects — the app (G1, used every day) and the repository (G2, legible to people who might hire or build with me) — with the tie-break that would have killed F-Droid on day one; a goal is citable only if it can rule a decision out, and every ADR names the goal *and what it ruled out*; goal ids never reused, deletion carries a `grep` re-check list; `GOALS.md` ≤ 40 lines, written verbatim, edited only by the human in a commit touching nothing else.
 - [The human's own procedure](issues/17-the-humans-own-procedure.md): where a commitment can become a step in a command already run, it stops being a commitment — a comprehension gate at the merge (nothing lands unread), with the merge as the act no agent may perform; the pace gap made visible as unmerged worktrees, capped at three in `pre-commit`; a 300-line commit cap with an `Oversized:` trailer and a branch conformance check against its declared file list; review once per branch inside `just land`, an input to the human's reading and never a pass/fail; and `PROCEDURE.md` ≤ 60 lines that indexes mechanisms rather than restating them, with three clauses labelled as resting on nothing.
 - [The budget, and what enforces it](issues/11-the-documentation-budget.md): the budgeted quantity is **file count**, not length — 12 standing-claim files (root `*.md`, `docs/**.md`, `.claude/**.md`), the kit landing with 9, `.scratch/` and the justfile outside the perimeter and no standing rule allowed to hide there; enforced in `pre-commit` on the commit that adds the file, and when the cap is reached **the document is not written** — its claim folds into the file that already owns it, with the cap a knob only the human turns; no document asserts a structural fact the source asserts about itself, and backticked paths must resolve; ADRs are exempt **conditional on being leaves** — nothing cites an ADR, found by `just adr <term>`, superseded ones deleted — with ticket 19 holding the final say.
+- [How parallel agent sessions coordinate](issues/10-parallel-agent-coordination.md): the claim unit
+  is the **whole file** — no region claims, since git enforces files and nothing enforces paragraphs
+  — declared in a `## Files` block that `just start` refuses to open a worktree without, checked
+  against live worktrees **at the door** rather than at the merge, and widened mid-ticket only by an
+  explicit `just claim` that re-checks and leaves a dated record; **no version counters and no
+  changelog exist on day one**, so eight adjudicated numbers become none and 17's merge-time version
+  rule binds vacuously; ADR identity is `docs/adr/YYYY-MM-DD-<slug>.md`, allocated at write time and
+  never refereed; a stall is surfaced by the cap's refusal listing the live worktrees and their age,
+  never detected by a threshold, with `just drop` the cheap exit that keeps the cap from being
+  bypassed; ADR 0077's parking does not carry over, and `PROCEDURE.md` goes to 59 lines.
 
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
   precedent chain seven deep, because the rule had no way to record a considered "nothing". Likely
-  a general principle for every rule in the kit, but not yet sharp enough to ticket. Ticket 17
-  applied the shape twice without generalising it — an `Oversized:` commit trailer, and stray paths
-  recorded in the merge commit — so the pattern now has worked instances as well as a failure.
+  a general principle for every rule in the kit, but not yet sharp enough to ticket. Tickets 17
+  and 10 applied the shape three times without generalising it — an `Oversized:` commit trailer,
+  stray paths recorded in the merge commit, and `just claim`'s dated widening record — so the
+  pattern now has worked instances as well as a failure, and 10 notes that the *frequency* of such
+  records is itself the evidence that the rule they except is mis-sized.
   Its sharpest instance is still a bullet inside ticket 19: does a rejected ADR leave a trace?
-- **Global registries** — a changelog, a version, an index — that no worktree can isolate and no
-  ticket can declare off-limits. Ticket 10 must answer it for this repo; whether the answer
-  generalises into a rule about derived-versus-stored state is fog.
+- **The version cadence.** Ticket 10 answered the registry question for this repo by subtraction —
+  there are none — and fixed the property any future counter inherits: allocated at land by the
+  human, never in a worktree, which makes batching fall out rather than needing a scheme. What
+  cadence of landings earns a bump, and what a bump is *for*, waits on a distribution decision that
+  is the rebuild's; fixing it against an unchosen channel is the F-Droid failure one layer down. It
+  blocks nothing, because the kit ships no counter.
 - **What replaces the salvaged conclusions' provenance** once `../old_loop` is a local-only
   archive with no reachable issue URLs.
 
