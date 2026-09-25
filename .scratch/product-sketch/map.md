@@ -322,6 +322,19 @@ ticket, not the summary of it — the failure does not need the archive to happe
   refusals belong to `PRODUCT.md`, the importer among them, and the plugin platform stays with
   `ARCHITECTURE.md`'s own section. Names four non-goal candidates and writes none.
 
+- [Register the vocabulary and the ADRs this map owes](issues/12-the-vocabulary-and-adr-register.md):
+  **fifteen terms in `CONTEXT.md`, the principles ADR written, eight ADRs registered, not four.** The
+  bar held: a term enters only if it has already been mistaken for something else, which admits
+  two collisions nobody had named. `dismiss` is reasonless on a run and takes a dated reason on a
+  flag; `anchor` carries three senses. Goal-satisfaction vocabulary stays out, because goals are
+  cut from slice 1. By the author: **`timed` is retired**, **`abandoned` ends anything that
+  serves** (a metric is `archived`), and **04's windowed-count ADR moves to the ADR that builds
+  Goals**. Its *no contradiction with the ported engine* was wrong. There are four: `AFTER_ROUTINE`,
+  `remind`, the definition delete, and `occurrence.note` (conditional). Each is now a port-time
+  row, and all fall inside slice 1. *Write the sketch* states them in the first-slice section,
+  because nothing at port time reads `.scratch/`. It found that `just adr` never receives its
+  arguments.
+
 ## Not yet specified
 
 Nothing. [The first shippable slice](issues/09-the-first-slice-and-what-is-not-built.md) cleared

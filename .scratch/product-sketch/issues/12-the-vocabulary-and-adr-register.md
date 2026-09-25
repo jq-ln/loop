@@ -1,7 +1,7 @@
 # Register the vocabulary and the ADRs this map owes
 
 Type: task
-Status: open
+Status: resolved
 Blocked by: 09
 
 ## Question
@@ -107,3 +107,88 @@ added** — a cut is not a decision against a ticket, building each cut line is 
 inputs for the re-derivation: `revision` ships scoped to a single subject, `principle`, and the slice
 cuts `goal` proper while keeping the Goals destination, which holds principles only — a name and its
 contents that disagree in slice 1, worth judging against `CONTEXT.md`'s bar.
+
+## Answer
+
+**Fifteen terms are in `CONTEXT.md`, the principles ADR is written, and the ADR register has eight
+rows, not the four this ticket opened with.** Its claim that there was no contradiction with the
+ported engine was wrong: re-derived, the resolved tickets change the ported engine in four places,
+and none of the four had an ADR attached.
+
+Three collisions were settled by the author on 2026-09-25, from recommendations:
+**`timed` is retired** from both of its senses; **`abandoned` is the end state of anything that
+serves** (goal, principle, definition), while a metric, which serves nothing, is **`archived`**, and
+11's *a definition is archived, never deleted* reads as abandoned; and **04's windowed-count ADR
+moves to the ADR that builds Goals**. The author also approved the admission list below as proposed.
+
+### The vocabulary, re-derived whole
+
+The bar is `CONTEXT.md`'s own: in use, **and** already mistaken for something else. A term that
+clears only the first goes to the document that describes the thing, not to the glossary.
+
+| Term | From | Where it goes | The collision, if any |
+|---|---|---|---|
+| `definition` / `run` | 01 | **CONTEXT** | Renamed from `task` / `occurrence` |
+| `routine` | 01 | **CONTEXT** | One word for a definition, a tree of runs, and the engine |
+| `snooze` / `defer` | 01, 07 | **CONTEXT** | The archive used both for one thing; 07's gloss adopted |
+| `goal` | 02 | **CONTEXT** | `GOALS.md`'s goals; and 13 found standing practice mistaken for goals |
+| `criterion` | 02 | Arrives with the rename | Post-mortem map's ticket, not this one |
+| `derived` / `declared`, `latches`, `satisfied` | 02 | The ADR that builds Goals | None: goals are cut from slice 1 and nothing has mistaken them |
+| `abandoned` / `archived` | 02, 04, 07, 11, 13 | **CONTEXT** | Two words for a definition's end state, across 07 and 11 |
+| *the root* | 02 | Deleted by 13 | Noted under `principle`, so an older record still reads |
+| `dormant`, `stalled`, `flag`, `unserved` | 02, 05, 13 | The ADR that builds `Revise` | Distinct by design; not mistaken |
+| `prerequisite` / `blocked` | 03 | **CONTEXT** | `gate`, three senses in this repo |
+| `metric` / `question` / `source` | 04 | **CONTEXT** (`source` to `PRODUCT.md`) | One thing in the archive |
+| `reading` | 06 | **CONTEXT**, under metric | 02's answer itself says `observation` for the same thing |
+| `target` / `undecided` | 04 | The ADR that builds Goals | None |
+| `revision` / `Revise` | 05, 06, 13 | **CONTEXT** | `Reflect`, and the archive's unbuilt `review` |
+| `note` | 05 | **CONTEXT** | The journal and `occurrence.note`, which the archive kept apart |
+| `dismiss` | 05, 07 | **CONTEXT** | **New.** A run's dismissal is reasonless and a flag's takes a dated reason: one word, two rules |
+| `anchor` | 07, 14 | **CONTEXT** | **New.** The snooze preset, the step edge's `cadence_anchor`, and 14's wall-clock anchor of a recurrence |
+| `Offered` | 06 | `PRODUCT.md` | 06 asked whether it is *backlog*. One thing: `Offered` is the band, the uncited backlog is what it holds, and *backlog* survives only in Not-built line 12 |
+| `discharge` / `refuse` | 07 | `PRODUCT.md`, as glosses of the two swipes | None in the app |
+| `commit` | 07 | `PRODUCT.md` | Same meaning as 02's *gated at commitment*, so not a collision |
+| `rail` | 07 | `PRODUCT.md` | None |
+| `principle` | 13 | **CONTEXT** | The Goals destination holds only principles in slice 1 |
+| *unassigned* | 13 | `PRODUCT.md` | None |
+| time of day / `timed` | 14 | **CONTEXT** | `timed`: has a time, and has a stopwatch. Retired |
+| *silent* (the opt-out) | 14 | `PRODUCT.md` | None |
+
+*Write the sketch*'s own last paragraph expected *"the two axes of goal satisfaction"* to reach
+`CONTEXT.md`. They do not: nothing has mistaken them, and goals are not in slice 1.
+
+### The ADR register
+
+| ADR | From | Moment | Status |
+|---|---|---|---|
+| The top of the goal tree is a set of principles | 13 | This ticket | **Written**, `docs/adr/2026-09-25-principles-at-the-top-of-the-goal-tree.md` |
+| `task`/`occurrence` become `definition`/`run`, citing G2 | 01 | The commit that ports the definition/occurrence split | Owed |
+| `occurrence.note` moves into `note` | 05 | The same port, **only if** the note moves rather than being added | Conditional |
+| The check-in's staged commit is deleted; every capture writes on entry | 07 | The commit that ports check-in questions | Owed. **Missing from this register until now**, though 09 said it was registered here |
+| A time of day is the notification request: `remind` is not ported, and `USE_EXACT_ALARM` is chosen | 14 | The commit that ports notifications | Owed. Exact alarms were likewise **missing** here despite 09. **`remind` is newly added**: dropping a column from the ported schedule is an engine change |
+| `ScheduleMode.AFTER_ROUTINE` is not ported | 03 | The commit that ports the schedule engine | **Newly registered.** 03 named the subtraction and attached no ADR |
+| A definition is never deleted | 11, amending 01 | The commit that ports the definition repository | **Newly registered.** It removes a delete path the archive used |
+| A windowed count cannot be a metric threshold | 04 | **The ADR that builds Goals** (Not-built line 1) | Moved from *after the post-mortem*, a moment nothing pointed at, by the author |
+
+**Every port-time moment falls inside slice 1**, so all five are reachable. The risk is that nothing
+at port time reads `.scratch/`. That hand-off is recorded on [Write the
+sketch](10-write-the-sketch.md): the first-slice section states, as conditions of the port, what each
+of those ports changes about the engine. It cites no ADR, since none exists yet, and the porter
+cannot miss it.
+
+**Not ADRs**, and why:
+
+- **`SCALE_1_5` deleted** (11): there are zero rows, so there is nothing hard to reverse.
+- **Two `SALVAGE.md` corrections**: the display-snapshot rule (11) and *four paths* that is really
+  five reasons and seven call sites (07). These are edits to the owner's file, flagged for *Write the
+  sketch*, which consumes `SALVAGE.md` entries.
+- **The thirteen cut lines** (09): building each one is what costs an ADR.
+
+### Found while re-deriving, outside this ticket's files
+
+- **`just adr` never receives its arguments.** The justfile has no `set positional-arguments`, so
+  `just adr new <slug>` silently falls through to listing, and a search `just adr <path>` returns
+  nothing whatever it is given. The ADR above was written by hand in the scaffold's format. The
+  recipe's comment says `just start` consumes the path case, but it does not: `start` greps
+  `docs/adr/` itself and is unaffected. So the damage is limited to the two human-facing uses, and
+  the comment is stale. Not fixed here, because the justfile is not this ticket's file.

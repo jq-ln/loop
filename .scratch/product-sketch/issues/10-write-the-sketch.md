@@ -40,3 +40,12 @@ Two obligations beyond writing the files:
 `CONTEXT.md` gains an entry for every term these decisions settled that has already been mistaken for
 something else — which on current evidence is at least the word for a work item and the two axes of
 goal satisfaction.
+
+## Comments
+
+2026-09-25, from [Register the vocabulary and the ADRs this map owes](12-the-vocabulary-and-adr-register.md):
+**`CONTEXT.md` is already written**, so the last paragraph above is stale. Fifteen entries went in
+with that ticket, and the two axes of goal satisfaction were not among them. Two things this ticket
+now carries: the **port-time ADRs**, stated in the first-slice section as what each port changes
+about the ported engine, since that section is the one thing the porting session is certain to
+read; and the **two `SALVAGE.md` corrections** the register lists, which are the owner's to make.
