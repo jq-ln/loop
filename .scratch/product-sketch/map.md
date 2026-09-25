@@ -46,12 +46,18 @@ directory calls `research`.
 citation of it is redacted at the point of quoting, in the form `<user>`, per `CLAUDE.md`. That rule
 has no mechanical backstop for prose and rests on the reading gate.
 
-**Every survey table in this map is suspect until re-derived.** Both tickets resolved so far had
-wrong ones, in two recurring shapes: a capability called *refused* that the archive had costed and
-explicitly retracted the stronger claim about, and a field or path called *dead* that had a live
-consumer. Re-derive a ticket's archive claims from source before grilling on them, and record the
-corrections in the ticket, because the corrections and not the original claims are what the answer
-is built on.
+**Every survey table in this map is suspect until re-derived.** Every ticket that carried one had it
+wrong, in three recurring shapes: a capability called *refused* that the archive had costed and
+explicitly retracted the stronger claim about; a field or path called *dead* that had a live
+consumer; and — the nastiest, because it is what a working feature looks like — a field **validated
+on the way in and read by nothing**, where a parser, a validator and passing tests all exist and no
+consumer does. Re-derive a ticket's archive claims from source before grilling on them, and record
+the corrections in the ticket, because the corrections and not the original claims are what the
+answer is built on.
+
+**The archive is not the only stale survey.** *Observability* relayed a claim about another live
+ticket's contents without reading it, and was corrected by the session working that ticket. Read the
+ticket, not the summary of it — the failure does not need the archive to happen.
 
 **Standing preferences**
 - The destination is two paragraphs and one file. A ticket that cannot trace a line to *what is in
@@ -119,6 +125,24 @@ is built on.
   percentage is a claim nothing supports. **Amends 02: dormancy counts only time a node was
   actionable.** Flags a gap: `prerequisite` and `blocked` owe a `CONTEXT.md` entry and no ticket on
   this map owns that write.
+
+- [Observability: does the measurement layer gain a prescriptive half?](issues/04-observability-prescriptive.md):
+  it does, and it gains a pillar — but the pillar is **`metric`**, and *observability* is analogy
+  vocabulary that does not reach `PRODUCT.md`. A **metric** is the named series; a **check-in
+  question** narrows to one *source* that feeds it, and direct entry is another, which is what makes
+  measuring a stage rather than a property of work already being done. A **target** lives on the
+  goal, six fields — metric, aggregation, window in days, comparator, number, minimum reading count
+  — the first five being `<goal-template>`, a grammar the archive **specified in the plugin manifest
+  doc and never implemented**, the sixth a named departure. Three verdicts: satisfied, breached, and
+  **undecided**, which costs nothing because no verdict is stored and which doubles as the dormancy
+  signal for this family, citing *The goal-to-work edge*'s actionable-time rule. **A predicate is
+  computed over the values recorded and may never be a function of the days with no value** — which
+  makes "did it on N days this week" unexpressible here and pushes it to the run-log family, an
+  author-flagged ADR for after the post-mortem. `Direction` and `goalable` are deleted; a metric's
+  view is one line chart with the target on it; a metric is archived, never deleted. The evidence:
+  nineteen observations across three questions in ten days, **only one of core's three metric groups
+  has ever held a row**, and a weigh-in gap that read as abandonment and was travel — a third cause
+  of a gap, *the measurement was not possible*, that is a refusal by nobody and is recorded nowhere.
 
 ## Not yet specified
 
