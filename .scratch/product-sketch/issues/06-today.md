@@ -470,3 +470,16 @@ decided that surface was a destination in the first place — read off the navig
 Four variants over the real day of 2026-09-24, the fourth being the composite of everything above.
 Captured to the throwaway branch `prototype/06-today` and removed from the working tree; it does not
 survive into the repo, per this ticket's own charter.
+
+**None of A, B or C was chosen, and the composite was never looked at.** Every decision above was
+reached from the archive re-derivation and the run log; the author answered both rounds from the
+evidence rather than from the variants, and D was drawn after the last answer rather than judged
+before it. That route caught the two findings this ticket turns on — the dead score and the destroyed
+weigh-in — and it is silent on the one thing a prototype exists for. **Density is therefore the one
+claim here with nothing behind it**: D draws 16 rows with the v2 concepts on, against B's 15 and C's
+19, and no one has seen any of them on a phone-width screen.
+
+This is recorded rather than resolved because reopening is cheap and mis-recording is not: the branch
+holds the file, *The input vocabulary* has not started, and a visual review that rejects D costs one
+ticket reopened. A visual review that is *skipped and assumed* is the map's own warned-against
+specimen — something that looks like verification while confirming nothing.
