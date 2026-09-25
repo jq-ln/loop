@@ -1,7 +1,7 @@
 # Publish this repo once the namespace frees
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: 16
 
 ## Question
@@ -84,3 +84,78 @@ requirement and leaves the decision here:
 Read together with 13's constraint — `SALVAGE.md` cites `.scratch/post-mortem/`, so migrating breaks a
 governed document's path check — two independent constraints now point the same way, and the native
 dependency edges are the only argument on the other side.
+
+## Answer
+
+**Prepared and proven; the two acts that remain are the owner's.** The rewrite and the first public
+push are the class 16 and 17 reserve to the human, so this ticket stays claimed until the remote URL
+exists to record.
+
+**The ticket expected one blocker and a first push meets three.** Simulated by feeding `pre-push` the
+ref line of a first push — no remote, so the range is every commit on `main`:
+
+| Class | Commits | Cause |
+|---|---|---|
+| Home-anchored path | 21 | All 357 hits in the dump, `9571165` to `9c49087`. 16's verdict holds exactly. |
+| Size cap | 10 | Every one predates `33abe66`, which installed the cap. Excising the dump leaves `9571165` near 1,150 lines, still over. |
+| Path does not resolve | 2 | `CLAUDE.md`'s archive pointer, in `33abe66` and `dcf9bb6`. |
+
+**The third was a bug in the twin hooks, not in history.** `pre-commit` resolved backticked paths with
+`[ -e ]` against the disk, where `../old_loop` exists; `pre-push` resolves against the tree, where it
+does not. So a path 13 ruled unciteable — resolves on one machine — passed every commit and would have
+failed only at publication. Fixed at `570947a`: `pre-commit` resolves against the index, and the
+archive name in `CLAUDE.md` is un-backticked.
+
+**Decisions, all the human's, all as recommended:**
+
+- **The pre-cap commits get `Oversized:` trailers in the same rewrite**, rather than a hook scoped to
+  its install commit or a `--no-verify` on the one push that matters. The rewrite is free and
+  happening anyway; afterwards every published commit passes the hook as written. Each trailer says
+  it was recorded by this rewrite — the null-record shape, owed because the cap demands an act.
+- **The two historical `CLAUDE.md` versions are corrected in the rewrite**, matched by original blob
+  id, not by content: ticket 16 quotes the same sentence verbatim and is a dated record.
+- **Only `main` is pushed.** The prototype branches stay local; `v0.0.1` is not pushed, since 10
+  says no version counter exists on day one. The tag is left in place, not deleted.
+- **The tracker stays local.** 13's constraint and 16's requirement both point that way; native
+  dependency edges were the only argument against. `docs/agents/issue-tracker.md` is unchanged.
+
+**Proven on a throwaway clone** of `570947a` with all refs: `pre-push` exits 0 on a simulated first
+push; the dump's blob and path are absent from every commit; the HEAD tree is byte-identical; the
+backticked form is gone from all 41 `CLAUDE.md` versions and ticket 16's quotation intact in all 46;
+14 `Oversized:` trailers, 4 existing plus 10 added; one identity on every author and committer line.
+
+**The archive**: `../old_loop` is intact, 242 commits, its `origin` remote dead. The untracked dump sits
+beside it and its `git hash-object` matches the committed blob, so after the rewrite that file is the
+only copy and is known good.
+
+### The owner's checklist
+
+1. From the repo root, with nothing uncommitted, run the script below (`git filter-repo --force`
+   rewrites every ref in place and prunes the dump's objects).
+2. Re-run the simulated push; it must exit 0:
+   `echo "refs/heads/main $(git rev-parse main) refs/heads/main $(printf '0%.0s' $(seq 40))" | sh .githooks/pre-push`
+3. `gh repo create jq-ln/loop --public --source . --remote origin`, then `git push -u origin main`
+   — the hook runs for real here.
+4. Report the URL; the session that resolves this records it and closes the ticket.
+
+```sh
+# Ticket 14: the one pre-publication history rewrite. Run from the repo root.
+set -e
+git filter-repo --force \
+  --invert-paths --path .scratch/post-mortem/research/02-issues-raw.json \
+  --blob-callback '
+if blob.original_id in (b"048ad87ca0c57052a600d9533e6e896fb75ec30a", b"b798c2b8e7014125277a8779afdc6fe60a5f1107"):
+    blob.data = blob.data.replace(b"`../old_loop` is where", b"The archive at ../old_loop is where")
+' \
+  --commit-callback '
+over = {
+  b"a354a869abd5139fcc083cd5177b716be6abd16e", b"279095a70799956d26ca191f817a3ee86593362b",
+  b"589326026bf44c1703aa991462b492202881aaac", b"e6f7aa1773518adf454d4a09cbbb724daae8af6b",
+  b"bd9e6769c08723932f8dee8a361d602dcef2aa97", b"fa0096f4b5c27b8d8b8024ff9e7be0042d3b76f9",
+  b"13b813d06fcd878836d6d2b650216612cc93613e", b"7cfeaa13686e8b51b1a7cdb5ccd2c28803240d3d",
+  b"ab3517fa5d963ec5512b856f6e53c8de6f3016a2", b"9571165fdc7b7b9c8d8ad656072ee5d39acf9f6f",
+}
+if commit.original_id in over:
+    commit.message = commit.message.rstrip(b"\n") + b"\nOversized: predates the cap; recorded by the pre-publication rewrite, ticket 14\n"
+'
+```
