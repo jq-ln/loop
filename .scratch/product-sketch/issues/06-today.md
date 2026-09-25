@@ -1,7 +1,7 @@
 # Today: what is on it, and how is it ordered?
 
 Type: prototype
-Status: claimed
+Status: resolved
 Blocked by: 01, 03
 
 ## Question
@@ -280,3 +280,193 @@ those are exactly the two that should not be expanded.
 
 Drawn as **variant D** in the prototype, alongside everything above, so the composite can be judged
 rather than the pieces.
+
+## Answer
+
+**Today is the frontier, and the frontier is not the schedule's output.** The charting hypothesis —
+*due plus unblocked and worth doing, in one list rather than two screens* — holds, and the reason it
+holds is narrower than the hypothesis: the schedule's claim on the day and what is merely worth doing
+are **different claims that belong on one screen**, because a backlog behind a destination is the
+thing `GOALS.md` G1 rules out. One screen, two claims, visibly labelled.
+
+Six classes of thing are on it: **runs the schedule materialized**, **runs carried forward by an
+explicit choice**, **readings a metric wants today**, **unscheduled definitions offered**, and
+nothing else. Blocked work is **absent**, per *The goal-to-work edge*. Reflection is not here at all.
+
+### The order is the structure's, and there is no score
+
+Roots in an order set once and changed by dragging; steps by `position`. **Terminal-last** is the one
+computed element, so finished work sinks while staying visible and struck through — the archive's
+*"seeing progress is the reward"*, kept for its own reason rather than inherited.
+
+`ScoreCalculator` is not weighed and rejected; **it never ran**. Its formula is real, its argument is
+real, and `score()`'s only caller in the whole archive is its own unit test. `boost()` has no caller
+at all and no gesture anywhere. The data closes it from the other side: `importance` is `1` on all 42
+definitions, `boost` is `0.0` on all 210 occurrences, `time_of_day` is null on 15 of 16 schedules.
+**Every input a computed order could have used was constant across the app's entire recorded life.**
+
+The argument the archive wrote survives its own mechanic and is adopted verbatim as the reason: *"There
+are deliberately no absolute priority integers: they require a global consistency the user will never
+maintain."* So does the presenter's, which is the sharper half: *"Running a routine the same way every
+time is the point of the app, and a score that reorders the list between runs actively works against
+that."* **A score is a line in *what is not built*,** and it is the cheapest line on this map to write,
+because it costs a deletion rather than a refusal.
+
+### Expansion belongs to the definition, and this is the answer the author's correction bought
+
+A routine is neither one row nor its steps. **It is one row or its steps according to a property of the
+definition,** set once and changed when it is wrong.
+
+The first recommendation was *roots that expand*, argued partly from the reading that the author ticks
+the first step and dismisses the rest. The author corrected it: the act is *tick the steps I do and
+dismiss the ones I know I am not going to do*, and the first-step coincidence is a coincidence. That is
+a **per-step judgement**, and the run log agrees against the two days the first reading generalised
+from — **14 of 23 dismissals are at step level**. The table is in the round-one record above. Morning
+and Night are worked through step by step and Night Routine's root was **never once** dismissed
+wholesale; Clean Kitchen and Clean Bathroom had **not one** step dismissed individually in ten days.
+
+So the two classes want opposite shapes and a global answer gets one of them wrong: collapsing costs a
+tap every day on the two routines actually used, and expanding spends six rows on work done a fifth of
+the time. This is the same principle as the order rather than a second knob — **both are properties you
+set once**, which is the whole of this screen's answer to *computed or chosen*.
+
+**Hoisting is refused**, and the data says why rather than taste: `Sweep` and `Mop` are steps of **both**
+cleaning routines, so a flattened list draws `Sweep` twice with nothing naming the room — and those are
+exactly the two definitions that should not be expanded.
+
+### A miss is a fact on the record, not a row
+
+The day's dismissals collapse to one line. Nothing is lost by this, because the record is already
+complete: *The work-item model* made an untouched day a recorded skip, so the miss exists whether or not
+Today draws it.
+
+**The cap is replaced by the opt-in.** Carry-forward is already per-item, so the tail holds only work
+explicitly asked for and is bounded by a choice instead of by an invented number — variant C's cap of
+two was drawn precisely to show that it invents one. In ten days the tail held exactly one row, four
+days old. The archive's answer here was *indistinguishable*: its row model carries no age, no window key
+and no `isOverdue`, so a four-day-old leftover and a fresh row were the same row. That was invisibility
+by omission; this is visibility by decision, and the age is on the row.
+
+### Unscheduled work is on Today, and the band is the backlog itself
+
+An **`Offered`** band at the foot, visible without a tap, holding the whole uncited backlog rather than a
+selection from it — because any rule for choosing *which* unscheduled work to show is a score under
+another name, and the section above has just refused one.
+
+This discharges *The work-item model*'s constraint — *if Today has nowhere to show unscheduled work,
+unscheduled must not be the capture default* — so **capture may default to unscheduled**, and it is
+greenfield rather than a port: the archive has **zero** definitions with neither a schedule nor a
+parent, because both creation paths wrote a schedule unconditionally. Its two undone one-offs are now
+definitions with a spent schedule and no live run, reachable from nothing at all.
+
+**Adopted provisionally, by the author, to be judged in use** — and the evaluation needs nothing new.
+*What a goal is*' falsifier is the signal (an uncited backlog growing monotonically for two weeks) and
+*Does Reflect survive its own test?*' **backlog-dodging** flag is what reports it. If it fails, the
+pre-registered remedy is the backlog destination the navigation below declines.
+
+### A reading is a row, and it ticks
+
+The archive's strip argument is the best sentence it wrote about this screen — *"Neither a tally nor the
+journal has a done state, and a row that can never be ticked reads as work dodged — water you did not
+drink would look like a routine you skipped"* — and **it does not reach a reading.** A tally is
+unbounded and the journal has no done state, but a reading due today is recorded or it is not. They
+were grouped because both lived under Track, not because they behave alike, and the live data shows the
+group was never even populated: all three questions have `tally = 0`, so no tally chip was ever drawn.
+
+The row is **independent of the run that used to carry it**, and this is the decision the preserved day
+forced. Every one of the 19 readings in ten days was recorded by completing a run — zero with a null
+occurrence id, because the only path that would write one is the one the archive unplugged. *Weigh-in*
+is a step of Morning Routine, so **dismissing Morning Routine at 09:07 auto-closed it, and the 24th's
+weight could not be recorded at all while no screen said so.** Coupling a capture to a run's completion
+loses data silently; *Observability*'s third cause of a gap — *the measurement was not possible* —
+turns out to have a mechanism, and the mechanism is on this screen. *Does Reflect survive its own test?*
+records that cause at dismissal time, which makes later dormancy and stall computations correct, but the
+loss happens at capture time and Today is the only screen that could have prevented it.
+
+The step-attached check-in **stays** as a convenience — answering while doing the thing is why it was
+built, and its swipe-right correctly reads *"Answer"* rather than completing it. The row disappears once
+any source has supplied the day's value.
+
+This is also the capability the archive **costed and retracted rather than refused**: recording outside a
+run was unplugged in 0.9.2 and kept with six passing tests, annotated *"a capture outside a run is wanted
+and is expected back on Today."* It is back on Today.
+
+### The day's note is written on the date
+
+*Does Reflect survive its own test?* gave the model one **`note`** whose subject discriminates over a run,
+a measurement, or the day, and gave Today the capture. Runs and readings have rows, so their notes belong
+to those rows and need no new affordance. The day has no row — and giving it one would be exactly what the
+strip argument refuses.
+
+**So the app bar's date is the day's handle.** Today already prints the date and the date *is* the
+subject; a `✎` there is one affordance, no new structure, and nothing that can be mistaken for work
+dodged. The alternative was reviving the strip, which is a structural element brought back for a single
+chip — and the strip's precedent is thinner than it looks: it was a place built for the journal that only
+the journal ever occupied.
+
+### Four destinations, and the fourth is called **Revise**
+
+**Today, Goals, Metrics, Revise.** Four, where the archive had four with one greyed out — and the greyed
+row's stated reason (*"so the menu says what the app is for rather than only what it currently does"*) is
+not needed, because nothing here is unbuilt-but-promised.
+
+The backlog does **not** earn a destination: `Offered` is the whole of it, and a destination would be a
+second place for the same thing.
+
+The reflection surface's **name** was handed here by *Does Reflect survive its own test?*, which settled
+the concept as `revision` and left the naming to this ticket and to the register. **It is not called
+Reflect.** `Reflect` is the analogy's word for a pillar whose concept was refused, and keeping it would
+be a word in the navigation whose meaning the model no longer contains — the collision `CONTEXT.md`
+exists to prevent, arriving by the exact route the map's Notes warn about. It is **`Revise`**, the
+concept's own verb.
+
+Three nouns and one verb is the right asymmetry rather than an inconsistency: **three places you look,
+one place you act.** That is *"nothing the user does belongs on a view"* — the archive's own line, which
+decided that surface was a destination in the first place — read off the navigation bar.
+
+### What this answer contributes to *what is not built*
+
+- **A priority score, of any kind.** Named, with the archive's argument and the constant-input evidence.
+- **A progress bar**, inherited from *The goal-to-work edge* and drawn nowhere here.
+- **A distinct overdue treatment** beyond the age on the carried row — no badge, no section, no
+  sort-to-top.
+- **A backlog destination**, conditionally: the pre-registered remedy if `Offered` fails in use.
+- **Reordering by anything the app computes.** The order is set; the app does not have an opinion.
+
+### Consequences this answer spends
+
+- **`SALVAGE.md` is untouched.** No entry consumed. The schedule engine and the cascade are used exactly
+  as ported; the one subtraction on this screen was already named by *The goal-to-work edge*.
+- **A dependency handed to *The input vocabulary***, which this ticket unblocks: **two properties must be
+  editable** — a root's order and a definition's expansion. *Set once* is a promise about a screen that
+  does not exist yet, and if editing them is awkward both this answer's order decision and its tree
+  decision degrade quietly. That is the honest cost of both, and it lands on the ticket that owns taps.
+- **Two words for the register**, neither asserted here: **`Offered`** (the band, and whether it is the
+  same word as *backlog* or a second one) and **`reading`** (a value in a metric's series, against the
+  archive's `observation`). Handed to *Register the vocabulary and the ADRs this map owes*, with `Revise`
+  as the surface's settled name.
+- **A fifth stale-survey shape, from this ticket's own first draft**: *a pattern inferred from the two
+  most recent days of a ten-day window.* The recorded day showed two wholesale dismissals and the ten
+  days showed the opposite, and it was the author and not the data that caught it. It sits beside the
+  fourth shape — a count read as a verdict across a window in which the feature did not exist.
+- **A confirmation *Does Reflect survive its own test?* has not got yet**: its `Rarely done` flag is
+  confirmed from the author's own use before being built, at 6/30 and 3/14, and the author names those
+  two routines unprompted. Its `Long-blocked` flag also becomes **load-bearing rather than
+  belt-and-braces** — Today draws no footnote for suppressed work, because a footnote is a soft
+  contradiction of *absent*, so if that flag is cut from the first slice, work can be removed from a
+  person's life with nothing anywhere reporting it.
+
+### What this answer does not decide
+
+- **Which gesture does any of it.** *The input vocabulary* owns that, including the one this screen
+  creates: a tap on an expanded routine's row, where the archive's leaf tap did nothing at all.
+- **Whether any of this is in the first slice.** `Offered`, the reading row and the note are three
+  separate lines *The first shippable slice* may draw differently.
+- **Reminders.** The fog patch that waited on Today is now sharp and graduates to its own ticket, with
+  one fact in hand: the archive shipped a `remind` flag on every schedule and **it is `0` on all 16**.
+
+### Prototype
+
+Four variants over the real day of 2026-09-24, the fourth being the composite of everything above.
+Captured to the throwaway branch `prototype/06-today` and removed from the working tree; it does not
+survive into the repo, per this ticket's own charter.
