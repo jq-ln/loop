@@ -239,6 +239,25 @@ ticket, not the summary of it — the failure does not need the archive to happe
   `SALVAGE.md`**: the four-paths claim is inherited from a docstring stale against its own enum, which
   has five reasons and seven call sites.
 
+- [What carries over from the running app, and by what route](issues/11-what-carries-over.md):
+  **the most speculative ticket on this map, and deliberately not formalized.** There is no route to
+  design — the back-fill is manual and happens after the fact: once the new app runs, comb through
+  what the old one tracked, make a place for what is still wanted, and write SQL inserts against the
+  new database. So **the new app builds no import feature and this makes no claim on the first
+  slice**; "migration from the first Loop" stays permanently unbuilt rather than deferred, because
+  it never becomes a feature. Nothing of the old schema enters the new app. Worth carrying, as
+  named, is **the whole live metric surface plus one bare root** — five weight readings, two rating
+  series of seven, and wake/sleep **times that live in `occurrence.completed_at` and in no
+  observation**, which is *Observability*'s `RoutineTimes` group and why it never held a row. The
+  three check-ins need no routine around them; **Scale Degree is cut**. The trap for whoever writes
+  the inserts: `completed_at` is set on **125 rows of which only 68 are `DONE`**, so selecting on the
+  timestamp rather than the status manufactures two `AUTO_CLOSED` weigh-ins on the travel days and
+  runs the weight series three days past its real end. **Amends 01** — a definition is archived,
+  never deleted, argued from the one delete in ten days that left occurrence 103 pointing at nothing
+  while `archived_at` stayed null on all 42. **Amends 04** — `SCALE_1_5` is deleted, there being zero
+  rows to decode. **Amends `SALVAGE.md`**, stale against the code: `display_name` *is* back-filled
+  onto pending rows, and the true rule is that a finished run keeps the name it was done under.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
@@ -263,3 +282,7 @@ ticket, not the summary of it — the failure does not need the archive to happe
   not a step on this map's route to the sketch, and it straddles the owner-only boundary, so it is
   ticketed on the map that owns how the repository is kept: [Rename the project-level concept:
   GOALS.md becomes CRITERIA.md](../post-mortem/issues/23-rename-the-goals-document.md).
+- **The back-fill itself.** [What carries over from the running app, and by what
+  route](issues/11-what-carries-over.md) settled that it is hand-written SQL run once against the new
+  database, after the new app is up. It needs no design and nothing about it blocks the sketch, so it
+  is the rebuild's work and not a step on this map's route.
