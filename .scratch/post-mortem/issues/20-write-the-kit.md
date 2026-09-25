@@ -199,3 +199,46 @@ each looks like an accident:
 
 **No exception mechanism, deliberately** — no trailer, no override string, no allowlist. A wrong pattern
 is edited by the repository's owner in a commit that says why, the same knob-shape 11 gave the cap of 12.
+
+## Note after ticket 21: there is no ownership table
+
+21 resolved by refusing the artifact, so **three instructions in this ticket are retracted** and
+must not be executed as written:
+
+- **"Wire the ownership table"** (this ticket's fourth bullet). There is no table. An agent
+  transcribing that bullet would invent the artifact 21 refused.
+- **"The ownership table gains a row for `GOALS.md` owned by the human"** (from 15).
+- **"The ownership table gains a row for `PROCEDURE.md` owned by the human"** (from 17's amendment,
+  under *Two placement consequences* — the second consequence in that paragraph, about `CLAUDE.md`
+  losing its how-to-run-things prose, **stands**).
+
+Nothing is lost by the retraction and no replacement text is owed: `GOALS.md` and `PROCEDURE.md`
+already state their own bounds verbatim, in the paragraph between the H1 and the first H2, and that
+paragraph *is* the ownership declaration. `docs/agents/issue-tracker.md` already conforms as it
+stands. Ownership is expressed by each file about itself; `just owns` generates the index by reading
+those paragraphs, so the index cannot disagree with its sources.
+
+**Four artifacts to install, all transcribed verbatim from 21's answer:**
+
+1. **The `just owns` recipe**, making the day-one justfile six recipes: `start`, `check`, `land`,
+   `goals`, `adr`, `owns`.
+2. **A declaration check in `.githooks/pre-commit`**, placed **after** 11's path-resolution block
+   because it reuses that block's `$touched` and `governed()`. Extend `pre-push` in kind, as with
+   17's and 11's checks.
+3. **`CLAUDE.md`'s own declaration paragraph**, immediately after its H1. It states that `CLAUDE.md`
+   is the **residual owner** — it owns whatever no other file owns — which is what makes 11's
+   eviction rule executable at 2am instead of producing a new file.
+4. **An amended second paragraph of `## What may be written`**, replacing the one 11 confirmed. It
+   adds the `Folded: <claim> -> <file>` trailer, the residual-owner fallback, and the one clause of
+   the old table worth keeping: *where a document disagrees with the code, the code wins and the
+   document is a bug.*
+
+**One repair on transcription.** 11's confirmed `## What may be written` text reads *"The kit landed
+with 9"*. 11's own later correction sets the day-one count at **8, headroom 4**. Transcribing
+verbatim lands the wrong number, so correct it to 8 — and the final pass reports the real landed
+count in the commit message regardless.
+
+**A new commit trailer to know about.** `Folded: <claim> -> <file>`, owed only on a commit that folds
+a claim because the cap refused a file. At 8 of 12 it cannot fire on day one; it exists so that
+`git log --grep='^Folded:'` later says whether the cap is mis-sized. It joins `Oversized:` (17) as
+the kit's second trailer, and like it, has no exception mechanism.

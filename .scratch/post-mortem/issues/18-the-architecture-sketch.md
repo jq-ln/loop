@@ -98,3 +98,20 @@ product. 13 recorded it without acquiring product scope, and the only consequenc
 restoring the declaration validator as a port pointer. This ticket is where it actually bears, and
 `SALVAGE.md`'s first prohibition is the test it must pass: a seam whose caller does not ship
 alongside it is not a seam yet.
+
+## Note after ticket 21
+
+One requirement, not a decision made on this ticket's behalf. The sketch is a governed file inside
+11's perimeter, so it carries a **declaration paragraph**: the text between its H1 and its first H2
+says what the sketch owns, and names the file that owns what it does not. `just owns` generates the
+ownership index by reading exactly that paragraph, and `.githooks/pre-commit` refuses a commit
+touching a governed file that lacks one.
+
+There is no ownership table to add a row to — 21 refused it, on the grounds that a row would be a
+second owner for a claim the file already makes about itself. Write the sentence here rather than
+leaving ticket 20 to compose one; 20's rule is transcription, and a ticket whose answer lacks
+finished text is a defect in its inputs.
+
+A likely boundary to state, given this ticket's own contents: the sketch owns the **shape** the
+rebuild starts from, and not what gets built next (no owner in the kit — that is the rebuild's), not
+the terms (`CONTEXT.md`), and not what to port (`SALVAGE.md`).

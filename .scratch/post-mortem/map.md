@@ -146,6 +146,28 @@ deliberately separated here.
   invalidate, so the instrument the old repo spent at 195 SHAs is not spent here at all. **14 is
   unblocked.**
 
+- [How ownership of a claim is expressed, and where it lives](issues/21-how-ownership-is-expressed.md):
+  **there is no ownership table, and nothing replaces it as a document.** Each governed file states
+  its own bounds in the paragraph between its H1 and its first H2, and **`just owns` generates the
+  index** from exactly those paragraphs, so it cannot disagree with its sources — 19's
+  refuse-the-index-file move applied to the governed corpus. The convention was already the practice:
+  15, 17 and `docs/agents/issue-tracker.md` each wrote that paragraph independently, which is why
+  retracting 20's *wire the ownership table* costs no text. **Ownership and editorship are split** —
+  the declaration says only *what may be written here*, while who may edit stays where it is
+  enforced, indexed from `PROCEDURE.md` — which dissolves the three "shapes" (15's human-only, 13's
+  asymmetric, 19's nobody) said to break an owner column: all three are mechanisms, and ADR
+  immutability is asserted rather than enforced anyway. The old table, re-derived, had **three**
+  columns and eighteen rows, and its `Changes when` column **never fired once** — the `docs/adr/` row
+  demanded the same commit as the code while all 75 ADRs were written on days 7–8, and two further
+  rows document their own violations in their own cells. The finding that carries the ticket:
+  **`CLAUDE.md` is the residual owner**, because an index with no bottom row has *write a new file*
+  as its real default, and that default is how 106 files happened. A claim is never discarded — with
+  headroom the file is a declared act, at the cap the claim folds and the commit carries a
+  **`Folded: <claim> -> <file>`** trailer whose frequency is the evidence the cap is mis-sized. The
+  2am test passes on the residual owner, not on the index; the index is what made its absence
+  visible. Checks are structural only, and `CLAUDE.md`'s residual ownership is labelled as resting
+  on nothing.
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
@@ -163,7 +185,10 @@ deliberately separated here.
   it makes the patch sharp enough to ticket for the first time. **Ticket 16 then applied the test rather
   than adding to it**: its entry rule carries no exception, no trailer and no override string, and none
   is owed, because the rule demands no act whose considered answer could be "none" — the fifth case, and
-  the first where the test was used to decline a mechanism rather than to justify one. **It stays fog by
+  the first where the test was used to decline a mechanism rather than to justify one. **Ticket 21
+  adds a sixth**, in the justifying direction: the `Folded:` trailer, owed where the cap refuses a
+  file and the claim folds into an existing owner instead — and it reuses 10's reading, that the
+  *frequency* of such records is the instrument rather than the record itself. **It stays fog by
   decision, not by fogginess** — the human ruled against ticketing it: no open ticket waits on generalising it, and
   filing it would grow the board this map exists to shrink. A later rule that needs the test cites
   it from here; nothing in the kit is blocked on generalising it further.
