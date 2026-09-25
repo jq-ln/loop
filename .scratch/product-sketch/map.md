@@ -47,13 +47,23 @@ citation of it is redacted at the point of quoting, in the form `<user>`, per `C
 has no mechanical backstop for prose and rests on the reading gate.
 
 **Every survey table in this map is suspect until re-derived.** Every ticket that carried one had it
-wrong, in three recurring shapes: a capability called *refused* that the archive had costed and
-explicitly retracted the stronger claim about; a field or path called *dead* that had a live
-consumer; and — the nastiest, because it is what a working feature looks like — a field **validated
-on the way in and read by nothing**, where a parser, a validator and passing tests all exist and no
-consumer does. Re-derive a ticket's archive claims from source before grilling on them, and record
-the corrections in the ticket, because the corrections and not the original claims are what the
-answer is built on.
+wrong. Three shapes recur in the archive's **code**: a capability called *refused* that the archive
+had costed and explicitly retracted the stronger claim about; a field or path called *dead* that had
+a live consumer; and — the nastiest, because it is what a working feature looks like — a field
+**validated on the way in and read by nothing**, where a parser, a validator and passing tests all
+exist and no consumer does.
+
+**Two more recur in the preserved data, and both are a number read as a verdict.** A **count read
+across a window the feature did not exist in**: the journal shipped on the fifth day of a ten-day
+window and both its entries fall on the last two, so *two entries in ten days* is not a use record at
+all. And a **pattern inferred from the most recent days** of that window: the copy's own day showed
+two routines dismissed wholesale, and across ten days the opposite is true — the judgement is
+per-step, in 14 of 23 dismissals. The second was caught by the author and not by the data, which is
+the thing to take from it: having the database open is no defence, because a query answers the
+question you asked it.
+
+Re-derive a ticket's archive claims from source before grilling on them, and record the corrections
+in the ticket, because the corrections and not the original claims are what the answer is built on.
 
 **The archive is not the only stale survey.** *Observability* relayed a claim about another live
 ticket's contents without reading it, and was corrected by the session working that ticket. Read the
