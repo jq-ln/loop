@@ -308,16 +308,25 @@ ticket, not the summary of it — the failure does not need the archive to happe
   owed at port time (exact alarms) and hands 12 the **`timed` collision**: *has a time of day* and
   *has a stopwatch*, live, in the same package.
 
+- [The first shippable slice, and what is deliberately not built](issues/09-the-first-slice-and-what-is-not-built.md):
+  **work, Today, metrics, and principles as the only citation target** — three destinations, Today ·
+  Goals · Metrics. The ticket's own candidate could not exist: 02's gate needs a citation target and 11
+  found the metric surface is what the author still uses, so **the gate and the readings are the
+  floor**. Goals proper, prerequisites and `Revise` are cut; prerequisites go **with** `long-blocked`,
+  so 05's coupling cannot bite. `revision` ships with principle as its only subject, to feed 13's
+  decay falsifier from day one; the day's `note` carries *the measurement was not possible* until
+  `Revise` exists; a snoozed untimed run notifies at its anchor. **No onboarding** — the first capture
+  is the first act. *In a user's hands* is 11's cutover; the second slice is triggered by evidence
+  naming one absence, and `Offered`'s falsifier runs by hand in the report-back session. **Not built
+  lists absences only**, one line per thing a user would notice missing — thirteen of them;
+  refusals belong to `PRODUCT.md`, the importer among them, and the plugin platform stays with
+  `ARCHITECTURE.md`'s own section. Names four non-goal candidates and writes none.
+
 ## Not yet specified
 
-- **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
-  and the result is imported; what that artifact *is* — a paste, a file, a format — waits on the
-  goal-to-work edge.
-- **Onboarding and the empty state.** What the app looks like with nothing in it. Waits on the
-  slice, now carrying [Do goals serve principles?](issues/13-goals-serve-principles.md)'s note that
-  day one is zero principles with everything unassigned, so setup asks for no authoring at all — and
-  [When is the app allowed to interrupt?](issues/14-when-may-the-app-interrupt.md)'s, that it asks for
-  no permission either, the notification permission being attached to the first time of day set.
+Nothing. [The first shippable slice](issues/09-the-first-slice-and-what-is-not-built.md) cleared
+the last two patches: the empty state is resolved in its answer, and the import format for a
+decomposition folds into its first *Not built* line.
 
 ## Out of scope
 

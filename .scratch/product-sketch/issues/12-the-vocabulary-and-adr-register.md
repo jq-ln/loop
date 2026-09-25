@@ -101,3 +101,9 @@ scoped to what *this* map produced and does not revisit whether the practice exi
 Amended 2026-09-25 by [Do goals serve principles?](13-goals-serve-principles.md), at the author's
 direction: this ticket is widened from register-only to **register plus one write**, and gains the
 principles ADR at a moment that is here rather than at port time.
+
+2026-09-25, from [The first shippable slice](09-the-first-slice-and-what-is-not-built.md): **no ADR
+added** — a cut is not a decision against a ticket, building each cut line is what costs one. Two
+inputs for the re-derivation: `revision` ships scoped to a single subject, `principle`, and the slice
+cuts `goal` proper while keeping the Goals destination, which holds principles only — a name and its
+contents that disagree in slice 1, worth judging against `CONTEXT.md`'s bar.
