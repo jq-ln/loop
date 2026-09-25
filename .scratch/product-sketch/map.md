@@ -147,6 +147,30 @@ ticket, not the summary of it — the failure does not need the archive to happe
   has ever held a row**, and a weigh-in gap that read as abandonment and was travel — a third cause
   of a gap, *the measurement was not possible*, that is a refusal by nobody and is recorded nowhere.
 
+- [Does Reflect survive its own test?](issues/05-does-reflect-survive.md): **it does not — the stage
+  it was named for does, and it is not the stage the archive gave it.** The journal fails the
+  two-claims test, and the archive had already run that test and shipped it having failed: *"there is
+  no rule in a journal to test on the JVM."* What replaces it is the loop's return edge — **a goal
+  changes because of what happened** — and the hole it fills is exact: 02 gave a goal satisfaction,
+  abandonment and retraction, and **no way to change one while keeping it**. `revision` is the
+  missing verb, a dated attested change whose subject is a goal, a definition or a target; **not** a
+  `review` session entity, which is a container shipping before its contents. The engine is the
+  **assembly** of flags already specified across three tickets and owned by none — nine of them,
+  reading both logs under both families' rules — and Reflect is where the act happens, not a place
+  that routes, on the archive's own unplugging note: *"nothing the user does belongs on a view."* It
+  **detects and names a remedy, never authors content**, there being no model in the app. Adds
+  **`stalled`** beside 02's `dormant`, because someone stuck at 8 pushups daily is maximally active
+  and every existing signal reads them as healthy; **refuses an optional target date**, with a
+  falsifier. A flag is **dismissed with a dated reason**, which is where *Observability*'s third
+  cause of a gap — *the measurement was not possible* — is finally recorded, and which gives the
+  revision log a mechanical consumer from day one. **Signal-driven, cadence explicitly refused, so
+  reflection is not a Today row.** The journal survives as **raw material**, prose landing on a
+  revision or against the day under **one `note` with a discriminated subject** — knowingly
+  overturning the archive's *"never merge the two"*, whose stated reason was storage-shaped. Flags
+  **Reflect as a consumer of** [Do goals serve principles?](issues/13-goals-serve-principles.md):
+  goal-to-goal prerequisites are that ticket's to authorise, and the detection is invariant either
+  way.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
@@ -154,6 +178,9 @@ ticket, not the summary of it — the failure does not need the archive to happe
   goal-to-work edge.
 - **Reminders and notification behaviour.** The first repo had a `remind` flag on every schedule and
   this map has not yet touched when the app is allowed to interrupt. Sharpens once Today is settled.
+  Inherits one constraint already: *Does Reflect survive its own test?* made reflection
+  signal-driven with a dismissable flag and refused a cadence, so whatever this becomes has a
+  worked case where the app declines to interrupt on a schedule.
 - **Onboarding and the empty state.** What the app looks like with nothing in it. Waits on the slice.
 
 ## Out of scope

@@ -43,6 +43,10 @@ survey table in every ticket that carried one, including one this session wrote 
 | `metric` / `source` | [04](04-observability-prescriptive.md) | Split from `question`, which narrows to one source |
 | `target` / `undecided` | [04](04-observability-prescriptive.md) | The third verdict, and the dormancy signal for the threshold family |
 | `archived` | [04](04-observability-prescriptive.md) | A metric's equivalent of `abandoned` |
+| `revision` | [05](05-does-reflect-survive.md) | A dated attested change to a goal, definition or target — the verb 02 lacked |
+| `note` | [05](05-does-reflect-survive.md) | One concept with a discriminated subject, replacing three text boxes; overturns the archive's *never merge the two* |
+| `stalled` | [05](05-does-reflect-survive.md) | Evidence with no movement — a third inactivity predicate beside 02's `dormant` |
+| `flag` / `dismissal` | [05](05-does-reflect-survive.md) | What reflection raises, and the dated reason that suppresses it |
 
 `CONTEXT.md`'s own bar is that a term earns an entry once it is in use **and has been mistaken for
 something else**. Two already clear it: `gate` collided three ways, and `metric`/`question` mean one
@@ -57,8 +61,15 @@ thing in the archive and two here. The rest are judged at write time, not admitt
   direction. What it records is the trade-off, not the rule: a windowed count is the most natural
   goal a person states, and the app refuses to compute it from measurements because the measurement
   log cannot say who caused a gap.
+- **Whether `occurrence.note` moves off the occurrence**, from
+  [05](05-does-reflect-survive.md) — written at **port time**, the same moment as 01's rename, and
+  **only if** the single-`note` decision lands as a move rather than an addition. `occurrence.note`
+  is a column on a ported entity, so relocating it is a change to the definition/occurrence split.
+  Flagged rather than resolved by that ticket, and the one candidate found so far for the bullet
+  below.
 - Any **contradiction with the ported engine**, per the map's Notes — an ADR, never a silent
-  redesign. None found so far, which is itself worth stating when this resolves.
+  redesign. None found so far, which is itself worth stating when this resolves — with the
+  `occurrence.note` question above as the one live candidate.
 
 ### What this ticket does
 
