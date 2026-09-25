@@ -171,16 +171,37 @@ ticket, not the summary of it — the failure does not need the archive to happe
   goal-to-goal prerequisites are that ticket's to authorise, and the detection is invariant either
   way.
 
+- [Today: what is on it, and how is it ordered?](issues/06-today.md): **Today is the frontier, and the
+  frontier is not the schedule's output** — the schedule's claim and what is merely worth doing are
+  different claims on **one** screen, because a backlog behind a destination is what G1 rules out. Six
+  classes of row; blocked work **absent**; reflection not present at all. **The order is the
+  structure's and there is no score** — `ScoreCalculator` was not weighed and rejected, it **never
+  ran**: one caller in the whole archive, its own unit test, and `importance` constant at 1 across 42
+  definitions with `boost` never once set. **Expansion is a property of the definition**, set once like
+  the root order, which is what the author's correction bought: the act is a per-step judgement, **14
+  of 23 dismissals are at step level**, and the run log splits the routines into two classes wanting
+  opposite shapes — Night Routine's root never once dismissed whole, Clean Bathroom's steps never once
+  dismissed individually. Hoisting is refused because `Sweep` and `Mop` are steps of both cleaning
+  routines. **A miss is a line, not a row**, and carry-forward's existing opt-in replaces an invented
+  cap. **`Offered` is the whole uncited backlog** at the foot of Today, which discharges 01's
+  constraint so capture may default to unscheduled — **adopted provisionally**, with 02's
+  monotonic-growth falsifier and 05's backlog-dodging flag as the pre-registered test and a backlog
+  destination as the pre-registered remedy. **A reading is a row and it ticks**, independent of any
+  run: the archive's *"a row that can never be ticked reads as work dodged"* does not reach a reading,
+  and independence is what stops the 09:07 dismissal that auto-closed *Weigh-in* from destroying the
+  day's weight unrecorded and unreported. **The day's note is written on the app bar's date**, the day
+  having no row and deserving none. **Four destinations — Today, Goals, Metrics, `Revise`** — and it
+  is *not* called Reflect, that being the analogy's word for a pillar whose concept was refused; three
+  nouns and one verb, three places you look and one place you act. Hands *The input vocabulary* a
+  dependency (two properties must be editable) and the register two words. **Adds a fifth
+  stale-survey shape**, from its own first draft: *a pattern inferred from the two most recent days of
+  a ten-day window*, caught by the author and not by the data.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
   and the result is imported; what that artifact *is* — a paste, a file, a format — waits on the
   goal-to-work edge.
-- **Reminders and notification behaviour.** The first repo had a `remind` flag on every schedule and
-  this map has not yet touched when the app is allowed to interrupt. Sharpens once Today is settled.
-  Inherits one constraint already: *Does Reflect survive its own test?* made reflection
-  signal-driven with a dismissable flag and refused a cadence, so whatever this becomes has a
-  worked case where the app declines to interrupt on a schedule.
 - **Onboarding and the empty state.** What the app looks like with nothing in it. Waits on the slice.
 
 ## Out of scope
