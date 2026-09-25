@@ -68,11 +68,40 @@ life ambitions might not.
   rather than a structural accident. Same shape as the uncited backlog for work, and the same
   falsifier is available.
 
-- **One principle per goal, or several?** Where the structural cost lands, and it reaches a resolved
-  ticket: 03's edge table has citation as a **tree, single parent**. A goal plausibly serves two
-  principles at once. Allow several and the top of the tree becomes a DAG and 03's table changes;
-  allow one and some calls are arbitrary. Single-parent is the cheaper answer and keeps the unserved
-  signal sharp, at the cost of forcing a choice.
+- **May a goal serve several principles?** A goal plausibly serves two at once. The cost here is
+  smaller than it first appears, and the reason is 03's own refusal rule: **a prerequisite naming a
+  principle is dead on arrival**, for the same reason one naming the root was — it can never be
+  satisfied. So no node above a goal can ever be blocked, multi-parenting at this level never
+  creates an ambiguous inheritance path, and 03's rule holds unchanged. The edge table's first row
+  changes shape without changing behaviour. The remaining cost is the unserved signal: a goal filed
+  under four principles serves all four, and the emptier a principle can be kept the more the signal
+  is worth.
+
+- **May a goal cite several goals?** This is the question that reaches 03's engine, and it is where
+  the structural cost actually lands. Blocking **inherits down the citation tree**, so a definition
+  citing two goals with one of them blocked has no unambiguous answer today.
+
+  Worked through, the semantics have to be **AND**: a goal is *purpose*, not readiness, so work
+  serving both A and B is legitimately doable for B's sake while A waits — blocked only if every
+  citation path is blocked. But that is precisely the leak. Under AND, **adding a second unblocked
+  citation becomes a way to unblock work**, so a goal-level prerequisite stops meaning *this is not
+  ready* and starts meaning *this is not ready via this parent*, which is not what anyone means by
+  it. A DAG here quietly makes goal-level prerequisites advisory.
+
+  So: single-parent on goal→goal keeps them meaningful. If this goes multi-parent anyway, the honest
+  move is to **refuse goal-level prerequisites outright** and let only definitions carry them,
+  rather than shipping a rule that can be routed around.
+
+  The asymmetry is what makes the split clean, and it is worth stating because it looks like a
+  contradiction: the **step** edge has been a many-parent DAG all along and is entirely unaffected,
+  because a step edge carries no readiness. Re-derived from the live database for this ticket —
+  29 `task_link` rows over 26 distinct children, of which **three have two parents each**, and
+  nothing about that is leaky. It is specifically *readiness inherited through a many-parent edge*
+  that breaks.
+
+  Both bullets above are the session that resolved *The goal-to-work edge* arguing against its own
+  ticket's shape annotation, unprompted. 03's headline survives either answer — the decomposition
+  edge is still the citation edge read backwards, which is as true of a DAG as of a tree.
 
 - **Where does work hang?** 02 required every definition to cite a goal, defaulting to the root, and
   read the two piles differently: *"goals on the root are unexamined, work on the root is life."*
