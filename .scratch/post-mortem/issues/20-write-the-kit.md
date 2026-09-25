@@ -1,7 +1,7 @@
 # Write the kit into this repo
 
 Type: task
-Status: claimed
+Status: resolved
 Blocked by: 10, 11, 12, 13, 16, 17, 18, 19, 21
 
 ## Question
@@ -299,3 +299,194 @@ them:
 
 Both are counted in the day-one eight and both are reported in the final commit message, so neither can
 be quietly dropped. Drafting them here is what this ticket exists to refuse.
+
+## Answer
+
+AFK session, 2026-09-24, resolved in one pass and committed to `main` as `33abe66`, with one
+follow-up correction as `c22e6e4`. Two decisions were put to the user and both recommendations were
+accepted; everything else followed from the nine resolved tickets or from measurement against this
+tree. No conclusion here was composed from a gist.
+
+**The kit landed at 7 standing-claim files of 12, headroom 5** — `GOALS.md`, `PROCEDURE.md`,
+`SALVAGE.md`, `ARCHITECTURE.md`, `CLAUDE.md`, `CONTEXT.md`, `docs/agents/issue-tracker.md` — and the
+count is in the commit message, as 11 required. The day-one estimate was 8. `README.md` is the
+difference, and it is now [Write the README](22-the-readme.md) rather than a file drafted here.
+
+### What was transcribed, and verified as transcribed
+
+Each block was extracted from its ticket programmatically, and where the block is a whole file it
+was diffed against the written file rather than proofread by eye.
+
+| Artifact | Source | Result |
+|---|---|---|
+| `GOALS.md` | 15 | byte-identical, 39 of 40 lines |
+| `ARCHITECTURE.md` | 18 | byte-identical, 42 lines, no cap |
+| `.gitignore` | 16 | byte-identical, 15 lines |
+| `pre-commit` entry rule | 16 | verbatim |
+| `pre-push` entry extension | 16 | verbatim, inside the existing range loop |
+| `pre-commit` budget and path checks | 11 | verbatim |
+| `pre-commit` declaration check | 21 | verbatim, after 11's path block as specified |
+| `owns` recipe | 21 | verbatim |
+| `adr` recipe | 11 | verbatim, widened per 19 |
+| the `core.hooksPath` assertion | 16 | verbatim |
+| `CLAUDE.md` declaration paragraph | 21 | verbatim |
+| `## What may be written` | 11 + 21 | 21's amendment substituted for 11's second paragraph |
+| `## What may not enter the repo` | 16 | verbatim |
+| `PROCEDURE.md` | 17 + 10 | 17's text with 10's two amendments, 59 of 60 lines |
+| `SALVAGE.md` | 13 + 12 | 13's text with 12's two entries, 62 lines |
+
+Two line counts in the tickets' prose are wrong against their own blocks, and the blocks govern: 18
+says `ARCHITECTURE.md` is 40 lines and its block is 42; 16 says `.gitignore` is 14 and its block is
+15. Neither file has a cap, so nothing turns on it. 12's arithmetic was exact: `SALVAGE.md` landed
+at 62.
+
+**`SALVAGE.md`'s ceiling is lifted to 65**, which 12 handed to this ticket as its call, on 12's
+recommendation and on the user's recorded input that the 60 exists to clamp always-loaded files.
+`PROCEDURE.md` stays at 60. Nothing was trimmed.
+
+### Where mechanism was implemented rather than transcribed
+
+The transcription rule binds *conclusions*. Several tickets specified a mechanism precisely without
+writing the shell for it, and writing it is this ticket's stated job — placement and mechanism.
+Those: 17's worktree cap and size cap, 19's citation grep, 13's line-cap check, 15 and 17's
+edited-alone hook, and the `start` / `claim` / `land` / `drop` / `goals` recipes. Each is
+implemented to the letter of the ticket that specified it, and each names that ticket in a comment.
+
+**The edited-alone hook fires on modification, not on the commit that adds the file.** There is no
+goal to change before `GOALS.md` exists, and the kit had to land in one commit. That is the shape of
+11's budget check, which fires only on an add, and of 18's gate, which reads the staged copy — an
+existing pattern rather than an exception invented for the landing.
+
+**The justfile has eight recipes, not six.** 10 says it grows from four to six by adding `claim` and
+`drop`; 21 says six by adding `adr` and `owns`. Each count was written without the other. The union
+is `start`, `claim`, `check`, `land`, `drop`, `goals`, `adr`, `owns`.
+
+### Five corrections to the inputs, argued rather than applied quietly
+
+1. **The commit-size cap is in `.githooks/commit-msg`, not `pre-commit`.** 17 and this ticket both
+   place it in `pre-commit`, which cannot work: `pre-commit` runs before the message exists.
+   Measured rather than reasoned — on a second commit `pre-commit` reads the *previous* commit's
+   message out of `COMMIT_EDITMSG`, so a cap checked there is satisfiable by an earlier commit's
+   trailer. That is a check passing on stale data, which is worse than no check and is exactly the
+   class this map has spent itself cataloguing. `commit-msg` receives the message as `$1` while the
+   index is still staged, so both halves of the rule are available at one moment. `pre-push` carries
+   the per-commit twin.
+
+2. **19's citation pattern is dropped and replaced.** 19 specifies `ADR ?[0-9]{4}`, taken from the
+   first repo's forensics. Three measured objections: under 10's date-and-slug naming this repo's
+   ADRs carry no number, so the pattern **cannot match a citation of any ADR that will ever exist
+   here**; it reports 179 hits on the archive references in `.scratch/`, failing 16's install
+   budget; and it matches the ADR number quoted inside 16's own verbatim hook comment, so it would
+   have to except itself — the defect 16 states it was designed to avoid. Installed instead:
+   `docs/adr/[0-9A-Za-z]`, which matches a reference to a file *under* `docs/adr/` and not the bare
+   directory `CLAUDE.md` names. It is self-safe the way 16's patterns are, covers both halves of
+   19's direction rule in one line, and reports zero outside `.scratch/`. `.scratch/` is excluded
+   because every reference there is to the **first** repo's ADR files, quoted as evidence in a dated
+   record, pointing at nothing this repo can delete.
+
+3. **11's path-check token filter is narrowed to skip placeholders and absolute paths.** As written
+   it refused `docs/agents/issue-tracker.md` on eight tokens — `.scratch/<effort>/map.md` and its
+   siblings — which are a naming convention, not a claim about this tree, in the one file this
+   ticket was told to leave as it stands. The filter already skipped `*` and `?` for that reason;
+   angle brackets join them, and so do absolute paths, which a governed document has no business
+   citing. **The cost is stated in the hook**: 11's worked example, the generated `domain.md`,
+   asserted `src/<context>/docs/adr/` and `CONTEXT-MAP.md`; under this filter the first is skipped
+   and only the second fires. The defect is still caught, by one token instead of two. 11's claim to
+   have checked this file found one dead reference and missed eight.
+
+4. **Two stale claims in 11's confirmed `CLAUDE.md` text.** *"The kit landed with 9"* became 8,
+   which 21 flagged for repair here; the real landed count of 7 is in the commit message. And 11's
+   **ADRs are leaves** paragraph is restated in 19's confirmed words as the direction rule, dropping
+   *"its number never reused"* — which 10 established has no referent under date-and-slug naming,
+   and which 19 rewrote without handing back replacement `CLAUDE.md` text.
+
+5. **The merge denial fired on the session that installed it**, and was narrowed in `c22e6e4`. Its
+   first pattern matched the raw command string, so a command whose heredoc merely wrote the words
+   into a document was refused — and that refusal blocked the command that would have fixed it.
+   Narrowed to a command position rather than excepted, per 16. Testing then found two more defects
+   reading had not: a word boundary caught `merge-base`, which the landing recipe itself runs, and a
+   backtick was wrongly treated as a command position. Eleven cases now behave as specified. This is
+   the kit's first piece of evidence about itself, and it says the coarse version of a harness-side
+   rule is the one that gets switched off.
+
+### The two input defects, and how each was settled
+
+Both were raised to the user rather than papered over, which is what this ticket exists to do.
+
+- **`CONTEXT.md` had no confirmed text and could not be omitted.** Three confirmed files cite it in
+  backticks — `GOALS.md`, `ARCHITECTURE.md` and `CLAUDE.md` — so 11's own path check refuses the kit
+  without it. The user chose to have it written to its forced minimum here: an H1, a declaration
+  paragraph derived from what those three files already say it owns, and 13's one confirmed entry,
+  the module/plugin disambiguation. 12's two refusals are honoured — neither *bake-off* nor *trial*
+  appears. **This is the one place this ticket authored prose**, and it is labelled as such.
+- **`README.md` is authored by no ticket at all.** 21's only substantive mention exempts a file that
+  did not exist. It is cited by nothing, so it blocks nothing, and a pitch to a stranger about the
+  author's own work is not transcribable from a post-mortem. Deferred; the count drops to 7 and the
+  commit says so.
+
+### The undeclared blocker
+
+16's install budget is that a check joins the hook only if it reports zero on the tree as it stands.
+The entry rule reported **17 home-path hits, every one in
+`.scratch/post-mortem/research/02-issues-raw.json`** — so the kit's headline mechanism could not be
+installed while that file was indexed, and this ticket does not list 14 as a blocker. Split on the
+user's decision, along the line 16 itself draws: the **untrack** is 16's own decision and is
+reversible, so it happened here, the file moved to `../old_loop-issues-raw.json`; the **history
+excision** is the irreversible instrument 16 and 17 both reserve as the owner's gesture, and remains
+ticket 14's.
+
+Two repairs followed, both deletions, as 16 specified: the markdown link at
+`issues/02-issue-lifecycle.md:26` and the raw-evidence line at `research/02-issue-lifecycle.md:8`.
+11's repair also landed — the five triage role strings folded into `docs/agents/issue-tracker.md`'s
+`Status:` bullet, and the `triage-labels.md` citation deleted. One line, one owner, no new file.
+
+### Two additions with no ticket behind them, both minimal
+
+- **`docs/adr/.gitkeep`.** 11's confirmed `CLAUDE.md` text cites `docs/adr/` in backticks and the
+  path check reads the working tree, so without a tracked placeholder the kit passes here and fails
+  on a fresh clone. Not a `*.md` file; spends no headroom.
+- **`.claude/deny-merge.py`.** 17 specifies a `PreToolUse` deny rule; the settings file holds both a
+  `permissions.deny` list and a hook calling this script, because a prefix match is evaded by a
+  compound command and the script reads the whole command string.
+
+### The final pass
+
+Every content check reports zero on the tree as it stands, which is what makes whole-index checking
+safe. `pre-commit` exits 0 on the landing commit with all ten of its blocks live.
+
+| | |
+|---|---|
+| Standing-claim files | **7 of 12**, headroom 5 |
+| `GOALS.md` | 39 / 40 hard |
+| `PROCEDURE.md` | 59 / 60 hard |
+| `SALVAGE.md` | 62 / 65 hard |
+| `CLAUDE.md` | 80 / 200 guidance |
+| `ARCHITECTURE.md`, `CONTEXT.md` | no cap, by decision |
+| Home-path class | 0 tree-wide |
+| Personal-email class | 0 tree-wide |
+| ADR-citation class | 0 outside `.scratch/` |
+
+`PROCEDURE.md` was checked against its inherited condition — it earns its ceiling only by pointing
+at mechanisms rather than restating them. It names the hook, the harness and the command file, and
+describes none of them. `CLAUDE.md` carries no *how to run things* prose, per 17's rule that a
+recipe deleting no prose has not earned its place; the eight recipes are the command surface and
+`just --list` is their index.
+
+### Limits, and what is not here
+
+- **19 specifies a hard line cap on an ADR body and no enforcement point for it.** Not invented
+  here. The scaffold states the number; nothing checks it. Raised rather than drafted around, the
+  same as the two file defects.
+- **21's 2am worked example is not installed.** The claim it walks through — git's default cleanup
+  silently strips a subject beginning with `#` — is real and costly, but 21 used it to demonstrate
+  the residual owner, not to instruct that it be written. It is the human's to add, and under 21's
+  answer that is a two-line edit with no trailer owed.
+- **The size cap is bypassable by `--amend`**, which sees an empty staged diff. The `pre-push` twin
+  catches it before anything leaves the machine, which is where 16 already puts the answer to
+  `--no-verify`.
+- **`check` ships empty**, by 17's decision, so the local gate proves nothing until the rebuild
+  decides the toolchain. The landing recipe shells out to the review command and tolerates its
+  failure rather than blocking, since the review returns no pass and no fail by design.
+- **Nothing here was run end to end.** The hooks were exercised against real staged content and the
+  denial against real payloads, but no worktree was opened, no ticket landed through the recipe, and
+  no ADR written. The rebuild's first ticket is where the recipes are actually tested.

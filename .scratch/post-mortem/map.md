@@ -186,6 +186,29 @@ deliberately separated here.
   `PROCEDURE.md`'s 59th line and a `CLAUDE.md` mention are both **refused on the record**. Corrects
   this ticket's own body: **the day-one count is 8, not nine.**
 
+- [Write the kit into this repo](issues/20-write-the-kit.md): **the kit is committed**, at `33abe66`,
+  **7 standing-claim files of 12 rather than the estimated 8** — every whole-file transcription
+  diffed against its source block rather than proofread, so `GOALS.md`, `ARCHITECTURE.md` and
+  `.gitignore` are byte-identical to 15's, 18's and 16's text, and `PROCEDURE.md` and `SALVAGE.md`
+  land at 59/60 and 62/65 with 10's and 12's amendments applied. Ten checks in `pre-commit`, the
+  size cap in `commit-msg`, `pre-push` extended in kind, a harness-side denial on agent merges, and
+  **eight recipes rather than six** — 10 and 21 each counted the justfile without the other. Two
+  input defects were **raised rather than drafted around**, which is what the ticket existed to do:
+  `CONTEXT.md` had no confirmed text *and could not be omitted*, since three confirmed files cite it
+  and 11's own path check refuses the kit without it, so it was written to its forced minimum on the
+  user's decision; `README.md` is authored by no ticket at all and became
+  [Write the README](issues/22-the-readme.md). **Five corrections, each argued**: the size cap moved
+  to `commit-msg`, because `pre-commit` cannot see the message and demonstrably reads the *previous*
+  commit's; 19's numeric ADR pattern **dropped** as unable to match any citation this repo's naming
+  can produce, while failing its own install budget at 179 hits and having to except 16's verbatim
+  comment; 11's path filter narrowed to skip placeholders, since as written it refused the one file
+  20 was told not to touch, on eight tokens 11 had claimed to check; and two stale claims in 11's
+  confirmed text repaired. The undeclared blocker was real — 16's entry rule reported 17 hits, all in
+  the issue dump — so the **untrack happened here and the history excision stays 14's**, the owner's.
+  **The kit's first evidence about itself**: the merge denial fired on the session installing it, and
+  blocked the command that would have fixed it, so it was narrowed at `c22e6e4` — the coarse version
+  of a harness-side rule is the one that gets switched off.
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
