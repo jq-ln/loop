@@ -149,6 +149,10 @@ goals:
 # instrument that says the bar is mis-sized. It is generated from the
 # directory, so it is not a file and cannot go stale.
 # Find ADRs: no argument lists them, `new <slug>` scaffolds one, else search.
+# The attribute is what hands the arguments to $1 and $2. Without it the body
+# saw none, so `new` fell through to listing and every search returned nothing,
+# silently, from the day the recipe landed.
+[positional-arguments]
 adr *args:
     #!/usr/bin/env bash
     set -uo pipefail
@@ -175,10 +179,12 @@ adr *args:
         echo "$out"
         ;;
       *)
-        # Path first, then text. The path case is what `just start` consumes.
-        grep -rls -- "$1" docs/adr/ 2>/dev/null | sort | while read -r f; do
+        # A path or any text. `just start` runs its own grep and does not call this.
+        hits=$(grep -rls -- "$1" docs/adr/ 2>/dev/null | sort || true)
+        test -n "$hits" || { echo "no ADR mentions $1"; exit 0; }
+        while read -r f; do
             printf '%s  %s\n' "$f" "$(sed -n '1s/^# //p' "$f")"
-        done
+        done <<< "$hits"
         ;;
     esac
 

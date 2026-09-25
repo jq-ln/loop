@@ -192,3 +192,7 @@ cannot miss it.
   recipe's comment says `just start` consumes the path case, but it does not: `start` greps
   `docs/adr/` itself and is unaffected. So the damage is limited to the two human-facing uses, and
   the comment is stale. Not fixed here, because the justfile is not this ticket's file.
+
+2026-09-25, after resolution: **`just adr` is fixed on `main`**, at the author's direction. A
+`[positional-arguments]` attribute on that recipe alone, the stale comment about `just start`
+corrected, and a search that finds nothing now says so and exits 0.
