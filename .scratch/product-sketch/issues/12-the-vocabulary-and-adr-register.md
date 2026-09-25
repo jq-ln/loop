@@ -67,19 +67,37 @@ thing in the archive and two here. The rest are judged at write time, not admitt
   is a column on a ported entity, so relocating it is a change to the definition/occurrence split.
   Flagged rather than resolved by that ticket, and the one candidate found so far for the bullet
   below.
+- **Why the top of the goal tree is a set of principles rather than a single root**, from
+  [13](13-goals-serve-principles.md) — **written by this ticket, not deferred.** The only entry on
+  this list whose moment is here. 01's and 05's are genuinely undecidable until port time (05's is
+  explicitly conditional on how the single-`note` decision lands); this one is fully decided and
+  nothing at port time can change it, so deferring it would borrow their reason without their cause
+  — the failure recorded at the top of this ticket. It records the trade-off: 02's zero-friction
+  default parent, given up to buy an orientation predicate that can fail. Cites **G1**, names no
+  path.
 - Any **contradiction with the ported engine**, per the map's Notes — an ADR, never a silent
   redesign. None found so far, which is itself worth stating when this resolves — with the
   `occurrence.note` question above as the one live candidate.
 
 ### What this ticket does
 
-- Re-derive both tables from the resolved tickets.
+- Re-derive both tables from the resolved tickets. **The vocabulary table predates 06, 07, 11 and
+  13 and has not been extended as they resolved** — deliberately, because a table half-brought-up-to-
+  date reads as current and is the stale-survey shape this map keeps finding. Re-derive it whole.
+  `principle` is one of the terms waiting there.
 - Decide which terms enter `CONTEXT.md` against that file's own bar, and write them.
 - Confirm each owed ADR has a moment attached, and that the moment is one someone will actually
   reach — a deferral to a step that never happens is the failure this register exists to catch.
+- **Write the one ADR whose moment is this ticket**, per [13](13-goals-serve-principles.md). This is
+  the single exception to "it decides nothing": it still decides nothing, but it does write once.
+  `docs/adr/` is outside the standing-claim perimeter, so the write costs nothing against the cap.
 
 ## Comments
 
 Opened by [Observability](04-observability-prescriptive.md), at the author's direction, amending
 that ticket's decision 9. The post-mortem map holds a ticket on the ADR practice itself; this one is
 scoped to what *this* map produced and does not revisit whether the practice exists.
+
+Amended 2026-09-25 by [Do goals serve principles?](13-goals-serve-principles.md), at the author's
+direction: this ticket is widened from register-only to **register plus one write**, and gains the
+principles ADR at a moment that is here rather than at port time.
