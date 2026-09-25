@@ -125,6 +125,27 @@ deliberately separated here.
   term enters `CONTEXT.md`, nothing goes to 18, and the pre-rewrite bundle's existence is recorded
   while its path is not.
 
+- [What may not enter the repo, checked mechanically from commit zero](issues/16-what-may-not-enter-the-repo.md):
+  the perimeter is **every tracked path with no exclusions** — `.scratch/` included, since what earns a
+  dated record its budget exclusion says nothing about a home path — so the shared hook holds **three
+  checks across two perimeters**, stated so neither reads as wrapping the other. Four classes: identity
+  (installed, holding), **home-anchored paths widened to the tilde forms** (the old check's omission,
+  and where 31 of 49 real instances were), personal-domain addresses (never once violated here), and
+  generated output by a `.gitignore` that **did not exist in this repo**. The author's **identity is
+  deliberately not on the list** — the licence requires the name, the handle is inside the mandated
+  noreply address, and a name check would fire 348 correct-as-written times on day one: the rule bans
+  data disclosing the machine, not data identifying the author. The false-positive budget becomes a
+  command — **a check installs only if it reports zero on the tree as it stands** — which also makes
+  whole-index checking safe, since any hit is then content this commit introduced. **No exception
+  exists**; a wrong pattern is edited by the human, the same knob-shape as 11's cap. The hook prints
+  path, line and class and **never the matched text**, and its patterns do not match their own text, so
+  unlike ADR 0070's version it needs no exception to stay at zero. The tracker half needs no separate
+  check and the local tracker **closes by construction** the hole #76 could not reach — a requirement
+  14 must now satisfy. **Verdict: missing commit zero costs one history rewrite, and it is free** —
+  `research/02-issues-raw.json` is the repo's entire content exposure and there is no remote to
+  invalidate, so the instrument the old repo spent at 195 SHAs is not spent here at all. **14 is
+  unblocked.**
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
@@ -139,8 +160,11 @@ deliberately separated here.
   it is not owed where the default is already silence.* A rejected ADR therefore leaves no trace —
   the bar demands nothing, so there is no rule to be excepted from — while a decision *not* to do
   something is an ordinary ADR. That is a fourth worked instance rather than a fifth mechanism, and
-  it makes the patch sharp enough to ticket for the first time. **It stays fog by decision, not by
-  fogginess** — the human ruled against ticketing it: no open ticket waits on generalising it, and
+  it makes the patch sharp enough to ticket for the first time. **Ticket 16 then applied the test rather
+  than adding to it**: its entry rule carries no exception, no trailer and no override string, and none
+  is owed, because the rule demands no act whose considered answer could be "none" — the fifth case, and
+  the first where the test was used to decline a mechanism rather than to justify one. **It stays fog by
+  decision, not by fogginess** — the human ruled against ticketing it: no open ticket waits on generalising it, and
   filing it would grow the board this map exists to shrink. A later rule that needs the test cites
   it from here; nothing in the kit is blocked on generalising it further.
 - **How two design variants are set up and judged.** Deferred by [The protocol for choosing between
@@ -168,3 +192,9 @@ deliberately separated here.
 - **Destroying the old remote**, and any data recovery from the test device.
 - **The old repo's 24 open issues.** Findings about a codebase that will not exist. The salvage
   ticket may harvest a fact from one; none of them migrates and none earns a ticket here.
+- **A pre-`git init` checklist.** Ticket 16 asked what must be true before the first commit and then
+  ruled the artifact out: this repo has already missed commit zero, the cost is priced at one free
+  rewrite, and a checklist for a repository that does not yet exist is written against an unchosen
+  next project — the F-Droid failure one layer down, and the same ground on which 10 declined to fix a
+  version cadence. The one residue that is this repo's is a sentence in 16's answer, not an artifact:
+  the hook is installed before the first commit, not after it.

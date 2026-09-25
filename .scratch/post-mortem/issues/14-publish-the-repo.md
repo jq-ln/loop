@@ -48,3 +48,39 @@ governed document's path check, not merely relocate some prose. Either the resea
 files when the tickets move, or `SALVAGE.md` is rewritten in the same change. The native dependency
 edges and the visual frontier are still the argument for migrating; this is a cost on the other side
 that was not visible when this ticket was written.
+
+## Note after ticket 16
+
+**Unblocked, with a verdict better than this ticket expected and one act owed first.**
+
+16 measured the whole history: across all 17 commits, both checked classes report zero hits and every
+author and committer line is clean, **excluding one file**. The repository's entire content exposure is
+`research/02-issues-raw.json` — 857 KB of raw `gh` output, 72% of the repo by bytes, read by nobody,
+holding all 49 home-anchored path instances plus a device model and a profile id.
+
+**"Commit zero has been missed" therefore costs one history rewrite, and the rewrite is free.** The
+one-time irreversible instrument is only spent once SHAs are *published*; this repo has no remote, one
+branch, no tags and no blame anyone depends on. The old repo spent it at 195 SHAs with a live remote.
+This one does not spend it at all.
+
+**Owed before the remote is created**, and owed to the human — a history rewrite is exactly the class
+17 reserved as the human's gesture, so no agent performs it:
+
+1. Untrack the dump and move it beside `../old_loop`.
+2. Excise the path from all 17 commits (`filter-repo --invert-paths`); it has been tracked since
+   `9571165`, so it is in 16 of them and untracking alone would publish it forever by object id.
+3. Re-run the install budget afterwards: both pattern classes must report zero, or it did not work.
+
+**The tracker question gains its third constraint, and this one is a requirement rather than a price.**
+16's perimeter is every tracked path, so under the local tracker every issue body passes the same
+mechanical check as every other file. That **closes by construction** the hole the old repo could not
+reach — #76 recorded that an issue never passes through a commit, which is why six bodies leaked.
+Migrating to GitHub Issues reopens it permanently. 16 does not decide the tracker; it states the
+requirement and leaves the decision here:
+
+> Issue bodies pass the same mechanical check as every other tracked path. A tracker that cannot offer
+> one does not satisfy the entry rule.
+
+Read together with 13's constraint — `SALVAGE.md` cites `.scratch/post-mortem/`, so migrating breaks a
+governed document's path check — two independent constraints now point the same way, and the native
+dependency edges are the only argument on the other side.

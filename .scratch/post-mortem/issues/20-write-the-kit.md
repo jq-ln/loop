@@ -153,3 +153,49 @@ of 8 is unchanged.
   have is a standing claim with no referent. The salvage entries state the facts without the words.
 - **Nothing about variants enters `PROCEDURE.md` or `CLAUDE.md`**, and no debug entry point is
   mentioned to 18. Both were considered and declined in the resolution, not overlooked.
+
+## Amendment after ticket 16
+
+16 supplies finished text for four artifacts, one recipe line, and one repair. The transcription rule
+applies to all of it: copy, do not compose.
+
+- **`.gitignore`** at the repo root, ported verbatim from `../old_loop` — 14 lines, including the two
+  comments that carry their own reasoning. It does not exist in this repo, and it is the mechanism with
+  the best record in 03's entire table (held at **+1 day**; the prose statement of the same rule at
+  **−5 days**). It is not a `*.md` file, so it spends no budget headroom.
+- **An entry-rule block in `.githooks/pre-commit`**, verbatim, joining the identity guard, 17's two
+  caps, 11's budget and path checks, and 19's citation grep. Two pattern classes — home-anchored
+  filesystem paths (widened to the tilde forms) and personal-domain email addresses — over
+  `git grep --cached` on the whole index, perimeter **every tracked path with no exclusions**.
+- **A matching extension to `.githooks/pre-push`**, verbatim, inside the existing range loop: the same
+  two classes per commit, since `--no-verify` is not answerable at commit time and content in an
+  intermediate commit is published exactly as tree content is.
+- **A `## What may not enter the repo` section for `CLAUDE.md`**, verbatim, adjacent to 11's
+  `## What may be written`. Two sections, not one merged section, because they govern **two different
+  perimeters** and the headings are where a reader learns that. Count unchanged at **8, headroom 4**.
+- **One line for the `just start` recipe** that 10 owns: assert `core.hooksPath` is `.githooks` and
+  refuse otherwise. `core.hooksPath` is not cloned, so a fresh clone is unprotected until someone types
+  a `git config`; `just start` is already mandatory and already refusing, so this costs no artifact.
+
+**The repair, same shape as 11's dead reference and left here for the same reason.** 16 untracks
+`research/02-issues-raw.json`, so its two live citations must go: the markdown link at
+`issues/02-issue-lifecycle.md:26` and the raw-evidence line at `research/02-issue-lifecycle.md:8`. The
+research file already states its counts self-containedly, so both are deletions rather than rewrites.
+
+**Three properties of the hook text that must survive transcription**, because each is load-bearing and
+each looks like an accident:
+
+1. **It prints path, line and class — never the matched text.** The redaction is `cut -d: -f1,2` on
+   git's own output, not a sed over content that could miss. A hook that echoes the string writes the
+   banned data into scrollback, CI logs and the session transcript.
+2. **The patterns do not match their own text.** `/Users/[A-Za-z]` contains `/Users/` followed by `[`.
+   ADR 0070's version carried two permanent "expected hits" because the rule quoted its own before-half
+   and had to except itself; this one needs no exception to stay at zero. Reformatting the patterns
+   could break this silently.
+3. **The comment stating the install budget is not decoration.** A check joins the hook only if it
+   reports zero on the tree as it stands — which is what makes whole-index checking safe, since any hit
+   is then content that commit introduced. Verified zero for both classes at resolution; **re-verify
+   after the rewrite 14 performs**, because that is when it stops being true or stays true.
+
+**No exception mechanism, deliberately** — no trailer, no override string, no allowlist. A wrong pattern
+is edited by the repository's owner in a commit that says why, the same knob-shape 11 gave the cap of 12.
