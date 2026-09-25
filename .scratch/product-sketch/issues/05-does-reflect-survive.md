@@ -302,5 +302,40 @@ themselves. If it is cut, the footnote has to come back, and that is Today's dec
 rather than this ticket's.
 
 Recorded here rather than in the slice ticket because that ticket reads its blockers and both are
-among them, and because the recommendation that triggers it is not yet settled — Today is mid-round
-with the author.
+among them.
+
+**Update, same day: the condition fired.** [Today](06-today.md) resolved with **no footnote** — a
+suppressed-work line went, as a soft contradiction of *absent*. The coupling above is therefore no
+longer conditional: **`long-blocked` is the only place a never-closing prerequisite is reported
+anywhere in the app.** Cutting it from the first slice is not dropping one of nine flags; it is
+removing the sole reporter of a condition designed to be invisible.
+
+
+**2026-09-25, the surface is named `Revise`.** This ticket handed the screen's name to
+[Today](06-today.md) and [the register](12-the-vocabulary-and-adr-register.md), and Today took it:
+the navigation is Today · Goals · Metrics · **Revise**. Keeping *Reflect* would have put the
+refused pillar's own word into the navigation bar. **Everything above still reads `Reflect` because
+that is the word the question was asked in**; the concept entering the documents is `revision` and
+the surface is `Revise`. Three nouns and one verb — three places you look, one place you act — which
+is decision 6's *nothing the user does belongs on a view*, read off the nav bar.
+
+**2026-09-25, `Rarely done` is confirmed from use, and wants two corrections.** [Today](06-today.md)
+re-derived the run log: Clean Bathroom 6 of 30 step runs done, Clean Kitchen 3 of 14, against Morning
+Routine 21 of 49 and Night Routine 17 of 41. The author named those first two unprompted as
+candidates for this surface, *"since I rarely if ever do them"*. The flag is confirmed against real
+data before it exists, which is more than any other row in the catalogue has. Two things that table
+teaches which the catalogue row does not yet say:
+
+- **It is two flags, or one flag that names which class it found.** Clean Bathroom and Clean Kitchen
+  had **not one step dismissed individually** in ten days — they are dropped whole. Morning and Night
+  carry 7 and 6 individual dismissals. So a rarely-done *routine* and a rarely-done *step inside a
+  working routine* are different findings with opposite remedies: prune the routine, or prune the
+  step. The individual-dismissal count is what distinguishes them, and the flag should read it.
+- **It must read discriminated skip reasons, not completion counts.** Dismissing a routine root
+  `AUTO_CLOSED`s its steps — seven behind Morning Routine on the 24th, six behind Clean Bathroom on
+  the 23rd — and [the database](08-preserve-the-running-database.md) found **every one of the 56
+  `SKIPPED` rows to be a machine skip**. A flag counting raw misses would therefore report six
+  decisions about six steps where the author made one decision about a routine. `SALVAGE.md` names
+  this exactly: skip reasons are discriminated *"because four code paths wrote one of them and only
+  one meant the user did not do something."* The catalogue row says *"runs far below its schedule"*
+  and that is not sufficient.
