@@ -1,7 +1,7 @@
 # Publish this repo once the namespace frees
 
 Type: task
-Status: claimed
+Status: resolved
 Blocked by: 16
 
 ## Question
@@ -159,3 +159,13 @@ if commit.original_id in over:
     commit.message = commit.message.rstrip(b"\n") + b"\nOversized: predates the cap; recorded by the pre-publication rewrite, ticket 14\n"
 '
 ```
+
+### Outcome
+
+**Published 2026-09-25.** Remote: https://github.com/jq-ln/loop, public, `main` only. The owner ran the
+rewrite, the simulated push exited 0, and the real `pre-push` passed all 64 commits on the first push.
+The tracker stays local and the archive is `../old_loop`, as above.
+
+**Every SHA in this answer, and every SHA in any record written before this outcome, is
+pre-rewrite and dead.** Records are not edited to fix them. The hook fix cited as `570947a` is
+`2385614`. To find any other, search `git log` for its subject, which the rewrite kept.

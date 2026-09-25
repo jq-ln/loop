@@ -215,6 +215,13 @@ deliberately separated here.
   confirming 21's reading. Left without a home: the build section is written by the commit that first
   makes the app buildable.
 
+- [Publish this repo once the namespace frees](issues/14-publish-the-repo.md): **public at
+  `jq-ln/loop` since 2026-09-25, `main` only, tracker kept local.** A first push met three
+  blockers, not one: the dump, ten commits made before the size cap existed, and an archive pointer
+  that passed `pre-commit` only because it checked paths against the disk rather than the index. That
+  last one is a hook bug, now fixed. The owner ran one rewrite that cleared all three, and the real
+  `pre-push` passed. **Every SHA quoted before this line is dead.**
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
