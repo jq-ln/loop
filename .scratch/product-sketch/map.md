@@ -282,6 +282,32 @@ ticket, not the summary of it — the failure does not need the archive to happe
   register-plus-one-write** — the ADR is owed and is **not** deferred to port time, because unlike
   01's and 05's it is fully decided now.
 
+- [When is the app allowed to interrupt?](issues/14-when-may-the-app-interrupt.md): **it may, and the
+  hypothesis this ticket was charted to test died of the map's own third shape — twice.** `remind` is
+  `0` on all 16 schedules, but the switch is drawn only for a schedule that already has a time of day
+  and **one of 16 has one**, so that is n = 1; and the app requests `POST_NOTIFICATIONS` in exactly
+  two places, the switch itself and starting a countdown, of which `occurrence_timing` holds **zero
+  rows** — so the app almost certainly **never once asked**, and it is **n = 0**. A reminder that
+  could not be delivered is not a reminder declined, and the 1-of-16 is the defect's consequence, not
+  evidence about the feature. **A sixth stale-survey shape, a refinement of the third: checking that
+  the act was offered is recursive** — the offer's own entrance must be reachable — and the tell is
+  that the more finished the capability, the more convincing its zero. So **a time of day *is* a
+  notification at it and the two switches collapse**, no `remind` flag, a per-definition silent
+  opt-out, and no time still means due *that day*. **The permission is asked the first time a time is
+  set** — not at setup, which 13 leaves empty, and not at firing, when the phone is not in hand. The
+  boundary, and the sentence `PRODUCT.md` carries: **the app notifies about a moment you chose and
+  never about a judgement it formed**, which is what leaves 05's refused cadence intact rather than
+  excepted. **Fires once, silent if already done, clears on close, never repeats**; **carries no
+  acts**, which **amends 07** — a surface may carry none — with done-from-the-shade the first unbuilt
+  line. **Today's order is untouched** (06), a **badge is refused by the rule** and a **widget merely
+  unbuilt**. Dropping the field would have been the expensive consequence of the refusal: a time has
+  **four** consumers, and the third is the gate on sub-day snooze, so **01's `snooze` has nothing to
+  move against without it**. **Adopted provisionally on zero evidence** — nobody has experienced a
+  Loop notification — the test being the share of new scheduled definitions that carry a time, the
+  hard stop an OS-level mute, the remedy the line it would otherwise have written. Spends one ADR
+  owed at port time (exact alarms) and hands 12 the **`timed` collision**: *has a time of day* and
+  *has a stopwatch*, live, in the same package.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
@@ -289,7 +315,9 @@ ticket, not the summary of it — the failure does not need the archive to happe
   goal-to-work edge.
 - **Onboarding and the empty state.** What the app looks like with nothing in it. Waits on the
   slice, now carrying [Do goals serve principles?](issues/13-goals-serve-principles.md)'s note that
-  day one is zero principles with everything unassigned, so setup asks for no authoring at all.
+  day one is zero principles with everything unassigned, so setup asks for no authoring at all — and
+  [When is the app allowed to interrupt?](issues/14-when-may-the-app-interrupt.md)'s, that it asks for
+  no permission either, the notification permission being attached to the first time of day set.
 
 ## Out of scope
 
