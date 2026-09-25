@@ -46,6 +46,13 @@ directory calls `research`.
 citation of it is redacted at the point of quoting, in the form `<user>`, per `CLAUDE.md`. That rule
 has no mechanical backstop for prose and rests on the reading gate.
 
+**Every survey table in this map is suspect until re-derived.** Both tickets resolved so far had
+wrong ones, in two recurring shapes: a capability called *refused* that the archive had costed and
+explicitly retracted the stronger claim about, and a field or path called *dead* that had a live
+consumer. Re-derive a ticket's archive claims from source before grilling on them, and record the
+corrections in the ticket, because the corrections and not the original claims are what the answer
+is built on.
+
 **Standing preferences**
 - The destination is two paragraphs and one file. A ticket that cannot trace a line to *what is in
   the first slice* or *what is explicitly not built* is fog at best and out of scope at worst.
@@ -69,6 +76,22 @@ has no mechanical backstop for prose and rests on the reading gate.
   that sticks, every-Nth-execution reads the run log rather than a stored counter, and unscheduled is
   first-class. The rename of the ported entity is an ADR written at port time, citing G2.
 
+- [What a goal is, and what satisfies one](issues/02-what-a-goal-is.md): a goal is **greenfield, not
+  a port** — every surviving goal artifact in the archive lives in the plugin wire, which is out of
+  scope. Satisfaction has two families: **derived** (a predicate over the definition graph or the
+  metric log, computed on read, never stored) and **declared** (an attested instant, retractable and
+  dated). Completion is not a third kind, so roll-up is the same predicate one level up. Terminal vs
+  standing is one `latches` boolean, and **standing requires the metric predicate**. Every goal names
+  a parent defaulting to the root; **the root is the single exemption from admissibility and can
+  never be satisfied**. A threshold goal's metric must already exist and be chaseable. Culling is a
+  state (**abandoned** beside **satisfied**), never a delete, prompted by root-adjacency and by
+  dormancy — where evidence is family-specific, because a sobriety goal generates no runs and would
+  otherwise read as the most abandoned thing in the app. An abstinence goal needs no new concept:
+  standing, lower-is-better, threshold zero. Every definition cites a goal, **gated at commitment
+  rather than capture** — a thought needs no goal, a commitment does — with the uncited backlog as
+  the place unscheduled work lives, and a falsifier: if it grows monotonically for two weeks the rule
+  is being dodged. The app keeps the word **goal**; the project-level concept becomes **criterion**.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
@@ -89,3 +112,7 @@ has no mechanical backstop for prose and rests on the reading gate.
 - **The plugin platform.** Dropped by the post-mortem: ~5,600 lines discovering zero plugins.
 - **Any distribution channel.** `GOALS.md` N1, and the failure that killed the first repo.
 - **How the work is run.** Worktrees, claims, review, the budget. The post-mortem's map owns it.
+- **The `GOALS.md` rename itself.** [What a goal is, and what satisfies one](issues/02-what-a-goal-is.md)
+  decided that the project-level concept becomes **criterion** so the app can have the word `goal`
+  unqualified, and records the four silent mechanical costs keyed to the filename. Executing it is
+  the owner's act on owner-only files, not a step on this map's route to the sketch.
