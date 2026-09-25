@@ -12,11 +12,12 @@ The things that cost most of the first repo's eight days. Each carries its own r
 and its tests are the specification.
 
 - **The definition/occurrence split.** Port first: every other engine rule is downstream. The
-  non-obvious parts are that display fields are snapshots taken when the run is materialized and
-  never back-filled, that the references to definitions are deliberately not foreign keys, that a
-  snooze stores where the run came from rather than where it went, and that skip reasons are
-  discriminated because four code paths wrote one of them and only one meant the user did not do
-  something.
+  non-obvious parts are that a finished run keeps the name it was done under while a waiting run's
+  name follows a rename, that the references to definitions are deliberately not foreign keys, that
+  a snooze stores where the run came from rather than where it went, and that a skip's reason is
+  the app's bookkeeping, never the user's: five reasons written from seven call sites, and the
+  user's own refusal is a separate status that carries no reason. The enum's header says four
+  paths; the header is stale, not the enum.
 - **The completion cascade.** A worklist run to a fixpoint, not a sequence of passes: completing one
   occurrence can close a subtree, satisfy shared work elsewhere by dedup key, and roll parents up,
   and each of those can re-trigger the others. The whole plan is computed before anything is
