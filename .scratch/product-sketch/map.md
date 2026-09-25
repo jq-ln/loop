@@ -127,4 +127,6 @@ is built on.
 - **The `GOALS.md` rename itself.** [What a goal is, and what satisfies one](issues/02-what-a-goal-is.md)
   decided that the project-level concept becomes **criterion** so the app can have the word `goal`
   unqualified, and records the four silent mechanical costs keyed to the filename. Executing it is
-  the owner's act on owner-only files, not a step on this map's route to the sketch.
+  not a step on this map's route to the sketch, and it straddles the owner-only boundary, so it is
+  ticketed on the map that owns how the repository is kept: [Rename the project-level concept:
+  GOALS.md becomes CRITERIA.md](../post-mortem/issues/23-rename-the-goals-document.md).
