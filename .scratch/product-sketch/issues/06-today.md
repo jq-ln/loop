@@ -217,3 +217,66 @@ drawn in variant C so the cost of keeping it is visible rather than argued.
 The auto-closed weigh-in stays here. 05 records the third cause of a gap at **dismissal** time, which
 makes later dormancy and stall computations correct, but that is after the fact; the loss happens at
 **capture** time and Today is the only screen that could have prevented it.
+
+## Round one, settled 2026-09-25
+
+Five of the ticket's questions are answered. Recorded here rather than held in a session, because the
+sixth question was reopened by the answer to the second and the ticket is not yet resolvable.
+
+- **Order is the structure's, not a rank.** Roots in an order set once and changed by dragging; steps
+  by position. No score, and it becomes a line in *what is not built*. One computed element survives:
+  **terminal-last**, so finished work sinks but stays visible, struck through — which is the archive's
+  *"seeing progress is the reward"* kept for its own reason rather than inherited.
+- **A miss is a fact on the record, not a row on Today.** The day's dismissals collapse to one line.
+  **The cap is replaced by the opt-in**: *The work-item model* already made carry-forward per-item, so
+  the tail holds only work explicitly asked for and is bounded by a choice rather than by an invented
+  number. In ten days it held exactly one row, four days old.
+- **Unscheduled work shows on Today, in an `Offered` band at the foot, and it is the backlog itself
+  rather than a slice of it** — because any rule for choosing which unscheduled work to show is a
+  score under another name. **Adopted provisionally, by the author, to be judged in use.** The
+  evaluation already exists and needs nothing new: *What a goal is*' falsifier — an uncited backlog
+  growing monotonically for two weeks — is the signal, and *Does Reflect survive its own test?*'
+  **backlog-dodging** flag is what reports it. If it fails, the pre-registered remedy is the backlog
+  destination that the navigation answer below declines.
+- **A reading is a row, and it ticks.** The archive's strip argument — *"a row that can never be
+  ticked reads as work dodged"* — does not reach a reading: a tally is unbounded and the journal has
+  no done state, but a reading due today is recorded or it is not. They were grouped because both
+  lived under Track, not because they behave alike. The row is **independent of any run**, which is
+  what stops a dismissal three levels up from destroying a measurement, and the step-attached
+  check-in stays as a convenience. The row disappears once any source has supplied the day's value.
+- **The navigation is four destinations: Today, Goals, Metrics, and the reflection surface.** The
+  backlog does not earn one, because `Offered` is the whole of it and a destination would be a second
+  place for the same thing. Four without a greyed row, where the archive had four with one.
+
+### Q2 is reopened, because the author corrected the reason under it
+
+The recommendation was *roots that expand*, argued partly from a reading of the author's use — tick
+the first step, dismiss the rest — that the author says is **coincidental**. The real act is *tick the
+steps I do and dismiss the ones I know I am not going to do*. That is a **per-step** judgement, and
+collapsing the routine hides the unit of the decision.
+
+Re-derived from the run log rather than from the two days the first reading generalised from, and it
+splits cleanly. **14 of 23 dismissals are at step level, not root.**
+
+| Routine | Step runs | Done | Dismissed individually | Root rolled up | Root dismissed whole |
+|---|---|---|---|---|---|
+| Morning Routine | 49 | 21 | **7** | 4 | 3 |
+| Night Routine | 41 | 17 | **6** | 3 | **0** |
+| Clean Bathroom | 30 | 6 | **0** | 1 | 1 |
+| Clean Kitchen | 14 | 3 | **0** | 1 | 3 |
+
+Two classes, wanting opposite things. **Morning and Night are worked through step by step** — high
+completion, individual dismissals, roots that roll up, and Night Routine's root was never once
+dismissed wholesale. **Clean Kitchen and Clean Bathroom are never judged per step** — a fifth of their
+steps get done and not one was ever dismissed individually; they are dropped whole or left to be
+superseded. They are also the routines the author names as candidates for the reflection surface,
+*"since I rarely if ever do them"* — which is `Rarely done` from 05's catalogue, confirmed from the
+author's own data at 6/30 and 3/14 before the flag has been built.
+
+So a global answer gets one class wrong either way: collapsing costs a tap every day on the two
+routines used most, and expanding spends six rows of Today on work done a fifth of the time. The
+hoisting objection also sharpens — `Sweep` and `Mop` are steps of **both** cleaning routines, and
+those are exactly the two that should not be expanded.
+
+Drawn as **variant D** in the prototype, alongside everything above, so the composite can be judged
+rather than the pieces.
