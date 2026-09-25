@@ -92,6 +92,18 @@ is built on.
   the place unscheduled work lives, and a falsifier: if it grows monotonically for two weeks the rule
   is being dodged. The app keeps the word **goal**; the project-level concept becomes **criterion**.
 
+- [Preserve the running app's database before anything forces the decision](issues/08-preserve-the-running-database.md):
+  taken 2026-09-24 from user 0, parked outside every tracked path, `integrity_check ok`. Schema
+  version **13**; `task` 42, `schedule` 16, `occurrence` 210. The WAL hazard is priced: the sidecar
+  was 457KB against a 168KB database, and a `routine.db`-only copy reports 201 occurrences and 1
+  journal entry while opening cleanly. Four numbers land on tickets already charted, and the answer
+  holds them rather than those tickets: the baseline is **ten days**, not a history, which is
+  *What carries over*'s to weigh; **every one of the 56 `SKIPPED` rows is a machine skip**, so the
+  database records no user skip at all, which sharpens *The input vocabulary*; `kind` is empty on all
+  42 definitions, corroborating *The work-item model* from data; and `occurrence_timing` and
+  `recording` hold zero rows while `journal_entry` holds two entries, one of 21 characters, which is
+  the use record *Observability* and *Does Reflect survive its own test?* get to ask against.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
