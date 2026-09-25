@@ -116,9 +116,9 @@ ticket, not the summary of it — the failure does not need the archive to happe
   rather than capture** — a thought needs no goal, a commitment does — with the uncited backlog as
   the place unscheduled work lives, and a falsifier: if it grows monotonically for two weeks the rule
   is being dodged. The app keeps the word **goal**; the project-level concept becomes **criterion**.
-  **Its root decision is under open challenge** by [Do goals serve principles, rather than a single
-  topmost goal?](issues/13-goals-serve-principles.md) — read that ticket before building on the
-  single root or on the parent default.
+  **Its root decision did not survive**: [Do goals serve principles, rather than a single topmost
+  goal?](issues/13-goals-serve-principles.md) deleted the root, replaced the parent default and
+  widened the citation target — read that ticket before building on anything above a goal.
 
 - [Preserve the running app's database before anything forces the decision](issues/08-preserve-the-running-database.md):
   taken 2026-09-24 from user 0, parked outside every tracked path, `integrity_check ok`. Schema
@@ -258,12 +258,38 @@ ticket, not the summary of it — the failure does not need the archive to happe
   rows to decode. **Amends `SALVAGE.md`**, stale against the code: `display_name` *is* back-filled
   onto pending rows, and the true rule is that a finished run keeps the name it was done under.
 
+- [Do goals serve principles, rather than a single topmost goal?](issues/13-goals-serve-principles.md):
+  **they do, and 02's root is deleted rather than kept above them.** The author's four — intellect,
+  aesthetics, body, spirit, each a proposition and none of them tickable — settled adoption from G1
+  alone, and settled more besides: **only one of the four entries is a goal**, two being standing
+  practices 02 refuses and 04's rule 3 cannot rescue. So **a definition cites a goal *or* a
+  principle**; permitting only goals would manufacture an invented goal above every practice and
+  silence the engine by construction. The engine is **not** the unserved predicate this ticket
+  argued but the **roll-up of flags already specified** — 02's dormancy, 03's actionable time, 05's
+  `stalled` — of which *nothing under it* is the degenerate case; vacuous under one root, computable
+  under four, and it inherits 05's dismissal-with-a-dated-reason, so the prompt cannot be silently
+  ignored. Single parent throughout, no default: **goal→goal stays a tree and goal-level
+  prerequisites survive**, because they outlive the absence of work, while the step edge stays a
+  many-parent DAG — 29 rows, 26 children, three with two parents, re-derived and **correct as
+  written**, this map's first survey claim to survive checking. Unassigned goals get a pile that is
+  not itself a principle; `Offered` is untouched. **Wording is free** via 05's `revision` gaining
+  `principle` as a fourth subject, **no cap and no immutability**, but creation is its own act and
+  never inline from filing. The author's hope that principles *mature and settle* is a prediction
+  the revision log measures: **if revision frequency does not decay, the hypothesis is false.** No
+  fifth destination; `unserved` joins 05's flag assembly. **Day one is zero principles with
+  everything unassigned**, so the concept costs nothing at setup. Spends 02's root, citation rule and
+  dormancy table, 03's edge table wording, 05 twice, and **widens 12 from register-only to
+  register-plus-one-write** — the ADR is owed and is **not** deferred to port time, because unlike
+  01's and 05's it is fully decided now.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
   and the result is imported; what that artifact *is* — a paste, a file, a format — waits on the
   goal-to-work edge.
-- **Onboarding and the empty state.** What the app looks like with nothing in it. Waits on the slice.
+- **Onboarding and the empty state.** What the app looks like with nothing in it. Waits on the
+  slice, now carrying [Do goals serve principles?](issues/13-goals-serve-principles.md)'s note that
+  day one is zero principles with everything unassigned, so setup asks for no authoring at all.
 
 ## Out of scope
 
