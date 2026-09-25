@@ -278,3 +278,29 @@ use, exactly as *What a goal is* left its own `N`.
 - **`Direction` is not reintroduced.** *Observability* left it available to this ticket *"with a
   consumer"* if one appeared. None did: a flag reads the target's comparator, which already carries
   which side is a breach. The field stays deleted.
+
+## Comments
+
+**2026-09-25, from the session working [Today](06-today.md): `long-blocked` may become load-bearing
+rather than belt-and-braces.** That ticket is likely to recommend dropping a *"1 blocked, not shown"*
+footnote from Today, on the grounds that it is both redundant with this catalogue and a soft
+contradiction of *The goal-to-work edge*'s decision that a blocked item is **absent** rather than
+dimmed. That reasoning is sound and this ticket does not contest it — but it creates a coupling worth
+stating plainly, because the two decisions are in different tickets and each is individually
+defensible:
+
+**If Today drops the footnote and [the first slice](09-the-first-slice-and-what-is-not-built.md) cuts
+`long-blocked` from the catalogue, then work can be silently removed from the author's life with
+nothing anywhere reporting it.** Neither decision is wrong on its own. The failure only exists in the
+gap between them, which is exactly the kind nobody owns.
+
+So when the slice weighs the catalogue, *"a flag is cheap and nine flags are not"* reads differently
+for this row than for the other eight. The other eight report something going wrong that is visible
+elsewhere if you look. This one is the only reporter of a condition that is **invisible by
+construction** — the absence was designed in deliberately, and designed-in absences do not announce
+themselves. If it is cut, the footnote has to come back, and that is Today's decision to unwind
+rather than this ticket's.
+
+Recorded here rather than in the slice ticket because that ticket reads its blockers and both are
+among them, and because the recommendation that triggers it is not yet settled — Today is mid-round
+with the author.
