@@ -40,7 +40,7 @@ term is renamed, this file notes the former name, so an ADR written under the ol
   word for a plugin, which is why both first-party plugins were written as in-repo modules and then
   extracted to become plugins. The two are disambiguated here because the words did both jobs in
   the same history.
-- **Note** — prose with a subject, where the subject is a run, a reading, or the day. It replaces
+- **Note** — prose with a subject, where the subject is a run, a reading, a revision, or the day. It replaces
   three separate text boxes, including the first Loop's journal, and overturns that app's rule to
   keep a run's note and a standalone entry apart.
 - **Plugin** — a separately installed app. Separate APKs are the point: a vendored plugin produces

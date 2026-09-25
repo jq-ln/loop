@@ -335,6 +335,14 @@ ticket, not the summary of it — the failure does not need the archive to happe
   because nothing at port time reads `.scratch/`. It found that `just adr` never receives its
   arguments.
 
+- [Write PRODUCT.md and both ARCHITECTURE.md sections](issues/10-write-the-sketch.md): **the
+  destination is reached and the `.kt` gate is open.** `PRODUCT.md` describes the whole designed app,
+  by the author's call, and the first-slice section says which parts exist, so a part not yet built
+  is an absence and not a bug. Two defects settled at write time: **swiping uncited work done asks
+  what it served first**, amending 02 and 07, and a flag row binds tap and hold. `SALVAGE.md` gives
+  up no entry, since a port pointer is consumed by its port, and its two corrections are still the
+  owner's. One question left open on purpose: whether a step needs its own citation.
+
 ## Not yet specified
 
 Nothing. [The first shippable slice](issues/09-the-first-slice-and-what-is-not-built.md) cleared

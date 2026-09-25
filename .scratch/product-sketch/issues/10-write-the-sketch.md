@@ -1,7 +1,7 @@
 # Write PRODUCT.md and both ARCHITECTURE.md sections
 
 Type: task
-Status: open
+Status: resolved
 Blocked by: 09, 12
 
 ## Question
@@ -49,3 +49,50 @@ with that ticket, and the two axes of goal satisfaction were not among them. Two
 now carries: the **port-time ADRs**, stated in the first-slice section as what each port changes
 about the ported engine, since that section is the one thing the porting session is certain to
 read; and the **two `SALVAGE.md` corrections** the register lists, which are the owner's to make.
+
+## Answer
+
+**Written: `PRODUCT.md`, both `ARCHITECTURE.md` sections, and a one-word fix to `CONTEXT.md`. The
+`.kt` gate is open.** `just owns` reports 8 of 12 standing-claim files.
+
+### What the author settled while writing, 2026-09-25
+
+- **`PRODUCT.md` describes the whole designed app, not only slice 1.** Asked whether goals, targets,
+  prerequisites and `Revise` belonged there or in the ADR that builds each, the author's answer was
+  *"we should be writing the whole plan down in `PRODUCT.md` and the first slice under the appropriate
+  header in `ARCHITECTURE.md`."* That overrules the register's routing of the goal-satisfaction and
+  flag vocabulary to future ADRs — for `PRODUCT.md`, not for `CONTEXT.md`, whose bar is unchanged.
+  The declaration paragraph states the consequence: a part the code lacks is an absence with a line
+  in *Not built*, and only a part the code does differently is a bug in `PRODUCT.md`.
+- **Swiping uncited work done asks what it served, then completes it.** A defect no ticket owned:
+  02 requires a citation before work *"can reach Today or be logged as done"*, and 07's table gives
+  an `Offered` row swipe → Done. Both now hold: the swipe still discharges, and doing uncited work
+  counts as a commitment. The same applies to logging after the fact. **Amends 02 and 07.**
+- **A flag row binds tap and hold.** 07's prose says `Revise` *"binds tap alone"* and its table,
+  generated from the prototype's single data structure, gives hold → menu. The table wins; the
+  prose's reason was about swipes, which stay absent.
+
+### Found while writing
+
+- **`CONTEXT.md`'s `note` omitted a revision as a subject**, which 05 decision 11 names as the
+  load-bearing half. Fixed in the same commit.
+- **"A step cites nothing" was nearly written and is not decided anywhere.** 02 says every
+  definition cites; 13 keeps steps on a separate many-parent edge; no ticket says whether a step,
+  which is a definition, needs its own citation or inherits its routine's. `PRODUCT.md` says
+  neither. It matters first at the port of the commitment gate, and is left for whoever writes it.
+
+### What was spent
+
+- **`SALVAGE.md`: no entry consumed.** Every *Port these* entry is consumed by its port, not by a
+  document describing the product; the port-time changes are stated in the first-slice section, not
+  deleted from `SALVAGE.md`. *Carry this* is used, not held elsewhere: the second-slice trigger names
+  the report-back session without restating how to pull the data. **The two corrections the register
+  lists are still owed and are the owner's**: the display-snapshot rule (11: a finished run keeps
+  the name it was done under; a waiting run's name is back-filled) and *four code paths* (07: five
+  reasons, seven call sites).
+- **The port-time ADRs** are stated in the first-slice section as what each port changes, with no
+  ADR cited, per 12's hand-off. 12's register lists six ported-engine changes, one conditional, and
+  all six are there. `SCALE_1_5` and the untimed snooze are stated beside them as changes needing no
+  ADR.
+- **09's four `GOALS.md` non-goal candidates** remain named in 09 and unwritten, being the owner's.
+- **Oversized**: the pass is one indivisible write, which is this map's *decide first, write once*.
