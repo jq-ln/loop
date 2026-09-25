@@ -193,8 +193,12 @@ for f in $touched; do
         | grep -E '/|\.(md|kt|kts|json|toml|ya?ml|sh)$' \
         | grep -vE '[*?<>]|://|^/' \
         | sed 's/:[0-9]*$//' | sort -u || true)
+    # Resolved against the index, never the disk: a path outside the repo
+    # exists on one machine, which is the failure the check is for.
     for t in $tokens; do
-        [ -e "$t" ] || [ -e "$dir/$t" ] || bad="$bad
+        git ls-files -- "$t" 2>/dev/null | grep -q . \
+            || git ls-files -- "$dir/$t" 2>/dev/null | grep -q . \
+            || bad="$bad
     $f -> $t"
     done
 done
