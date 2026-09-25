@@ -471,15 +471,17 @@ Four variants over the real day of 2026-09-24, the fourth being the composite of
 Captured to the throwaway branch `prototype/06-today` and removed from the working tree; it does not
 survive into the repo, per this ticket's own charter.
 
-**None of A, B or C was chosen, and the composite was never looked at.** Every decision above was
-reached from the archive re-derivation and the run log; the author answered both rounds from the
-evidence rather than from the variants, and D was drawn after the last answer rather than judged
-before it. That route caught the two findings this ticket turns on — the dead score and the destroyed
-weigh-in — and it is silent on the one thing a prototype exists for. **Density is therefore the one
-claim here with nothing behind it**: D draws 16 rows with the v2 concepts on, against B's 15 and C's
-19, and no one has seen any of them on a phone-width screen.
+**None of A, B or C was chosen, and the order of events was the reverse of the intended one.** Every
+decision above was reached from the archive re-derivation and the run log: the author answered both
+rounds from the evidence rather than from the variants, and D was drawn *after* the last answer rather
+than judged before it. All three of A, B and C were discarded by one correction — each picks a single
+tree shape for the whole screen, and the run log says there are two classes of routine — so the
+composite is what the answers produced, not what was picked from a set.
 
-This is recorded rather than resolved because reopening is cheap and mis-recording is not: the branch
-holds the file, *The input vocabulary* has not started, and a visual review that rejects D costs one
-ticket reopened. A visual review that is *skipped and assumed* is the map's own warned-against
-specimen — something that looks like verification while confirming nothing.
+**D was then reviewed on sight by the author, 2026-09-25, and passed.** So density — the reason this
+ticket was typed `prototype` at all — is answered for the shape of the thing: 16 rows with the v2
+concepts on, at phone width, on a real half-finished day, reads acceptably. That is the whole of what
+a prototype in a browser can buy, and it is worth naming what it cannot: **whether the screen is good
+to live with is a use claim, and only the build answers it.** The `Offered` band carries the same
+status by the author's own framing — adopted provisionally, to be judged in use — and the two share
+one falsifier's worth of attention in the first weeks of daily use.
