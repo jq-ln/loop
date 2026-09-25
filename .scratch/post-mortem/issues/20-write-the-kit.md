@@ -1,7 +1,7 @@
 # Write the kit into this repo
 
 Type: task
-Status: open
+Status: claimed
 Blocked by: 10, 11, 12, 13, 16, 17, 18, 19, 21
 
 ## Question
@@ -115,8 +115,8 @@ would have done is this ticket's, and it is three steps:
    saying otherwise would put the kit in conflict with itself on day one.
 
 **The expected day-one count is 8, headroom 4** — `GOALS.md`, `PROCEDURE.md`, `CLAUDE.md`,
-`README.md`, `CONTEXT.md`, `docs/agents/issue-tracker.md`, the salvage list (13), the sketch (18) —
-and the count is reported in the final commit message.
+`README.md`, `CONTEXT.md`, `docs/agents/issue-tracker.md`, the salvage list (13) and
+`ARCHITECTURE.md` (18) — and the count is reported in the final commit message.
 
 If a later effort enables `/triage` or `/to-tickets`, running setup then is the fix, and its output
 is edited on landing like any other draft.
@@ -242,3 +242,60 @@ count in the commit message regardless.
 a claim because the cap refused a file. At 8 of 12 it cannot fire on day one; it exists so that
 `git log --grep='^Folded:'` later says whether the cap is mis-sized. It joins `Oversized:` (17) as
 the kit's second trailer, and like it, has no exception mechanism.
+
+## Amendment after ticket 18
+
+18 resolves last of the nine and **declares this ticket unblocked**. It supplies finished text for two
+artifacts and retires a word. The transcription rule applies as everywhere else: copy, do not compose.
+
+**The kit's word is `ARCHITECTURE.md`, and "sketch" is retired.** It named a drawing — a description —
+and 18's whole finding is that the file is not one but a set of constraints. Both file lists above are
+written in the old word; the live one is corrected, and the superseded nine-file list under *Amendment
+after ticket 11* is left as written, like every other superseded passage here.
+
+**Two artifacts to install, both transcribed verbatim from 18's answer:**
+
+1. **`ARCHITECTURE.md`** at the repo root — 40 lines, six sections, **with no line cap**. The absence
+   is a decision, not an oversight: per-document ceilings exist only for the always-loaded set, and 11
+   declined on principle to invent one after 07 showed the usual number to be unmeasured folklore. 13
+   inherited 60 anyway and landed at 62, which is what inventing one costs. Do not add a ≤ *n*-line
+   check beside the others for this file.
+2. **A `pre-commit` block**, verbatim, joining the identity guard, 17's two caps, 11's two checks,
+   19's citation grep, 21's declaration check and 16's entry-rule block. It fires **once in this
+   repo's life** — on the commit that adds the first Kotlin source file — reads the staged copy, so
+   writing the sections and adding the code in one commit is allowed, and checks **presence, never
+   quality**. 18 places it in `pre-commit` only and specifies no `pre-push` twin; unlike 17's, 11's,
+   21's and 16's checks, this one is not extended in kind. Do not helpfully add one.
+
+**`ARCHITECTURE.md` needs no declaration paragraph written here.** 21 requires the text between the H1
+and the first H2 to say what the file owns; 18 wrote it rather than leaving it to this ticket, so it
+arrives inside the verbatim block. It also flags its own weak point — *"Exactly one pure-Kotlin module
+holds the engine"* is the line closest to the structural fact 11 bans — and that flag is 18's to hold,
+not something transcription should soften.
+
+**One claim is routed here rather than authored here.** 18 declined to duplicate the **module/plugin
+disambiguation** and left it where 13 put it: `CONTEXT.md`. Module is a Gradle build unit; plugin is a
+separately installed app. 18 uses the words correctly and states the distinction nowhere, so one claim
+keeps one owner.
+
+**The count is unchanged at 8, headroom 4.** `ARCHITECTURE.md` *is* the eighth file — the entry the
+earlier lists call "the sketch (18)" — not a ninth. 11 is confirmed rather than amended on this point.
+
+### Two input defects, raised rather than drafted around
+
+This ticket's own rule is that where a resolved ticket's answer does not carry finished text, that is a
+defect in this ticket's inputs. Two of the day-one eight have none, and checking 18 is what surfaced
+them:
+
+- **`CONTEXT.md`** has exactly one entry and two explicit non-entries. The entry is the module/plugin
+  disambiguation above, which survives only as a clause inside 13's routing sentence, not as confirmed
+  file text. The non-entries are 12's refusal of "bake-off" and "trial". No ticket supplies an H1, a
+  declaration paragraph, or any further term — and 21's check refuses a governed file without one.
+- **`README.md`** is authored by no ticket at all. 13 does not mention it; 21's only two mentions say
+  what it is *not* asked to do, and one of them — *"`README.md`'s opening is a pitch to a stranger and
+  declares nothing; it passes, and is left as a pitch"* — exempts a file that does not exist. Every
+  other reference across the nine is to the first repo's README, quoted as evidence, or to
+  `docs/adr/README.md`, which 11 forbids.
+
+Both are counted in the day-one eight and both are reported in the final commit message, so neither can
+be quietly dropped. Drafting them here is what this ticket exists to refuse.
