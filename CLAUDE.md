@@ -30,8 +30,8 @@ the expensive case, and it is the only feedback that says the claim unit is too 
 
 **Standing-claim files are capped at 12.** The perimeter is root `*.md`, `docs/**.md` and
 `.claude/**.md`. Outside it: `.scratch/` (dated records), `docs/adr/`, the justfile, generated
-files. The kit landed with 8. `.githooks/pre-commit` refuses the commit that would exceed the cap.
-A standing rule may not live in `.scratch/`.
+files. `just owns` counts what is spent against the cap, and `.githooks/pre-commit` refuses the
+commit that would exceed it. A standing rule may not live in `.scratch/`.
 
 **When the cap is reached, the document is not written.** Find the file that already owns that kind
 of claim and fold the claim into it; `just owns` prints what each file owns, and if nothing owns it,

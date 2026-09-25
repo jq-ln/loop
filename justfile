@@ -182,12 +182,26 @@ adr *args:
         ;;
     esac
 
-# What each file owns. Generated from the files themselves, so it cannot go stale.
+# The count is generated, never written down. CLAUDE.md said the kit landed
+# with 8 on a tree that has never held more than 7, and no .md has ever been
+# deleted -- so it was wrong on the day it was typed, not drifted into. A
+# number in prose has no way to be wrong out loud. The cap is read out of the
+# hook that enforces it rather than repeated here, so there is exactly one
+# place to turn it.
+# What each file owns, and how much of the cap is spent. Both generated.
 owns:
-    @git ls-files | grep -E '^([^/]+|docs/.+|\.claude/.+)\.md$' | grep -v '^docs/adr/' | sort \
-      | while read -r f; do printf '\n%s\n' "$f"; \
-          awk '/^# /{h=1;next} h&&/^## /{exit} h&&NF{p=1;print "    " $0;next} h&&p{exit}' "$f"; \
-        done
+    #!/usr/bin/env bash
+    set -uo pipefail
+    governed=$(git ls-files \
+        | grep -E '^([^/]+|docs/.+|\.claude/.+)\.md$' | grep -vE '^docs/adr/' | sort)
+    while read -r f; do
+        test -n "$f" || continue
+        printf '\n%s\n' "$f"
+        awk '/^# /{h=1;next} h&&/^## /{exit} h&&NF{p=1;print "    " $0;next} h&&p{exit}' "$f"
+    done <<< "$governed"
+    printf '\n  %s of %s standing-claim files.\n' \
+        "$(printf '%s\n' "$governed" | grep -c .)" \
+        "$(sed -n 's/^CAP=\([0-9]*\)$/\1/p' .githooks/pre-commit)"
 
 # The stall made visible at the moment it costs something.
 # The worktree cap, shared by `start` and the pre-commit hook.
