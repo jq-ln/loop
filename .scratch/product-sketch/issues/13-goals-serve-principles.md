@@ -92,6 +92,32 @@ life ambitions might not.
   move is to **refuse goal-level prerequisites outright** and let only definitions carry them,
   rather than shipping a rule that can be routed around.
 
+  **That fallback is conditional on the multi-parent branch and is not an improvement single-parent
+  also wants.** Recorded explicitly because this session first suggested otherwise and was corrected:
+  the leak *was* the second citation path, so under a tree there is exactly one path and nothing to
+  route around. The derivation is conditional on the DAG and says nothing about the tree.
+
+  **Goal-level prerequisites earn their place, and the reason is one a definition-level prerequisite
+  cannot reach: they outlive the absence of work.** A prerequisite on an undecomposed sub-goal means
+  every definition later filed under it is **born blocked**. Definition-level cannot express that,
+  because those definitions do not exist yet — and 02 established that the undecomposed goal is the
+  most common state and the one that rots. Dropping them would mean "nothing under B2 is startable
+  until B1 is satisfied" is inexpressible until B2's work has already been enumerated, which is
+  backwards: the decomposition is the thing the prerequisite is waiting for.
+
+  The objection this answers — *purposes do not become ready* — is true and is not what the mechanic
+  claims. It never makes a goal actionable; goals are never actionable in this model, being satisfied
+  by predicates. It says *work under this purpose is not yet startable*, and delivers that by
+  inheriting downward, which is why 03 made it inherit rather than making goals startable. Read that
+  way the mechanic is uniform: a prerequisite always says "not yet startable", and on a goal it says
+  it about a set rather than about one item.
+
+  One residual, noted and not treated as fatal: under single-parent, **re-parenting a goal still
+  changes what it inherits**, so filing remains a way to move blocked state. It is a weaker thing
+  than the DAG leak — moving the one path is deliberate and destroys the old meaning, where adding a
+  second is free and additive — but whoever grills this should know the tree narrows the leak rather
+  than closing it.
+
   The asymmetry is what makes the split clean, and it is worth stating because it looks like a
   contradiction: the **step** edge has been a many-parent DAG all along and is entirely unaffected,
   because a step edge carries no readiness. Re-derived from the live database for this ticket —
