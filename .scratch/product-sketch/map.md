@@ -53,7 +53,7 @@ a live consumer; and — the nastiest, because it is what a working feature look
 **validated on the way in and read by nothing**, where a parser, a validator and passing tests all
 exist and no consumer does.
 
-**Two more recur in the preserved data, and both are a number read as a verdict.** A **count read
+**Three more recur in the preserved data, and all are a number read as a verdict.** A **count read
 across a window the feature did not exist in**: the journal shipped on the fifth day of a ten-day
 window and both its entries fall on the last two, so *two entries in ten days* is not a use record at
 all. And a **pattern inferred from the most recent days** of that window: the copy's own day showed
@@ -61,6 +61,15 @@ two routines dismissed wholesale, and across ten days the opposite is true — t
 per-step, in 14 of 23 dismissals. The second was caught by the author and not by the data, which is
 the thing to take from it: having the database open is no defence, because a query answers the
 question you asked it.
+
+And a **count of an act taken, read as evidence about the act** — which is only evidence once you
+have checked the act was **offered**. *The input vocabulary* found five of eight acts at zero over
+the baseline and three of the zeros were not disuse: two lived behind a filter that had to be typed
+into first, and snooze was structurally unofferable on **34 of 64 root runs**, because a daily
+untimed routine's only surviving preset lands exactly on its own next firing. The distinction is the
+one the archive itself draws between a capability *refused* and one merely *never reached*, arriving
+as a count rather than as a comment — and a zero is the easiest number in the world to read as a
+verdict, because it looks like the feature answering for itself.
 
 Re-derive a ticket's archive claims from source before grilling on them, and record the corrections
 in the ticket, because the corrections and not the original claims are what the answer is built on.
