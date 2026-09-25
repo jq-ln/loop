@@ -1,7 +1,7 @@
 # What may not enter the repo, checked mechanically from commit zero
 
 Type: grilling
-Status: open
+Status: claimed
 
 ## Question
 

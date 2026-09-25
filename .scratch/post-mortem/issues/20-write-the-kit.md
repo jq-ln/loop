@@ -120,3 +120,36 @@ and the count is reported in the final commit message.
 
 If a later effort enables `/triage` or `/to-tickets`, running setup then is the fix, and its output
 is edited on landing like any other draft.
+
+## Note after ticket 12
+
+12 resolved by **refusing to write a protocol**, so this ticket authors nothing new for it. Two
+consequences for the files this ticket writes, and one instruction about a refusal.
+
+**`SALVAGE.md` carries twelve entries, not ten, and the ceiling is this ticket's call.** 12 adds two
+to the "Carry this" half, drafted verbatim in its answer: the device loop (a two-profile phone, the
+on-device note file read beside the occurrence log, and the `-wal`/`-shm` pull procedure), and the
+fidelity tax a rough variant charges before it can be judged. 13's draft is **54 lines** against a
+hard 60 — note that 13's own prose says "~45 lines", which is stale against its own draft, and the
+draft governs. The two entries are 8 lines, so the file lands at **62**.
+
+12 does not hold 13's say over its file's bounds and does not claim it. The input that decides it is
+the user's, recorded in 12 on 2026-09-24: *the 60-line rule was chosen arbitrarily, the reason there
+is a cap at all is to clamp lines in files that are always loaded, and genuinely necessary context
+should not be left out to avoid an arbitrary line limit.* `SALVAGE.md` is not always-loaded, its 60
+was inherited from `PROCEDURE.md` rather than derived, and it is the one file in the kit that
+shrinks. **Recommendation: lift `SALVAGE.md` to 65 and leave `PROCEDURE.md` at 60.** Trimming at
+authorship is the alternative; dropping either entry is not, since the first is why the device
+procedure exists at all and the second is the only warning the rebuild gets.
+
+**The first entry is consumed by the commit that writes `docs/DEVICE.md`.** That file is not written
+now — there is no device — and when it is, it takes a budget slot on its merits. The day-one count
+of 8 is unchanged.
+
+**Two instructions about what 12 refused**, so this ticket does not helpfully restore them:
+
+- **Neither "bake-off" nor "trial" enters `CONTEXT.md`.** 12's body instructed that both be adopted
+  into the glossary; its answer refuses, because a glossary entry for a mechanism the kit does not
+  have is a standing claim with no referent. The salvage entries state the facts without the words.
+- **Nothing about variants enters `PROCEDURE.md` or `CLAUDE.md`**, and no debug entry point is
+  mentioned to 18. Both were considered and declined in the resolution, not overlooked.

@@ -64,7 +64,7 @@ deliberately separated here.
 - [Collisions, version confusion, and extra review rounds](issues/06-merge-and-review-forensics.md): collisions are global registries a worktree cannot isolate; versioning's cost is adjudication not error; review rounds are mostly not caused by `main` moving.
 - [What the evidence actually says about document length and adherence](issues/07-doc-length-and-adherence.md): the 200-line figure is published guidance but unmeasured, and the papers usually cited measure retrieval accuracy rather than adherence; dilution and conflict are the better-evidenced defect.
 - [Why it became unsalvageable](issues/08-the-terminal-account.md): unwieldiness the author could no longer account for, then two blows — a personal-information scrub for a publication that never happened, and F-Droid recognised as arbitrary after it had propagated four ADRs into the architecture; the process explosion was triage started too late, not a second disease; the structural cause is that no goals document existed and the ownership table had no row for one. All seven findings survive the counterfactual filter; forced to three, the kit carries 03, 05 and 02.
-- [Was it the process, or was it the scope?](issues/09-process-or-scope.md): neither — three layers, not a weighting. Root: no destination existed to check anything against. Proximate: breadth outran comprehension. Third-order: the process volume, a real triage that became its own load. Outputs the comprehension criterion, ordered before 03's latency test; re-charters 12, 17 and 18, and makes 15 block every ticket that writes a rule (10, 11, 12, 13, 17).
+- [Was it the process, or was it the scope?](issues/09-process-or-scope.md): neither — three layers, not a weighting. Root: no destination existed to check anything against. Proximate: breadth outran comprehension. Third-order: the process volume, a real triage that became its own load. Outputs the comprehension criterion, ordered before 03's latency test; re-charters 12, 17 and 18, and makes 15 block every ticket that writes a rule (10, 11, 12, 13, 17). **Consequence 5's worked example is corrected** by [The protocol for choosing between two designs](issues/12-bake-off-and-trial.md): the plugin subsystem is alive at the old repo's HEAD, and the part of it that died turned on Android's merged manifest rather than on a design choice. The re-charter it produced stands and is strengthened; only the example fails.
 - [The goals document, and the citation rule that gives it teeth](issues/15-the-goals-document.md): two goals governing two objects — the app (G1, used every day) and the repository (G2, legible to people who might hire or build with me) — with the tie-break that would have killed F-Droid on day one; a goal is citable only if it can rule a decision out, and every ADR names the goal *and what it ruled out*; goal ids never reused, deletion carries a `grep` re-check list; `GOALS.md` ≤ 40 lines, written verbatim, edited only by the human in a commit touching nothing else.
 - [The human's own procedure](issues/17-the-humans-own-procedure.md): where a commitment can become a step in a command already run, it stops being a commitment — a comprehension gate at the merge (nothing lands unread), with the merge as the act no agent may perform; the pace gap made visible as unmerged worktrees, capped at three in `pre-commit`; a 300-line commit cap with an `Oversized:` trailer and a branch conformance check against its declared file list; review once per branch inside `just land`, an input to the human's reading and never a pass/fail; and `PROCEDURE.md` ≤ 60 lines that indexes mechanisms rather than restating them, with three clauses labelled as resting on nothing.
 - [The budget, and what enforces it](issues/11-the-documentation-budget.md): the budgeted quantity is **file count**, not length — 12 standing-claim files (root `*.md`, `docs/**.md`, `.claude/**.md`), the kit landing with 9, `.scratch/` and the justfile outside the perimeter and no standing rule allowed to hide there; enforced in `pre-commit` on the commit that adds the file, and when the cap is reached **the document is not written** — its claim folds into the file that already owns it, with the cap a knob only the human turns; no document asserts a structural fact the source asserts about itself, and backticked paths must resolve; ADRs are exempt **conditional on being leaves** — nothing cites an ADR, found by `just adr <term>`, superseded ones deleted — with ticket 19 holding the final say. **Four clauses revised** by [Whether this repo keeps an ADR practice at all, and what earns one](issues/19-the-adr-practice.md), which used that say: the leaf rule is restated as a **direction** rule and enforced in `pre-commit`, discovery widens to a generated index, the tombstone carve-out is refused as unnecessary, and `Prior art:` is cut for `Affected paths:`. ADRs are additionally **exempt from the path-resolution and structural-fact checks**, being dated records rather than standing claims. The cap of 12 and the perimeter are untouched.
@@ -87,7 +87,10 @@ deliberately separated here.
   18 rather than held twice; **provenance resolves to `.scratch/post-mortem/` in this repo, not to the
   archive**, because a path that resolves on one machine fails the budget's own check; the keep half
   is consumable, deleted by the commit that ports the code or writes the ADR, making it the one
-  document in the kit with a shrink rule, and addition is the human's while deletion is an agent's.
+  document in the kit with a shrink rule, and addition is the human's while deletion is an agent's. **The residue goes from ten entries to twelve**, added by
+  [The protocol for choosing between two designs](issues/12-bake-off-and-trial.md), which takes the
+  drafted file from 54 lines to 62 against a ceiling 13 inherited from `PROCEDURE.md` rather than
+  derived; ticket 20 lifts it to 65 or trims at authorship.
 
 - [Whether this repo keeps an ADR practice at all, and what earns one](issues/19-the-adr-practice.md):
   **the practice exists**, and almost nothing of the old repo's version survives. Citation is about
@@ -105,6 +108,22 @@ deliberately separated here.
   with 17's timing fingerprint folded in, mandatory `Affected paths:`, a descriptive heading naming
   the **decision**, under a hard line cap. **15's citation rule, 17's fingerprint and 13's consumable
   `SALVAGE.md` half all have their carrier and stay live.**
+
+- [The protocol for choosing between two designs](issues/12-bake-off-and-trial.md): **no protocol,
+  and the refusal is the answer.** Both of the ticket's premises were falsified by measurement — the
+  plugin subsystem is alive at the old repo's HEAD and its in-process half died of Android's merged
+  manifest, so the calibration standard does not exist; and the two mechanisms are the wrong way
+  round, **trial being the established loop** (a one-day cycle on a two-profile phone feeding an
+  on-device note file read beside the occurrence log, behind 13 of 75 experientially-justified ADRs)
+  while **bake-off ran exactly once, in code ADR 0067 excised**, with zero `@Preview` functions in
+  12,161 lines of UI. Of seven reversal episodes, **none** would clearly have been pre-empted by a
+  bake-off. A protocol fails both gating tests — it cannot fire until a screen, a debug build and a
+  device exist, and has no artifact to ride on until the work starts — so writing one now is 15's
+  calendar trigger and 10's unchosen channel, one layer down. What lands instead is **two salvage
+  entries, facts rather than rules**: the device loop, consumed by the commit that writes
+  `docs/DEVICE.md`, and the fidelity tax a rough variant charges before it can be judged. Neither
+  term enters `CONTEXT.md`, nothing goes to 18, and the pre-rewrite bundle's existence is recorded
+  while its path is not.
 
 ## Not yet specified
 
@@ -124,6 +143,16 @@ deliberately separated here.
   fogginess** — the human ruled against ticketing it: no open ticket waits on generalising it, and
   filing it would grow the board this map exists to shrink. A later rule that needs the test cites
   it from here; nothing in the kit is blocked on generalising it further.
+- **How two design variants are set up and judged.** Deferred by [The protocol for choosing between
+  two designs](issues/12-bake-off-and-trial.md) rather than answered: where two variants live so
+  they can be compared, how the loser is disposed of, and whether the comparison is recorded
+  anywhere. It needs a screen, a debug build and a device, none of which exist, and the shape it
+  would take is constrained already — two worktrees are structurally blocked by 10's whole-file
+  claims, and a preview cannot answer a question about a gesture. **Filed here for consistency with
+  the version cadence below**, though both arguably belong under Out of scope by this map's own
+  rules: fog gathers toward the destination, and these two wait on the rebuild, which does not.
+  Nothing is blocked either way.
+
 - **The version cadence.** Ticket 10 answered the registry question for this repo by subtraction —
   there are none — and fixed the property any future counter inherits: allocated at land by the
   human, never in a worktree, which makes batching fall out rather than needing a scheme. What
