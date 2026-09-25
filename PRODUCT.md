@@ -38,6 +38,9 @@ as done, it must cite what it serves: a goal or a principle. A thought needs no 
 does. Doing uncited work is a commitment too, so marking it done first asks what it served.
 
 A definition is never deleted. It is **abandoned**, dated and retractable, and its history stays.
+Abandoning a routine abandons, on the same date, the steps that belong to no other routine, and
+retracting it brings them back. A step removed from its only routine is abandoned too; capturing it
+again finds it and retracts that.
 
 ## What work serves
 
@@ -50,8 +53,11 @@ A **goal** is something worked toward that names what satisfies it, and the app 
 cannot. A goal cites exactly one parent, a goal or a principle; a goal with none sits in an
 **unassigned** pile, which is not a principle. Goals form a tree. A definition likewise cites exactly
 one goal or principle, so reading a goal's citations backwards is its breakdown: its detail view
-lists the sub-goals and definitions that cite it. A routine's steps are a separate edge, on which
-one step may have several routines.
+lists the sub-goals and definitions that cite it.
+
+**A step inherits what its routine serves** and never cites on its own, so adding one to a routine
+asks nothing. A step in several routines serves what each of them serves, and its runs count toward
+each. A definition that is also scheduled on its own cites for that role and counts under both.
 
 Satisfaction comes from one of two families, and nothing stores the verdict:
 

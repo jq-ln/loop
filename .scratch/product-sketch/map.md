@@ -341,13 +341,25 @@ ticket, not the summary of it — the failure does not need the archive to happe
   is an absence and not a bug. Two defects settled at write time: **swiping uncited work done asks
   what it served first**, amending 02 and 07, and a flag row binds tap and hold. `SALVAGE.md` gives
   up no entry, since a port pointer is consumed by its port, and its two corrections are still the
-  owner's. One question left open on purpose: whether a step needs its own citation.
+  owner's. One question left open on purpose, whether a step needs its own citation, since resolved.
+
+- [Does a step cite what it serves, or inherit its routine's?](issues/15-does-a-step-cite.md): **it
+  inherits** and never cites on its own; a shared step serves each routine's parent, derived on read.
+  Abandoning a routine, or removing a step from its only routine, abandons what belongs to nothing
+  else. A definition may be both a step and top-level, which the ported engine already supports, so
+  no ADR is owed. The last question *Write the sketch* left open.
 
 ## Not yet specified
 
 Nothing. [The first shippable slice](issues/09-the-first-slice-and-what-is-not-built.md) cleared
 the last two patches: the empty state is resolved in its answer, and the import format for a
 decomposition folds into its first *Not built* line.
+
+## Closed
+
+2026-09-25. **The destination is reached**: `PRODUCT.md` and both `ARCHITECTURE.md` sections are
+written, the `.kt` gate is open, and no ticket on this map is open. Work on the app is the rebuild's,
+under the claim rules in `CLAUDE.md`, and this map takes no new tickets.
 
 ## Out of scope
 
