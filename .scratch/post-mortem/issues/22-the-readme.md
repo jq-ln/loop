@@ -1,7 +1,7 @@
 # Write the README
 
 Type: grilling
-Status: open
+Status: resolved
 
 ## Question
 
@@ -40,3 +40,35 @@ text, drafting it is refused; that refusal is what produced this ticket.
 One inherited check: the kit reports its standing-claim count in the landing commit, so adding this
 file takes the count from 7 to 8 against a cap of 12. That is inside headroom, so under 21 it is a
 declared act rather than a fold, and no `Folded:` trailer is owed.
+
+## Answer
+
+**`README.md` is a two-sentence pitch and a licence line, and `LICENSE` is MIT.** The copy is the
+author's, verbatim, 2026-09-25. `just owns` reports 9 of 12 standing-claim files.
+
+The question changed shape before it was answered: `PRODUCT.md` exists now, written by the
+product-sketch map, so the README no longer pitches an app with no description. The five questions
+above resolved as follows.
+
+- **What does it claim?** Nothing that is true at publish time and may not stay true. The author's
+  framing, and the rule the rest follows from: what rots is a claim that is true when written and
+  stops being true without anyone editing it. A hand-counted number is one; *"nothing is built yet"*
+  is another. So no status line, no feature list, no count. The pitch describes the app as designed,
+  as `PRODUCT.md` does.
+- **Who is the reader?** A conventional README's reader, which serves someone hiring as well as
+  someone building. Recommended instead: a shopfront written for the hirer in first person. The
+  author had never seen a repo do that, and refused first person outright.
+- **Does it declare?** **No, and 21's reading stands**: the pitch is the paragraph between the H1
+  and the first H2, it passes the hook, and it declares nothing. The author first accepted a one-
+  sentence declaration, then cut everything but the pitch and the licence. The README is therefore the
+  one governed file with no stated bounds, which `CLAUDE.md` absorbs as the residual owner.
+- **Does it point at the post-mortem?** No. The first Loop is not mentioned; `.scratch/` stays
+  findable in the tree.
+- **What stops it rotting?** Having almost nothing to rot. The two sentences describe intent, and the
+  only path is `LICENSE`.
+
+**Decided and left without a home.** A build section is added by the commit that first makes the
+app buildable, never as a placeholder before. The recommendation put that rule in the declaration
+paragraph, which was cut, so it is written down here and nowhere a porting session will read.
+
+**Licence**: MIT, `Copyright (c) 2026 Jacqueline Amherst`, the name the commits already carry.

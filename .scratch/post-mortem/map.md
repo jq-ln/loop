@@ -209,6 +209,12 @@ deliberately separated here.
   blocked the command that would have fixed it, so it was narrowed at `c22e6e4` — the coarse version
   of a harness-side rule is the one that gets switched off.
 
+- [Write the README](issues/22-the-readme.md): **two sentences of pitch and an MIT licence, in the
+  author's words.** No first person, no status, no count, no mention of the first Loop, because what
+  rots is a claim true at publish time that stops being true unedited. The README declares nothing,
+  confirming 21's reading. Left without a home: the build section is written by the commit that first
+  makes the app buildable.
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
