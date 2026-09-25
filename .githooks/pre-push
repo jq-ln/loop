@@ -1,13 +1,25 @@
 #!/bin/sh
-# Identity guard, backstop. pre-commit can be skipped with --no-verify and does
-# not see commits made before the hook existed; this checks everything actually
-# leaving the machine. Identity only — see .githooks/pre-commit.
+# The --no-verify backstop. pre-commit can be skipped and does not see commits
+# made before a check existed; this checks everything actually leaving the
+# machine, per commit in the pushed range. The remote is what publication
+# means, and content in an intermediate commit is published exactly as tree
+# content is.
+#
+# Extended in kind from pre-commit: identity, the entry rule's two classes
+# (16), citation direction (19), the corpus budget and path resolution (11),
+# the ownership declaration (21) and the commit-size cap (17).
+#
+# Ticket 18's architecture gate is deliberately NOT here. It fires once, on
+# the commit that adds the first Kotlin file, and 18 specifies no twin.
 
 set -e
 
 ALLOWED='77815101+jq-ln@users.noreply.github.com'
 ZERO='0000000000000000000000000000000000000000'
+SIZE_CAP=300
+CAP=12
 status=0
+shas=''
 
 while read -r _local_ref local_oid _remote_ref remote_oid; do
     [ "$local_oid" = "$ZERO" ] && continue
@@ -16,18 +28,144 @@ while read -r _local_ref local_oid _remote_ref remote_oid; do
     else
         range=$(git rev-list "$remote_oid..$local_oid")
     fi
-    for sha in $range; do
-        bad=$(git show -s --format='%ae%n%ce' "$sha" | grep -v "^${ALLOWED}$" || true)
-        if [ -n "$bad" ]; then
-            printf '  Blocked: %s carries %s\n' "$(git show -s --format='%h %s' "$sha")" "$(printf '%s' "$bad" | tr '\n' ' ')"
+    shas="$shas $range"
+done
+
+governed() {
+    grep -E '^([^/]+|docs/.+|\.claude/.+)\.md$' | grep -vE '^docs/adr/' || true
+}
+
+is_generated() {
+    case $1 in
+        gradlew|gradlew.bat|gradle/wrapper/gradle-wrapper.properties) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+for sha in $shas; do
+    label=$(git show -s --format='%h %s' "$sha")
+
+    # ---- Identity ---------------------------------------------------------
+    bad=$(git show -s --format='%ae%n%ce' "$sha" | grep -v "^${ALLOWED}$" || true)
+    if [ -n "$bad" ]; then
+        printf '  Blocked: %s carries %s\n' "$label" "$(printf '%s' "$bad" | tr '\n' ' ')"
+        status=1
+    fi
+
+    # ---- Entry rule, two classes (ticket 16) ------------------------------
+    # Verbatim from pre-commit, per commit. Prints path, line and class and
+    # never the matched text.
+    for spec in \
+        'home-anchored filesystem path=/Users/[A-Za-z]|/home/[A-Za-z]|~/(Documents|Desktop|Downloads|Library|Projects)/' \
+        'personal-domain email address=[A-Za-z0-9._%+-]+@(icloud|gmail|me|hotmail|outlook|yahoo)\.(com|co\.uk)'
+    do
+        class=${spec%%=*}
+        pattern=${spec#*=}
+        hits=$(git grep -nIE -e "$pattern" "$sha" -- 2>/dev/null || true)
+        if [ -n "$hits" ]; then
+            printf '  Blocked: %s in %s\n' "$class" "$label"
+            printf '%s\n' "$hits" | cut -d: -f1,2,3 | sed 's/^/    /'
             status=1
         fi
     done
+
+    # ---- Citation has a direction (ticket 19) -----------------------------
+    hits=$(git grep -nIE -e 'docs/adr/[0-9A-Za-z]' "$sha" -- . ':!.scratch/' 2>/dev/null || true)
+    if [ -n "$hits" ]; then
+        printf '  Blocked: something cites an ADR in %s\n' "$label"
+        printf '%s\n' "$hits" | cut -d: -f1,2,3 | sed 's/^/    /'
+        status=1
+    fi
+
+    # ---- Corpus budget (ticket 11) ----------------------------------------
+    n=$(git ls-tree -r --name-only "$sha" | governed | wc -l | tr -d ' ')
+    if [ "$n" -gt "$CAP" ]; then
+        printf '  Blocked: %s standing-claim files in %s, cap is %s\n' "$n" "$label" "$CAP"
+        status=1
+    fi
+
+    # ---- Paths resolve, and every governed file says what it owns (11, 21) -
+    # Checked against the tree at that commit: a path that resolved when the
+    # commit was made is what the commit is answerable for.
+    for f in $(git diff-tree -r --no-commit-id --name-only --diff-filter=ACM "$sha" | governed); do
+        dir=$(dirname "$f")
+        body=$(git show "$sha:$f" 2>/dev/null || true)
+        [ -n "$body" ] || continue
+
+        tokens=$(printf '%s\n' "$body" \
+            | grep -oE '`[^` ]+`' | tr -d '`' \
+            | grep -E '/|\.(md|kt|kts|json|toml|ya?ml|sh)$' \
+            | grep -vE '[*?<>]|://|^/' \
+            | sed 's/:[0-9]*$//' | sort -u || true)
+        for t in $tokens; do
+            git cat-file -e "$sha:$t" 2>/dev/null && continue
+            git cat-file -e "$sha:$dir/$t" 2>/dev/null && continue
+            git ls-tree -d "$sha" "${t%/}" 2>/dev/null | grep -q . && continue
+            printf '  Blocked: %s points at %s, which does not resolve in %s\n' "$f" "$t" "$label"
+            status=1
+        done
+
+        printf '%s\n' "$body" \
+          | awk '/^# /{h=1;next} h&&/^## /{exit} h&&NF{print;exit}' \
+          | grep -q . \
+          || { printf '  Blocked: %s does not say what it owns in %s\n' "$f" "$label"; status=1; }
+    done
+
+    # ---- Edited alone, and the hard line caps (15, 17, 13) ----------------
+    changed_names=$(git diff-tree -r --no-commit-id --name-only "$sha")
+    for spec in 'GOALS.md=40' 'PROCEDURE.md=60' 'SALVAGE.md=65'; do
+        f=${spec%%=*}
+        cap=${spec#*=}
+        printf '%s\n' "$changed_names" | grep -qx "$f" || continue
+
+        n=$(git show "$sha:$f" 2>/dev/null | wc -l | tr -d ' ')
+        if [ "$n" -gt "$cap" ]; then
+            printf '  Blocked: %s is %s lines in %s, cap is %s\n' "$f" "$n" "$label" "$cap"
+            status=1
+        fi
+
+        case $f in
+            GOALS.md|PROCEDURE.md)
+                git diff-tree -r --no-commit-id --name-only --diff-filter=MRD "$sha" \
+                    | grep -qx "$f" || continue
+                others=$(printf '%s\n' "$changed_names" | grep -vx "$f" || true)
+                if [ -n "$others" ]; then
+                    printf '  Blocked: %s is edited alone, but %s also touches:\n' "$f" "$label"
+                    printf '%s\n' "$others" | sed 's/^/    /'
+                    status=1
+                fi
+                ;;
+        esac
+    done
+
+    # ---- Commit-size cap (ticket 17) --------------------------------------
+    if ! git show -s --format='%B' "$sha" | grep -qE '^Oversized: .+'; then
+        changed=0
+        while IFS='	' read -r add del path; do
+            [ -n "$path" ] || continue
+            is_generated "$path" && continue
+            [ "$add" = '-' ] && add=0
+            [ "$del" = '-' ] && del=0
+            changed=$((changed + add + del))
+        done <<EOF
+$(git diff-tree -r --no-commit-id --numstat "$sha")
+EOF
+        if [ "$changed" -gt "$SIZE_CAP" ]; then
+            printf '  Blocked: %s changed lines in %s, cap is %s\n' "$changed" "$label" "$SIZE_CAP"
+            status=1
+        fi
+    fi
 done
 
 if [ "$status" -ne 0 ]; then
-    printf '\n  Expected %s on every author and committer line.\n' "$ALLOWED"
-    printf '  These commits cannot be edited after publication, only excised.\n\n'
+    cat <<MSG
+
+  These commits cannot be edited after publication, only excised. Only paths,
+  lines and classes are shown -- no hook here prints what it matched.
+
+  Expected $ALLOWED on every author and committer line.
+
+MSG
 fi
 
 exit $status

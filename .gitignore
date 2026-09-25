@@ -1,0 +1,15 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild
+.cxx
+
+# Personal Claude Code permissions; shared config would be .claude/settings.json.
+.claude/settings.local.json
+
+# Tool output. The compiler writes errors/ and sessions/ here; neither is ours.
+.kotlin/

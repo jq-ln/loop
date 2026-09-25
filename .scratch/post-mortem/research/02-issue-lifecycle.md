@@ -5,10 +5,6 @@ Status: resolved
 Ticket: `../issues/02-issue-lifecycle.md`
 Harvested: 2026-09-22, from `jq-ln/loop` via `gh`, before the remote was destroyed.
 
-**Raw evidence**: `02-issues-raw.json` in this directory — all 106 issues with full bodies, all
-171 comments, labels, state, `stateReason`, `createdAt`/`closedAt`, sub-issue edges, and the
-product/process classification used below. Nothing in this file needs the remote to verify.
-
 ## The shape of the tracker
 
 | | |

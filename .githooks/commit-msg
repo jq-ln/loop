@@ -1,0 +1,66 @@
+#!/bin/sh
+# The commit-size cap (ticket 17).
+#
+# It lives here and not in pre-commit because it needs the commit message, and
+# pre-commit cannot see it. Measured rather than assumed: on a second commit,
+# pre-commit reads the PREVIOUS commit's message out of COMMIT_EDITMSG, so a
+# cap checked there would be satisfied by an earlier commit's trailer — a
+# check that passes on stale data, which is worse than no check. commit-msg
+# receives the message as $1 and the index is still staged, so both halves of
+# the rule are available at the same moment.
+#
+# The commit is the unit of reading. A single 3,000-line commit is an
+# atomicity failure: one indivisible thing nobody can read. The branch's risk
+# is breadth, not size, and that is `just land`'s file-list check, not this.
+#
+# The number is a knob with no evidence behind it. The override is legal,
+# dated, and reads back in `git log` forever, and how often it appears is the
+# data that tunes the number.
+
+set -e
+
+SIZE_CAP=300
+
+# Generated scaffolding, excluded from the count. A rule that fires on the
+# Gradle scaffolding commit trains the human to type the trailer reflexively,
+# which destroys the signal it exists to carry. Literal and short on purpose;
+# the repository's owner edits the list.
+is_generated() {
+    case $1 in
+        gradlew|gradlew.bat|gradle/wrapper/gradle-wrapper.properties) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+changed=0
+while IFS='	' read -r add del path; do
+    [ -n "$path" ] || continue
+    is_generated "$path" && continue
+    [ "$add" = '-' ] && add=0
+    [ "$del" = '-' ] && del=0
+    changed=$((changed + add + del))
+done <<EOF
+$(git diff --cached --numstat)
+EOF
+
+if [ "$changed" -le "$SIZE_CAP" ]; then
+    exit 0
+fi
+
+if grep -qE '^Oversized: .+' "$1"; then
+    exit 0
+fi
+
+printf '\n  Blocked: %s changed lines, cap is %s\n\n' "$changed" "$SIZE_CAP"
+git diff --cached --numstat | sed 's/^/    /'
+cat <<MSG
+
+  Split it, or add a trailer saying why it is one indivisible thing:
+
+      Oversized: <reason>
+
+  The cap is the unit of reading, not a budget for the branch. Generated
+  scaffolding is already excluded — see the list in this hook.
+
+MSG
+exit 1

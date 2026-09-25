@@ -1,17 +1,33 @@
 #!/bin/sh
-# Identity guard. Minimal, deliberately: it checks who the commit is stamped as,
-# and nothing else. Content checks (usernames in paths, device details, tool
-# output) are ticket 16's business and are NOT covered here.
+# The shared pre-commit hook. Eight checks, installed by ticket 20 from the
+# tickets that decided them; each block names its ticket and its reasoning.
 #
-# It reads `git var`, not `git config`, because config is what failed: this
-# repo's first three commits carried a personal address from
-# `git -c user.email=... commit`, a day after the global config was correct.
-# `git var` reports the identity the commit will actually receive, including
-# -c and environment overrides.
+# Three perimeters, stated here so no one block reads as wrapping another:
+#   - identity, the worktree cap and the architecture gate are about the commit
+#   - the entry rule (16) is every tracked path, no exclusions
+#   - the budget, path, declaration and citation checks (11, 21, 19) are the
+#     standing-claim corpus; .scratch/ holds dated records, not standing claims
+#
+# Every content check here was installed only because it reported ZERO on the
+# tree as it stood. Any hit is therefore content the commit introduced. A
+# pattern that cannot reach zero is narrowed or dropped. There are no
+# exceptions and no override strings: if a rule is wrong, the rule is edited,
+# by the repository's owner, in a commit that says why.
+#
+# The commit-size cap is NOT here. It needs the commit message, which
+# pre-commit cannot see — see .githooks/commit-msg.
 #
 # Enabled per clone with:  git config core.hooksPath .githooks
 
 set -e
+
+# ---- Identity guard ------------------------------------------------------
+# Minimal, deliberately: it checks who the commit is stamped as, and nothing
+# else. It reads `git var`, not `git config`, because config is what failed:
+# this repo's first three commits carried a personal address from
+# `git -c user.email=... commit`, a day after the global config was correct.
+# `git var` reports the identity the commit will actually receive, including
+# -c and environment overrides.
 
 ALLOWED='77815101+jq-ln@users.noreply.github.com'
 
@@ -50,4 +66,318 @@ if [ "$fail" -eq 1 ]; then
 
 MSG
     exit 1
+fi
+
+# ---- Worktree cap (ticket 17, instrument from ticket 10) ------------------
+# Nothing merges until it has been read, so unread work waits as an unmerged
+# worktree and the gap is visible. Git has no hook on `git worktree add`,
+# which is the advantage: this enforces the STATE, not the act. A fourth
+# worktree may be opened; nothing in it can commit until one of the other
+# three has been read and landed.
+#
+# The refusal lists the live worktrees with each one's age and last commit,
+# so a stalled branch is visible the moment it starts costing something. It
+# prints branches and not paths: a worktree path is home-anchored, and a hook
+# that echoes one writes it into scrollback, CI logs and the transcript.
+
+WORKTREE_CAP=3
+
+linked=$(git worktree list --porcelain | grep -c '^worktree ' || true)
+linked=$((linked - 1))
+
+if [ "$linked" -gt "$WORKTREE_CAP" ]; then
+    printf '\n  Blocked: %s worktrees other than the main one, cap is %s\n\n' \
+        "$linked" "$WORKTREE_CAP"
+    git worktree list | tail -n +2 | while read -r _path sha branch; do
+        printf '    %-24s %-16s %s\n' \
+            "${branch:-detached}" \
+            "$(git log -1 --format='%cr' "$sha" 2>/dev/null || echo '?')" \
+            "$(git log -1 --format='%s' "$sha" 2>/dev/null | cut -c1-48 || true)"
+    done
+    cat <<MSG
+
+  Read one and land it, or run `just drop <ticket>` to release its claim.
+  My reading speed is the project's throughput, deliberately.
+
+MSG
+    exit 1
+fi
+
+# ---- The human's own files are edited alone (tickets 15, 17) -------------
+# A commit whose diff includes GOALS.md or PROCEDURE.md and any other path
+# fails. Every change to what I want, or to what I have promised, becomes a
+# visible, isolated, dated act — which is also the timing fingerprint: a goal
+# edited after the work it justifies shows up in `git log`.
+#
+# It fires on a MODIFICATION, not on the commit that adds the file. There is
+# no goal to change before the file exists, and the kit had to land in one
+# commit. This is the same shape as the budget check below, which fires only
+# on an add, and 18's gate, which reads the staged copy.
+
+ALONE='GOALS.md PROCEDURE.md'
+
+edited=$(git diff --cached --name-only --diff-filter=MRD)
+all_staged=$(git diff --cached --name-only)
+
+for f in $ALONE; do
+    printf '%s\n' "$edited" | grep -qx "$f" || continue
+    others=$(printf '%s\n' "$all_staged" | grep -vx "$f" || true)
+    if [ -n "$others" ]; then
+        printf '\n  Blocked: %s is edited alone\n\n' "$f"
+        printf '%s\n' "$others" | sed 's/^/    also staged: /'
+        cat <<MSG
+
+  Commit the change to $f on its own, in a commit that touches nothing else.
+  Only the repository's owner edits it, and the isolated commit is what makes
+  that visible.
+
+MSG
+        exit 1
+    fi
+done
+
+# ---- Corpus budget (ticket 11) -------------------------------------------
+# Fires only on commits that ADD a standing-claim file, so it is silent on
+# every other commit. The cap is a knob: raising it is a human's edit, in a
+# commit that says why, and those commits are the data that tunes it.
+
+CAP=12
+
+governed() {
+    grep -E '^([^/]+|docs/.+|\.claude/.+)\.md$' | grep -vE '^docs/adr/' || true
+}
+
+added=$(git diff --cached --name-only --diff-filter=A | governed)
+
+if [ -n "$added" ]; then
+    n=$(git ls-files | governed | wc -l | tr -d ' ')
+    if [ "$n" -gt "$CAP" ]; then
+        printf '\n  Blocked: %s standing-claim files, cap is %s\n\n' "$n" "$CAP"
+        printf '%s\n' "$added" | sed 's/^/    adding: /'
+        cat <<MSG
+
+  Do not raise the cap. Find the file that already owns this kind of claim
+  and fold the claim into it. One claim, one owner.
+
+  The perimeter is root *.md, docs/**.md, .claude/**.md. It excludes
+  .scratch/ (dated records), docs/adr/, the justfile and generated files —
+  and a standing rule may not be moved into .scratch/ to dodge this check.
+
+MSG
+        exit 1
+    fi
+fi
+
+# ---- Structural claims point at paths, and paths must resolve (ticket 11) -
+
+# The token filter skips what is not an assertion about this tree: glob
+# patterns (11's own exclusion), placeholders in angle brackets, and absolute
+# paths — a governed document citing an absolute path is either banned by 16
+# or talking about someone else's machine.
+#
+# The placeholder exclusion has a cost worth stating. 11's worked example was
+# the generated docs/agents/domain.md, which asserted `src/<context>/docs/adr/`
+# and `CONTEXT-MAP.md`; under this filter the first is skipped and only the
+# second fires. The defect would still have been caught, by one token instead
+# of two. The alternative was rewriting docs/agents/issue-tracker.md, whose
+# eight placeholders are a naming convention and not a claim about this tree,
+# and which ticket 20 was told to leave as it stands.
+
+touched=$(git diff --cached --name-only --diff-filter=ACM | governed)
+bad=''
+
+for f in $touched; do
+    dir=$(dirname "$f")
+    tokens=$(git show ":$f" \
+        | grep -oE '`[^` ]+`' | tr -d '`' \
+        | grep -E '/|\.(md|kt|kts|json|toml|ya?ml|sh)$' \
+        | grep -vE '[*?<>]|://|^/' \
+        | sed 's/:[0-9]*$//' | sort -u || true)
+    for t in $tokens; do
+        [ -e "$t" ] || [ -e "$dir/$t" ] || bad="$bad
+    $f -> $t"
+    done
+done
+
+if [ -n "$bad" ]; then
+    printf '\n  Blocked: a document points at a path that does not exist\n%s\n' "$bad"
+    cat <<MSG
+
+  A document may not assert a structural fact the source asserts about
+  itself. Where it points at structure, the path must resolve — otherwise a
+  review reads the document as true and sends you to change working code.
+
+MSG
+    exit 1
+fi
+
+# ---- Every governed file says what it owns (ticket 21) -------------------
+# The paragraph between a file's H1 and its first H2 is its bounds
+# declaration, and `just owns` generates the index from exactly these
+# paragraphs. There is no ownership table: a table would be a second owner
+# for a claim each file already makes about itself, and the old repo's ran
+# eighteen rows deep while documenting its own violations in its own cells.
+
+undeclared=''
+for f in $touched; do
+    git show ":$f" \
+      | awk '/^# /{h=1;next} h&&/^## /{exit} h&&NF{print;exit}' \
+      | grep -q . || undeclared="$undeclared
+    $f"
+done
+
+if [ -n "$undeclared" ]; then
+    printf '\n  Blocked: a governed file does not say what it owns\n%s\n' "$undeclared"
+    cat <<MSG
+
+  Put one paragraph between the H1 and the first H2 saying what this file
+  owns, and naming the file that owns what it does not. `just owns` reads
+  exactly that paragraph, so a file without one is invisible to the index.
+
+MSG
+    exit 1
+fi
+
+# ---- Hard line caps on the always-loaded set (tickets 15, 17, 13) --------
+# Only these three have a ceiling. CLAUDE.md's 200 is published guidance with
+# no measurement behind it and is NOT checked here — carrying it as a hard
+# number would be the kit shipping folklore on the day it lands.
+# ARCHITECTURE.md has no cap by decision (18): per-document ceilings exist
+# only for the always-loaded set. Do not add one for it.
+#
+# SALVAGE.md is 65 and not 60. Its 60 was inherited from PROCEDURE.md rather
+# than derived, it is not always-loaded, and it is the one file in the kit
+# that shrinks; ticket 12's two entries take it to 62 and trimming genuinely
+# necessary context to fit an arbitrary number is the wrong trade. Ticket 20
+# made that call, on 12's recommendation.
+
+for spec in 'GOALS.md=40' 'PROCEDURE.md=60' 'SALVAGE.md=65'; do
+    f=${spec%%=*}
+    cap=${spec#*=}
+    printf '%s\n' "$touched" | grep -qx "$f" || continue
+    n=$(git show ":$f" | wc -l | tr -d ' ')
+    if [ "$n" -gt "$cap" ]; then
+        printf '\n  Blocked: %s is %s lines, cap is %s\n' "$f" "$n" "$cap"
+        cat <<MSG
+
+  This one is hard. Cut something, or fold a claim into the file that owns
+  it. The cap is a knob only the repository's owner turns.
+
+MSG
+        exit 1
+    fi
+done
+
+# ---- Citation has a direction (ticket 19) --------------------------------
+# An ADR cites upward (GOALS.md) and outward (paths). Nothing cites an ADR,
+# and no ADR cites another, because what rots is a pointer at a DELETABLE
+# thing: an ADR is superseded by being deleted.
+#
+# The pattern matches a reference to a file UNDER docs/adr/, which is what a
+# citation looks like once an ADR's identity is its date-and-slug filename
+# (ticket 10). It does not match the bare directory, which CLAUDE.md names
+# when it states the budget perimeter.
+#
+# Ticket 19 specified `ADR ?[0-9]{4}` instead, taken from the first repo's
+# forensics. That form is DROPPED, for three measured reasons: this repo's
+# ADRs carry no number, so it cannot match a citation of any ADR here; it
+# reports 179 hits on the archive references in .scratch/, so it fails the
+# install budget; and it matches the ADR number quoted in this hook's own
+# entry-rule comment below, so it would have to except itself, which is the
+# defect ADR 0070's version had and ticket 16 designed out. The pattern here
+# is self-safe the same way 16's are: after the slash it writes "[".
+#
+# .scratch/ is excluded: every reference there is to the FIRST repo's ADR
+# files, quoted as evidence in a dated record, and points at nothing this
+# repo can delete.
+
+citations=$(git grep --cached -nIE -e 'docs/adr/[0-9A-Za-z]' -- . ':!.scratch/' 2>/dev/null || true)
+
+if [ -n "$citations" ]; then
+    printf '\n  Blocked: something cites an ADR\n'
+    printf '%s\n' "$citations" | cut -d: -f1,2 | sed 's/^/    /'
+    cat <<MSG
+
+  Nothing cites an ADR — not a document, not another ADR, not a code
+  comment. A standing document that needs an ADR's conclusion owns that
+  claim itself; a code comment states the claim instead of pointing at it.
+  An ADR is deleted when it is superseded, and a pointer at a deleted thing
+  is a lie. Find one with `just adr`.
+
+MSG
+    exit 1
+fi
+
+# ---- Entry rule (ticket 16) -----------------------------------------------
+# What may not enter the repo. The perimeter is every tracked path with no
+# exclusions — .scratch/ included, because what makes a dated record safe for
+# 11's budget does nothing about a home path.
+#
+# These patterns were installed only because they report ZERO hits on the tree
+# as it stands. Any hit is therefore content this commit introduced. If a
+# pattern cannot reach zero, narrow it or drop it. Do not add an exception:
+# there are none, by decision. If a pattern is wrong, the pattern is edited,
+# by the repository's owner, in a commit that says why.
+#
+# It prints the path, the line and the class, never the matched text: a hook
+# that echoes the string writes the banned data into scrollback, CI logs and
+# the session transcript. The redaction is `cut`, not a sed over content.
+#
+# The patterns do not match their own text here — /Users/[A-Za-z] contains
+# "/Users/" followed by "[", not a letter. ADR 0070's version had to except
+# itself; this one does not.
+
+entry_check() {
+    class=$1
+    pattern=$2
+    hits=$(git grep --cached -nIE -e "$pattern" -- . 2>/dev/null || true)
+    if [ -n "$hits" ]; then
+        printf '\n  Blocked: %s\n' "$class"
+        printf '%s\n' "$hits" | cut -d: -f1,2 | sed 's/^/    /'
+        return 1
+    fi
+    return 0
+}
+
+entry_fail=0
+entry_check 'home-anchored filesystem path' \
+    '/Users/[A-Za-z]|/home/[A-Za-z]|~/(Documents|Desktop|Downloads|Library|Projects)/' || entry_fail=1
+entry_check 'personal-domain email address' \
+    '[A-Za-z0-9._%+-]+@(icloud|gmail|me|hotmail|outlook|yahoo)\.(com|co\.uk)' || entry_fail=1
+
+if [ "$entry_fail" -eq 1 ]; then
+    cat <<'MSG'
+
+  This repo is public from its first commit. Nothing here can be edited out
+  later, only excised by rewriting history, and that instrument is cheap only
+  while the repo is unpublished.
+
+  Redact it. The form is <user>. Do not add an exception; there are none.
+
+  Only the path and line are shown above -- the hook does not print what it
+  matched. Open the file.
+
+MSG
+    exit 1
+fi
+
+# ---- The architecture file is written before the code (ticket 18) --------
+# Fires once in this repo's life: on the commit that adds the first Kotlin
+# source file. Reads the staged copy, so writing the sections and adding the
+# code in one commit is allowed. Checks presence, never quality.
+
+if git diff --cached --name-only --diff-filter=A | grep -qE '\.kt$'; then
+    if git show ":ARCHITECTURE.md" 2>/dev/null | grep -q '^\*\*Unwritten\.\*\*'; then
+        printf '\n  Blocked: ARCHITECTURE.md has an unwritten section\n\n'
+        git show ":ARCHITECTURE.md" | grep -n '^## ' | sed 's/^/    /'
+        cat <<MSG
+
+  Name the first shippable slice and what is deliberately not built, then
+  commit the code. The first Loop repo was never sketched at the start: two
+  of its four pillars were never built, and by day six nobody could say what
+  was under the hood.
+
+MSG
+        exit 1
+    fi
 fi
