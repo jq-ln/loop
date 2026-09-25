@@ -207,6 +207,29 @@ ticket, not the summary of it — the failure does not need the archive to happe
   stale-survey shape**, from its own first draft: *a pattern inferred from the two most recent days of
   a ten-day window*, caught by the author and not by the data.
 
+- [The input vocabulary: which actions exist, and which gesture means what](issues/07-the-input-vocabulary.md):
+  **one meaning per gesture, everywhere — a meaning may be *absent* on a surface, never *different***,
+  and that one rule generates the whole table. Six meanings: tap opens a detail (**no exception**,
+  which fills the archive's leaf-tap hole), hold opens the complete act menu **including the swipes**,
+  swipe → discharges, swipe ← refuses a run, the rail reorders, the chevron folds for the session over
+  06's stored default. Four of eight candidate acts do not survive, and each for a different reason:
+  *skip with a reason* **never existed** — `closed_reason` is the app's bookkeeping, not a reason the
+  user gives, and no gesture writes a skip; *boost* has **no caller anywhere**, closing 06's score
+  finding from the input side; *complete off-list* and *put on today* are **absorbed** into a search;
+  and **the timer is the one clean zero**. Membership follows the object — day-acts to the root,
+  work-acts to wherever the work is. **The rail is a property of a draggable row, not a screen
+  fixture** (the author's generalisation), which retires three archive defects at once by giving drag
+  its own target. **One field in `Offered` searching every definition**, with capture as a
+  **Create "…"** result row, so the search is the duplicate check and the two absorbed acts get a real
+  home. **Defer dismisses today's run and links it**: the dismissal answers *did it happen today*, the
+  link answers *why not* — no sixth reason. `Offered` has exactly **two exits, commit or abandon, never
+  a delete**, which is what makes 02's monotonic-growth falsifier mean anything. **Kills the check-in's
+  staged commit** — a defect the archive's own list of nineteen missed, in an app promising *everything
+  writes as it goes* — and makes every capture write on entry. **Amends 08**: its counts are exact but
+  its finding 2 is over-read, and the honest baseline is **40 lapses and 23 dismissals**. **Amends
+  `SALVAGE.md`**: the four-paths claim is inherited from a docstring stale against its own enum, which
+  has five reasons and seven call sites.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
