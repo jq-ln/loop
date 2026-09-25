@@ -1,0 +1,116 @@
+# Do goals serve principles, rather than a single topmost goal?
+
+Type: grilling
+Status: open
+
+## Question
+
+Raised by the author after *What a goal is* resolved, and it amends that ticket rather than
+reopening it — the precedent *The goal-to-work edge* set with dormancy, so each decision keeps one
+home.
+
+02 settled that every goal names a parent, that the parent defaults to **the root**, and that the
+root is **the single exemption from admissibility**: no satisfaction condition, can never be
+satisfied, *"its job is orientation, not closure"*. The author's proposal is that the top of the
+tree should not be one thing. Goals should serve **principles**, plural — a set of standing
+commitments that goals are filed under.
+
+### The proposal is cheaper than it first reads
+
+It is not another layer. 02's root is *already* a principle: a thing that orients, never closes,
+and is exempt from the rule every other goal obeys. The concept exists; it is a singleton with an
+exemption bolted to it.
+
+02 gives the reason the root has no name: *"It gets no user-facing label: there is exactly one, and
+a category name above a singleton is furniture."* Inverted, that is an argument for this proposal —
+once there is more than one, the label stops being furniture and becomes the thing the human chose.
+Nothing is filed one level deeper than it is today, and **an exemption becomes an ordinary kind**,
+which is usually the direction a model improves in.
+
+### What it buys that a singleton cannot
+
+Under one root, *"is this principle being served?"* is vacuous: every goal reaches the root by
+construction, as 02 says outright. Under several it becomes computable, and it is the most valuable
+thing this app could say — **a principle with nothing under it is a principle you are not serving**.
+That is the distance between stated values and committed work, and no other entity in the model can
+produce it.
+
+That is the engine claim. The stage claim is orientation, which nothing else covers, because every
+other entity in the model closes and a principle never does. Both need to survive the grilling, not
+just be asserted here.
+
+### A worked example, which the app does not ship
+
+To make the questions concrete only. **No principle is hard-coded, and the app ships none.** The set
+is authored by the human, and this example is one plausible set among many:
+
+the five **yamas** — non-violence, truthfulness, non-stealing, right use of energy,
+non-possessiveness. (They are Patanjali's, and Jainism's five vows; Buddhism's near-parallel is the
+five precepts. Named precisely because this repo is public and G2 is about work being legible.)
+
+The example is doing one job: showing a set that is small, stable, non-overlapping, and impossible
+to ever tick — which is the shape the proposal needs to hold, and which a set of five self-authored
+life ambitions might not.
+
+## Settle
+
+- **Does it pass the two-claims test?** `SALVAGE.md` refuses a new top-level concept that cannot
+  separately evidence a stage nothing else covers **and** an engine. Both are argued above. The
+  engine's load-bearing half is the unserved-principle predicate; if that prompt would be ignored in
+  practice, the concept is a taxonomy and the first repo's eight-line menu enum is what it becomes.
+
+- **What replaces "defaults to the root"?** This is the real cost, and it contradicts 02 directly.
+  That default is deliberate — *"filing never blocks on deciding where a thing hangs"* — and it is
+  the same reasoning that put the citation gate at commitment rather than capture. Remove the
+  singleton and there is no default left. The candidate: goals with no principle land in an
+  **unassigned pile that is not itself a principle**, so root-adjacency survives meaning exactly
+  what 02 said it meant, *filed without deciding what it serves*, except it is now a real statement
+  rather than a structural accident. Same shape as the uncited backlog for work, and the same
+  falsifier is available.
+
+- **One principle per goal, or several?** Where the structural cost lands, and it reaches a resolved
+  ticket: 03's edge table has citation as a **tree, single parent**. A goal plausibly serves two
+  principles at once. Allow several and the top of the tree becomes a DAG and 03's table changes;
+  allow one and some calls are arbitrary. Single-parent is the cheaper answer and keeps the unserved
+  signal sharp, at the cost of forcing a choice.
+
+- **Where does work hang?** 02 required every definition to cite a goal, defaulting to the root, and
+  read the two piles differently: *"goals on the root are unexamined, work on the root is life."*
+  That second pile needs a home. Can a definition cite a principle directly, or only a goal?
+
+- **Are principles mutable, and is there a cap?** If they are free to create and easy to churn, the
+  top level becomes a filing drawer, everything ends up served by something, and the unserved signal
+  goes quiet — the root rebuilt with extra steps. Goals are meant to be created and culled
+  constantly; principles should be nearly immutable. Does a principle get 02's `abandoned`, or does
+  a life change mean editing one in place?
+
+- **Does a principle get a screen?** *Observability* named one chart kind and put the rest in *what
+  is not built*; the same discipline applies. Name the smallest thing that serves the unserved
+  predicate.
+
+- **What does it cost on day one?** The root was *"created once at setup, unreachable by the user"*
+  and needed no authoring. Principles must be written before the app does anything, which is real
+  G1 friction and lands in the map's fog entry for onboarding and the empty state.
+
+- **Is `principle` the word?** It is the author's, and it has to survive `CONTEXT.md`'s bar and the
+  map's rule that no concept from the developer analogy enters the documents untested. This one is
+  not from the analogy, which is a point in its favour.
+
+## The evidence this ticket needs before it is grilled
+
+**The author writes down the principles he would actually enter.** If the list is one, this is a
+rename with extra machinery. If it is four or five and they differ in kind, the case is settled from
+G1 alone.
+
+That test exists because the proposal's stated reason is not admissible evidence here. *"Applies to
+a wide range of philosophies, religions, and secular viewpoints"* is generality for users who do not
+exist: `GOALS.md` N1 rules out any channel, G1 is an app the author uses every day, and the plugin
+platform is what generality-for-nobody cost this project last time — 5,600 lines discovering zero
+plugins. The idea may well be right. It has to be right for one person, and that is checkable today.
+
+## What this ticket would spend
+
+- **02's root section**, amended — the exemption becomes a kind, and the default parent is replaced.
+- **03's edge table**, if a goal may serve more than one principle.
+- **A `CONTEXT.md` entry**, which [12](12-the-vocabulary-and-adr-register.md) now owns.
+- Possibly an **ADR**: an exemption becoming a kind is hard to reverse once work is filed under it.

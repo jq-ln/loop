@@ -97,6 +97,9 @@ ticket, not the summary of it — the failure does not need the archive to happe
   rather than capture** — a thought needs no goal, a commitment does — with the uncited backlog as
   the place unscheduled work lives, and a falsifier: if it grows monotonically for two weeks the rule
   is being dodged. The app keeps the word **goal**; the project-level concept becomes **criterion**.
+  **Its root decision is under open challenge** by [Do goals serve principles, rather than a single
+  topmost goal?](issues/13-goals-serve-principles.md) — read that ticket before building on the
+  single root or on the parent default.
 
 - [Preserve the running app's database before anything forces the decision](issues/08-preserve-the-running-database.md):
   taken 2026-09-24 from user 0, parked outside every tracked path, `integrity_check ok`. Schema
