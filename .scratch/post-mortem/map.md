@@ -168,6 +168,24 @@ deliberately separated here.
   visible. Checks are structural only, and `CLAUDE.md`'s residual ownership is labelled as resting
   on nothing.
 
+- [The architecture sketch the rebuild must produce on day one](issues/18-the-architecture-sketch.md):
+  **the file states constraints, never description**, which is how it satisfies 11's structural-fact
+  ban by construction rather than by exception — a constraint says what must stay true and what it
+  costs to change, so the code can violate it but never contradict it, and 11's path check becomes
+  its honesty rail (it cannot name a structure that does not exist). Named **`ARCHITECTURE.md`** at
+  the root and **"sketch" is retired**, having named a drawing. Five topics, not seven: the seam, the
+  test runner and the plugin-plumbing timing rule land filled, while the **first shippable slice** and
+  **what is not built** ship marked `**Unwritten.**` — and `pre-commit` **refuses the commit that adds
+  the first `.kt` file** while either is, which is the mandate 08 asked for finally attached to an
+  artifact the work must touch anyway. The unbuilt list is written **priced at one ADR each** and is
+  **consumable**, the second such thing in the kit after `SALVAGE.md`'s keep half. Lifecycle is
+  overwrite-in-place with the changing ADR in the same commit, which makes 11's *a standing document
+  owns the claim itself* and 19's direction rule fit without an exception. **An agent drafts it and no
+  rule is written**, because 17's merge gate already is one. No line cap (11's own reason), the salvage
+  ports are **not enumerated** (one property stated instead, so no claim gets two owners), and
+  `PROCEDURE.md`'s 59th line and a `CLAUDE.md` mention are both **refused on the record**. Corrects
+  this ticket's own body: **the day-one count is 8, not nine.**
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a
@@ -188,7 +206,9 @@ deliberately separated here.
   the first where the test was used to decline a mechanism rather than to justify one. **Ticket 21
   adds a sixth**, in the justifying direction: the `Folded:` trailer, owed where the cap refuses a
   file and the claim folds into an existing owner instead — and it reuses 10's reading, that the
-  *frequency* of such records is the instrument rather than the record itself. **It stays fog by
+  *frequency* of such records is the instrument rather than the record itself. **Ticket 18 adds a
+  seventh**, also justifying: a rebuild whose considered answer to *what is not built* is "nothing"
+  must still write "Nothing.", because the unwritten marker is refused by the hook. **It stays fog by
   decision, not by fogginess** — the human ruled against ticketing it: no open ticket waits on generalising it, and
   filing it would grow the board this map exists to shrink. A later rule that needs the test cites
   it from here; nothing in the kit is blocked on generalising it further.
