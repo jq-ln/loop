@@ -112,12 +112,6 @@ life ambitions might not.
   way the mechanic is uniform: a prerequisite always says "not yet startable", and on a goal it says
   it about a set rather than about one item.
 
-  One residual, noted and not treated as fatal: under single-parent, **re-parenting a goal still
-  changes what it inherits**, so filing remains a way to move blocked state. It is a weaker thing
-  than the DAG leak — moving the one path is deliberate and destroys the old meaning, where adding a
-  second is free and additive — but whoever grills this should know the tree narrows the leak rather
-  than closing it.
-
   The asymmetry is what makes the split clean, and it is worth stating because it looks like a
   contradiction: the **step** edge has been a many-parent DAG all along and is entirely unaffected,
   because a step edge carries no readiness. Re-derived from the live database for this ticket —
