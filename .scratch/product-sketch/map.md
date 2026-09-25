@@ -104,6 +104,22 @@ is built on.
   `recording` hold zero rows while `journal_entry` holds two entries, one of 21 characters, which is
   the use record *Observability* and *Does Reflect survive its own test?* get to ask against.
 
+- [The goal-to-work edge: decomposition, gating, and what the Tickets screen is](issues/03-the-goal-to-work-edge.md):
+  **Tickets is neither a concept nor a screen — it is the goal detail view**, and the word does not
+  enter `PRODUCT.md`; the goal already owns that stage, so it fails the two-claims test. What survives
+  the analogy is one mechanic, renamed: **`prerequisite`, not `gate`**, because `gate` already means
+  three things in this repo. The decomposition is **not** the definition DAG — unifying would fire the
+  cascade on goals and write `ROLLED_UP` onto one, contradicting 02 — so there are two structures and
+  three edge kinds, and **the decomposition edge is the citation edge read backwards**. A prerequisite
+  **replaces a schedule rather than coexisting with one** (a blocked item is *absent* from Today, not
+  dimmed), joins any two nodes independently of the citation tree, inherits down it, allows many
+  predecessors under AND only, and **re-closes when its predecessor's completion is reversed**.
+  Abandonment opens nothing; a prerequisite naming the root is refused at creation. `AFTER_ROUTINE`
+  dies and the schedule engine ports minus one mode. No progress bar ever — a count is a fact, a
+  percentage is a claim nothing supports. **Amends 02: dormancy counts only time a node was
+  actionable.** Flags a gap: `prerequisite` and `blocked` owe a `CONTEXT.md` entry and no ticket on
+  this map owns that write.
+
 ## Not yet specified
 
 - **The import format for a decomposition.** Q11 settled that goals are broken down outside the app
