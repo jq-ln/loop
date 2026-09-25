@@ -187,3 +187,33 @@ preserved database. It was not chosen for being convenient:
 different Today screens over this real day, at phone width. Throwaway: it is captured to a branch at
 resolution and does not survive into the repo. Weight values are shifted and no third party is named;
 the shape of every series is real.
+
+### What *Does Reflect survive its own test?* hands this ticket, 2026-09-25
+
+Read at source on resolution, not taken on report. Three things land here, and one of them is new
+work this ticket's bullets did not anticipate.
+
+- **The navigation slot is named.** Reflection is a **destination where the act happens**, not a
+  surface that ranks and routes — decided by the archive's own `recordNow` line, *"nothing the user
+  does belongs on a view"*, which is the same evidence this ticket re-derived for a different purpose.
+  So bullet 6 is no longer conditional on another live ticket. The concept entering the documents is
+  `revision`; whether the surface is still **called** Reflect is naming rather than classification,
+  and that naming is explicitly **this ticket's and the vocabulary register's**.
+- **Reflection is not a Today row**, and no part of it is scheduled: signal-driven, manual entrance
+  always open, cadence explicitly refused. The Today-row mechanism therefore does not have to stretch
+  to cover it, and the chip strip was not claimed either.
+- **Capture is real and is Today's.** New: there is now **one `note`** whose subject discriminates
+  over **a run, a measurement, or the day**, replacing three text boxes with three sets of rules. So
+  if Today offers a place to write, it writes a `note` with one of those subjects — and *where* is a
+  question this ticket owns and had not asked. It is in the prototype on all three variants,
+  deliberately in three different places.
+
+One tension it creates, and this ticket should resolve it rather than leave it: 05's flag catalogue
+takes **long-blocked** precisely because *The goal-to-work edge* made a blocked item **absent** from
+Today and nothing reported it. With Reflect reporting it, a "1 blocked, not shown" footnote on Today
+is no longer a safety net — it is a soft contradiction of *absent*, and it should probably go. It is
+drawn in variant C so the cost of keeping it is visible rather than argued.
+
+The auto-closed weigh-in stays here. 05 records the third cause of a gap at **dismissal** time, which
+makes later dormancy and stall computations correct, but that is after the fact; the loss happens at
+**capture** time and Today is the only screen that could have prevented it.
