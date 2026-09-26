@@ -82,8 +82,8 @@ at all.
 
 One line each: what is not built, and that building it needs an ADR. The ADR that authorises one of
 these deletes its line in the same commit, and lists whatever of that thing it still leaves unbuilt.
-An entry graduates to a non-goal in `GOALS.md` only when a reader of the goals might plausibly have
-built it. Refusals are not absences, and live in `PRODUCT.md`.
+An entry graduates to an exclusion in `CRITERIA.md` only when a reader of the criteria might
+plausibly have built it. Refusals are not absences, and live in `PRODUCT.md`.
 
 - Goals: satisfaction, targets and verdicts, and bringing in a breakdown made outside the app.
 - Prerequisites, together with the long-blocked flag, which is the only thing that reports them.

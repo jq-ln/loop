@@ -104,17 +104,22 @@ MSG
 fi
 
 # ---- The human's own files are edited alone (tickets 15, 17) -------------
-# A commit whose diff includes GOALS.md or PROCEDURE.md and any other path
+# A commit whose diff includes CRITERIA.md or PROCEDURE.md and any other path
 # fails. Every change to what I want, or to what I have promised, becomes a
-# visible, isolated, dated act — which is also the timing fingerprint: a goal
+# visible, isolated, dated act — which is also the timing fingerprint: a criterion
 # edited after the work it justifies shows up in `git log`.
 #
 # It fires on a MODIFICATION, not on the commit that adds the file. There is
-# no goal to change before the file exists, and the kit had to land in one
+# no criterion to change before the file exists, and the kit had to land in one
 # commit. This is the same shape as the budget check below, which fires only
 # on an add, and 18's gate, which reads the staged copy.
 
-ALONE='GOALS.md PROCEDURE.md'
+# A rename is seen by its new name only. A pure rename therefore passes and
+# leaves the old name guarding nothing until ALONE is edited; a rename that
+# also rewrites the file falls below git's similarity threshold, arrives as a
+# delete plus an add, and is refused. Rename first, edit after.
+
+ALONE='CRITERIA.md PROCEDURE.md'
 
 edited=$(git diff --cached --name-only --diff-filter=MRD)
 all_staged=$(git diff --cached --name-only)
@@ -255,7 +260,7 @@ fi
 # necessary context to fit an arbitrary number is the wrong trade. Ticket 20
 # made that call, on 12's recommendation.
 
-for spec in 'GOALS.md=40' 'PROCEDURE.md=60' 'SALVAGE.md=65'; do
+for spec in 'CRITERIA.md=40' 'PROCEDURE.md=60' 'SALVAGE.md=65'; do
     f=${spec%%=*}
     cap=${spec#*=}
     printf '%s\n' "$touched" | grep -qx "$f" || continue
@@ -273,7 +278,7 @@ MSG
 done
 
 # ---- Citation has a direction (ticket 19) --------------------------------
-# An ADR cites upward (GOALS.md) and outward (paths). Nothing cites an ADR,
+# An ADR cites upward (CRITERIA.md) and outward (paths). Nothing cites an ADR,
 # and no ADR cites another, because what rots is a pointer at a DELETABLE
 # thing: an ADR is superseded by being deleted.
 #

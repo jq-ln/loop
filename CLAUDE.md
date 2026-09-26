@@ -1,6 +1,6 @@
 # Agents
 
-How agents work in this repo, and whatever no other file owns. `GOALS.md` outranks this file;
+How agents work in this repo, and whatever no other file owns. `CRITERIA.md` outranks this file;
 `PROCEDURE.md` is the human's own; the `justfile` owns the commands. `just owns` prints what each
 file owns, generated from the files themselves.
 
@@ -47,13 +47,13 @@ an index because the code has no declaration paragraph to generate one from.
 boundary, no file layout, no count of anything. A document that points at structure points at a
 path, in backticks, and the hook checks that the path resolves.
 
-**Citation has a direction.** An ADR may cite upward (`GOALS.md`) and outward (file paths).
+**Citation has a direction.** An ADR may cite upward (`CRITERIA.md`) and outward (file paths).
 Nothing may cite an ADR, and an ADR may not cite another ADR — not a document, not another ADR,
 not a code comment. A standing document that needs an ADR's conclusion owns that claim itself, and
 a code comment states the claim instead of pointing at it. Find one with `just adr`. A superseded
 ADR is deleted, and the commit that deletes it says what replaced it.
 
-`GOALS.md` is 40 lines, `PROCEDURE.md` 60, this file 200. The first two are hard. The 200 is
+`CRITERIA.md` is 40 lines, `PROCEDURE.md` 60, this file 200. The first two are hard. The 200 is
 published guidance with no measurement behind it, and is carried as guidance.
 
 ## What may not enter the repo

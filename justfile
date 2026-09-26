@@ -135,14 +135,14 @@ drop ticket:
     test -z "${file:-}" || sed -i '' 's/^Status: claimed$/Status: open/' "$file"
     echo "dropped $branch"
 
-# An instrument: it gates nothing. If every recent ADR cites the same goal,
+# An instrument: it gates nothing. If every recent ADR cites the same criterion,
 # the citation rule has become a stamp.
-# GOALS.md beside the distribution of goal citations across the ADRs.
-goals:
-    @cat GOALS.md
+# CRITERIA.md beside the distribution of criterion citations across the ADRs.
+criteria:
+    @cat CRITERIA.md
     @echo
-    @echo "  Goal citations across the ADRs:"
-    @grep -rhoE '^Goal: G[0-9]+' docs/adr/ 2>/dev/null | sort | uniq -c | sed 's/^/   /' || echo "    none yet"
+    @echo "  Criterion citations across the ADRs:"
+    @grep -rhoE '^Criterion: C[0-9]+' docs/adr/ 2>/dev/null | sort | uniq -c | sed 's/^/   /' || echo "    none yet"
 
 # No argument prints the corpus, because discovery is recognition and
 # recognition needs a skimmable list -- and the length of this listing is the
@@ -169,8 +169,8 @@ adr *args:
         test ! -e "$out" || { echo "$out exists"; exit 1; }
         {
           printf '# %s\n\n' '<the decision, stated as a decision and not as a topic>'
-          printf 'Goal: %s\n' '<the goal this serves, and what that goal ruled out.'
-          printf '%s\n' 'If the goal was edited after the work it justifies, say so.>'
+          printf 'Criterion: %s\n' '<the criterion this serves, and what it ruled out.'
+          printf '%s\n' 'If the criterion was edited after the work it justifies, say so.>'
           printf 'Affected paths: %s\n\n' '<every path this decision binds, or nothing>'
           printf '%s\n' '<Why, in the past tense, against the world as it was on this date.'
           printf '%s\n' 'A dated record, never edited: superseded means deleted. Twenty'

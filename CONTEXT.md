@@ -1,8 +1,8 @@
 # Context
 
-What a term means in this project. It does not own the goals (`GOALS.md`), the shape of the
-repository (`ARCHITECTURE.md`), how agents work (`CLAUDE.md`), or what to port from the first Loop
-repo (`SALVAGE.md`).
+What a term means in this project. It does not own the criteria (`CRITERIA.md`), the shape of
+the repository (`ARCHITECTURE.md`), how agents work (`CLAUDE.md`), or what to port from the first
+Loop repo (`SALVAGE.md`).
 
 A term earns an entry when it is already in use and has been mistaken for something else. Where a
 term is renamed, this file notes the former name, so an ADR written under the old word still reads.
@@ -19,6 +19,10 @@ term is renamed, this file notes the former name, so an ADR written under the ol
   *this evening*) that a run can be pushed to. Two things in the ported engine carry the same word
   and mean neither: the step edge's `cadence_anchor`, and the wall-clock anchor that holds a
   recurring schedule steady across a daylight-saving change.
+- **Criterion** and **exclusion** — a criterion is a standing test every decision in this repository
+  must pass; it is never satisfied, only kept or deleted. An exclusion is something rejected because
+  a reader of the criteria might plausibly have built it. Records written before 2026-09-25 call
+  them *goal* and *non-goal*, and the ids kept their numbers: `G1` is `C1`, `N1` is `E1`.
 - **Definition** and **run** — a definition is what could be done; a run is one materialized
   instance of it at a time. Nothing else is a kind of work. The first Loop's schema called them
   *task* and *occurrence* while its prose was told to say *run*. Here one pair of words serves
@@ -27,9 +31,7 @@ term is renamed, this file notes the former name, so an ADR written under the ol
   reason, because it is the fastest negative act in the app. Dismissing a **flag** on Revise takes a
   dated reason and suppresses the flag for a window, because that reason is read back.
 - **Goal** — something the user works toward that names what satisfies it; the app refuses one
-  that cannot. It is not a goal in `GOALS.md`: those are standing tests every decision in this
-  repository must pass, are never satisfied, and are being renamed *criteria* so that the app keeps
-  the word. Until the rename lands, *goal* in a document about the repository means `GOALS.md`'s.
+  that cannot. It is not a criterion, which is never satisfied.
   Standing practices are the commonest thing mistaken for a goal: a thing done every day is a
   definition on a schedule, not a goal.
 - **Metric**, **reading** and **question** — a metric is a named series: a unit, an aggregation,
