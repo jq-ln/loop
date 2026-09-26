@@ -142,7 +142,8 @@ criteria:
     @cat CRITERIA.md
     @echo
     @echo "  Criterion citations across the ADRs:"
-    @grep -rhoE '^Criterion: C[0-9]+' docs/adr/ 2>/dev/null | sort | uniq -c | sed 's/^/   /' || echo "    none yet"
+    @c=$(grep -rhoE '^Criterion: C[0-9]+' docs/adr/ 2>/dev/null | sort | uniq -c | sed 's/^/   /'); \
+        if [ -n "$c" ]; then printf '%s\n' "$c"; else echo "    none yet"; fi
 
 # No argument prints the corpus, because discovery is recognition and
 # recognition needs a skimmable list -- and the length of this listing is the
