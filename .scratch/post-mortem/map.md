@@ -222,6 +222,13 @@ deliberately separated here.
   last one is a hook bug, now fixed. The owner ran one rewrite that cleared all three, and the real
   `pre-push` passed. **Every SHA quoted before this line is dead.**
 
+- [Rename the project-level concept: `GOALS.md` becomes `CRITERIA.md`](issues/23-rename-the-goals-document.md):
+  **landed before the first ADR**: criteria `C1`/`C2`, exclusion `E1`, `just criteria`, a
+  `Criterion:` scaffold its grep is proven to read, and the old-to-new mapping in `CONTEXT.md` rather
+  than the capped file. The hook is blind only to a **pure** rename; a rename that also rewrites the
+  file arrives as a delete plus an add and is refused, which forced a better order: rename, guard,
+  then edit, so no content edit ever landed unguarded. The survey missed `pre-push` and `PRODUCT.md`.
+
 ## Not yet specified
 
 - **The null artifact.** Ticket 06 found 18 issues arguing that no version bump was owed, via a

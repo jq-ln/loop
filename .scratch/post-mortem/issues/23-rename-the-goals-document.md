@@ -1,7 +1,7 @@
 # Rename the project-level concept: `GOALS.md` becomes `CRITERIA.md`
 
 Type: task
-Status: open
+Status: resolved
 
 ## Question
 
@@ -104,3 +104,34 @@ time *"citing G2"*, and dated records stay as written — the rename commit is w
 `CONTEXT.md`'s entry for **criterion** belongs to this ticket, because it is repository vocabulary.
 The app-side terms this decision settled belong to the product-sketch map's final write pass and are
 not written here.
+
+## Answer
+
+**Landed, in five commits rather than three, and the ticket's central mechanical claim was half
+wrong.** `CRITERIA.md` exists, its ids are `C1`, `C2` and exclusion `E1`, and the hooks guard it by
+name — proven by refusal in a throwaway clone, not by the passing commits: a `CRITERIA.md` edit
+staged beside `README.md` is refused as not edited alone, and a 41-line file is refused at the cap.
+
+The four naming decisions, all as recommended: the ids change letter, because the ADR list the
+file's own identity rule makes the deleting commit enumerate is empty now and never will be again;
+non-goals become **exclusions**, since *non-goal* is built from the surrendered word; the recipe is
+`just criteria`; the scaffold writes `Criterion:` and the grep reads `^Criterion: C[0-9]+`, shown to
+agree by scaffolding a throwaway ADR, filling it and counting it. Three placements followed: the
+`G1 → C1`, `N1 → E1` mapping lives in `CONTEXT.md`'s new **criterion** entry, which already states
+that a renamed term keeps its former name there, rather than taking `CRITERIA.md` to 40/40; the
+closed product-sketch map's `N1` is left as a record; and the owner's text was drafted to the
+scratchpad and committed by the owner.
+
+**The correction.** *"The hook cannot see the rename"* is true only of a **pure** rename, which is
+what the clone test staged. The owner's first attempt renamed and rewrote the file together, which
+dropped git's similarity below its threshold: the diff became a delete of `GOALS.md` plus an add of
+`CRITERIA.md`, even under `-M`, and `ALONE` refused it. So the planned rename-then-mechanism order was
+not merely safe but forced, and it improved: **pure rename (owner) → hooks renamed (agent) → content
+(owner) → `PROCEDURE.md` (owner)**, so that no edit to the file's content ever landed unguarded. The
+hook now carries that fact as a comment beside `ALONE`.
+
+**The survey missed three things, again.** `pre-push` repeats both literals (the cap, and the
+edited-alone rule as a `case` arm) with the same blindness — a fifth silent cost; `PRODUCT.md` cited
+`` `GOALS.md` `` and would have been refused by the path check on its next edit; and only one map,
+not both, cites `N1`. A fourth thing was confirmed rather than missed: the path and owns checks read
+`--diff-filter=ACM`, so a renamed governed file escapes both on its rename commit.
