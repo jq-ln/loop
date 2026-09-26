@@ -1,6 +1,6 @@
 # Procedure
 
-My own working rules. `GOALS.md` outranks this file; `CLAUDE.md` owns how agents work; the
+My own working rules. `CRITERIA.md` outranks this file; `CLAUDE.md` owns how agents work; the
 `justfile` owns the commands. This file says what I have committed to and where each part is
 enforced. It never restates a mechanism that lives somewhere else.
 
@@ -22,8 +22,8 @@ signature that I read the diff.
 ## What I check that an agent cannot
 
 - **Should this exist at all.** An agent checks a change against its ticket and never asks whether
-  the ticket should have been written. Under `GOALS.md` that question has a form: name the goal,
-  and name what it ruled out.
+  the ticket should have been written. Under `CRITERIA.md` that question has a form: name the
+  criterion, and name what it ruled out.
 - **Break the code and watch a test go red.** One test per merge. A suite written alongside the
   code it tests is green whether or not it asserts anything.
 
@@ -32,8 +32,8 @@ signature that I read the diff.
 `just start` opens a worktree, refuses a ticket that declares no files, and refuses at the cap.
 `just check` is the local gate. `just land` shows me the diff and the diffstat, runs the review,
 compares the branch against its declared file list, and merges. `just drop` removes a worktree
-that will not land and releases its claim. `just goals` prints `GOALS.md` beside the goal
-citations across the ADRs.
+that will not land and releases its claim. `just criteria` prints `CRITERIA.md` beside the
+criterion citations across the ADRs.
 
 The review is an **input to my reading, not a substitute for it**. It returns no pass and no fail,
 I see the diff either way, and a Standards finding that cannot cite a file and a rule is advisory.
@@ -51,9 +51,9 @@ when it lands has not earned its place.
 Nothing checks these, and saying so is the point: a file that mixes the two teaches me to trust
 the wrong half.
 
-- **Did I re-examine the goal, or reword it to fit what I had already built?** A goal edited after
-  the work it justifies is visible in `git log`, and an ADR citing it has to say so. That removes
-  the silence, not the temptation. Bringing a missing goal here must stay a two-minute act; the
-  day it feels like a confession is the day I start rewording.
-- **If every recent ADR cites the same goal**, the citation rule has become a stamp.
+- **Did I re-examine the criterion, or reword it to fit what I had already built?** A criterion
+  edited after the work it justifies is visible in `git log`, and an ADR citing it has to say so.
+  That removes the silence, not the temptation. Bringing a missing criterion here must stay a
+  two-minute act; the day it feels like a confession is the day I start rewording.
+- **If every recent ADR cites the same criterion**, the citation rule has become a stamp.
 - **A document just told me something about the code.** Go look.
