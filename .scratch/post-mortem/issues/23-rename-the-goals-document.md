@@ -135,3 +135,5 @@ edited-alone rule as a `case` arm) with the same blindness — a fifth silent co
 `` `GOALS.md` `` and would have been refused by the path check on its next edit; and only one map,
 not both, cites `N1`. A fourth thing was confirmed rather than missed: the path and owns checks read
 `--diff-filter=ACM`, so a renamed governed file escapes both on its rename commit.
+
+A follow-up commit fixed `just criteria`'s dead "none yet" fallback, found while proving the scaffold: it hung off the exit status of `sed` and never fired.
