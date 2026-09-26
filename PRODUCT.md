@@ -2,8 +2,8 @@
 
 What the app does, its screens, and its input vocabulary: the whole app as designed, including the
 parts not built yet. It does not own which parts exist (`ARCHITECTURE.md`, under *The first
-shippable slice* and *Not built*), what a term means (`CONTEXT.md`), or the goals every decision
-answers to (`GOALS.md`). A part the code lacks is an absence and has a line in *Not built*; a part
+shippable slice* and *Not built*), what a term means (`CONTEXT.md`), or the criteria every
+decision answers to (`CRITERIA.md`). A part the code lacks is an absence and has a line in *Not built*; a part
 the code does differently is a bug in this file, because the code wins.
 
 ## What the app is
